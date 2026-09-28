@@ -16,20 +16,22 @@ export default function AdminPanel() {
   // Load data
   useEffect(() => {
     Promise.all([
-      client.get('/admin/stats'),
-      client.get('/admin/users'),
-      client.get('/disputes'),
-      client.get('/admin/rental-agreements')
+      client.get('/admin/stats').catch(() => ({ data: {} })),
+      client.get('/admin/users').catch(() => ({ data: { users: [] } })),
+      client.get('/disputes').catch(() => ({ data: { disputes: [] } })),
+      client.get('/admin/rental-agreements').catch(() => ({ data: { agreements: [] } }))
     ]).then(([st, us, ds, ag]) => {
-      setStats(st.data);
-      setUsers(us.data.users || us.data);
-      setDisputes(ds.data.disputes || ds.data);
-      setAgreements(ag.data.agreements || ag.data || []);
+      setStats(st.data && typeof st.data === 'object' ? st.data : {});
+      setUsers(Array.isArray(us.data?.users) ? us.data.users : (Array.isArray(us.data) ? us.data : []));
+      setDisputes(Array.isArray(ds.data?.disputes) ? ds.data.disputes : (Array.isArray(ds.data) ? ds.data : []));
+      setAgreements(Array.isArray(ag.data?.agreements) ? ag.data.agreements : (Array.isArray(ag.data) ? ag.data : []));
     }).finally(() => setLoading(false));
   }, []);
 
-  const pendingKycCount = users.filter(u => u.kyc_status === 'pending').length;
-  const unassignedCases = disputes.filter(d => !d.mediator_id).length;
+  const safeUsers = Array.isArray(users) ? users : [];
+  const safeDisputes = Array.isArray(disputes) ? disputes : [];
+  const pendingKycCount = safeUsers.filter(u => u.kyc_status === 'pending').length;
+  const unassignedCases = safeDisputes.filter(d => !d.mediator_id).length;
 
   return (
     <Layout>

@@ -47,18 +47,25 @@ export default function Dashboard() {
 
   useEffect(() => {
     client.get('/disputes').then(r => {
-      setDisputes(r.data.disputes || r.data || []);
-    }).catch(() => {}).finally(() => setLoading(false));
+      const list = Array.isArray(r.data?.disputes)
+        ? r.data.disputes
+        : (Array.isArray(r.data) ? r.data : []);
+      setDisputes(list);
+    }).catch(() => {
+      setDisputes([]);
+    }).finally(() => setLoading(false));
   }, []);
 
+  const safeDisputes = Array.isArray(disputes) ? disputes : [];
+
   const stats = {
-    total:     disputes.length,
-    active:    disputes.filter(d => ['open_negotiation','open_mediation'].includes(d.case_status)).length,
-    resolved:  disputes.filter(d => ['resolved_settlement_mediation','resolved_settlement_negotiation'].includes(d.case_status)).length,
-    escalated: disputes.filter(d => ESCALATED_STATUSES.has(d.case_status)).length,
+    total:     safeDisputes.length,
+    active:    safeDisputes.filter(d => ['open_negotiation','open_mediation'].includes(d.case_status)).length,
+    resolved:  safeDisputes.filter(d => ['resolved_settlement_mediation','resolved_settlement_negotiation'].includes(d.case_status)).length,
+    escalated: safeDisputes.filter(d => ESCALATED_STATUSES.has(d.case_status)).length,
   };
 
-  const filtered = disputes
+  const filtered = safeDisputes
     .filter(d => {
       const matchFilter = filter === 'all' || d.case_status === filter;
       const q = search.toLowerCase();
@@ -120,7 +127,7 @@ export default function Dashboard() {
             icon="gavel"
             stripe="card-stripe--in-progress"
             valueColor="var(--color-secondary)"
-            footer={<span>{disputes.filter(d => d.case_status === 'open_mediation').length} in mediation · {disputes.filter(d => d.case_status === 'open_negotiation').length} under review</span>}
+            footer={<span>{safeDisputes.filter(d => d.case_status === 'open_mediation').length} in mediation · {safeDisputes.filter(d => d.case_status === 'open_negotiation').length} under review</span>}
           />
           <MetricCard
             label="Resolved cases"
@@ -267,7 +274,7 @@ export default function Dashboard() {
               All records certified under District Municipal Rental Ordinance • Section 14-C
             </div>
             <span style={{ fontSize: 'var(--text-label-sm-size)', color: 'var(--color-on-surface-variant)' }}>
-              Showing {filtered.length} of {disputes.length} cases
+              Showing {filtered.length} of {safeDisputes.length} cases
             </span>
           </div>
         </section>

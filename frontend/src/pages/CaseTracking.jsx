@@ -28,19 +28,26 @@ export default function CaseTracking() {
 
   useEffect(() => {
     client.get('/disputes').then(r => {
-      setDisputes(r.data.disputes || r.data || []);
-    }).catch(() => {}).finally(() => setLoading(false));
+      const list = Array.isArray(r.data?.disputes)
+        ? r.data.disputes
+        : (Array.isArray(r.data) ? r.data : []);
+      setDisputes(list);
+    }).catch(() => {
+      setDisputes([]);
+    }).finally(() => setLoading(false));
   }, []);
 
+  const safeDisputes = Array.isArray(disputes) ? disputes : [];
+
   const stats = {
-    active:   disputes.filter(d => ['filed','in_mediation'].includes(d.status)).length,
-    total:    disputes.length,
-    resolved: disputes.filter(d => ['resolved','closed'].includes(d.status)).length,
+    active:   safeDisputes.filter(d => ['filed','in_mediation','open_mediation','open_negotiation'].includes(d.case_status || d.status)).length,
+    total:    safeDisputes.length,
+    resolved: safeDisputes.filter(d => ['resolved','closed','resolved_settlement_mediation','resolved_settlement_negotiation'].includes(d.case_status || d.status)).length,
   };
 
-  const filtered = disputes.filter(d => {
+  const filtered = safeDisputes.filter(d => {
     const q = search.toLowerCase();
-    return !q || [d.case_number, d.property_address, d.title, d.complainant_name, d.respondent_name]
+    return !q || [d.case_number, d.property_address, d.description, d.filed_by?.name, d.opposing_party?.name]
       .filter(Boolean).some(v => v.toLowerCase().includes(q));
   });
 
