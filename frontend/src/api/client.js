@@ -1,8 +1,13 @@
 import axios from 'axios';
 
-// ponytail: VITE_API_URL is set in Vercel env vars; falls back to '' for dev (Vite proxy handles /api)
+// Normalize VITE_API_URL: strip trailing slashes and ensure clean /api prefix
+const rawApiUrl = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
+const baseURL = rawApiUrl
+  ? (rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl}/api`)
+  : '/api';
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ? `${import.meta.env.VITE_API_URL}/api` : '/api'
+  baseURL
 });
 
 client.interceptors.request.use(config => {

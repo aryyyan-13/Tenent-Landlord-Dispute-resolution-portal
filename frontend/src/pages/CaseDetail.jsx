@@ -22,7 +22,8 @@ const ESCALATED_REASON_LABELS = {
   manually_escalated_by_admin:       'An administrator manually escalated this case.',
 };
 
-const BACKENDURL = import.meta.env.VITE_API_URL || '';
+const rawApiUrl = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
+const BACKENDURL = rawApiUrl.replace(/\/api$/, '');
 
 export default function CaseDetail() {
   const { id } = useParams();
