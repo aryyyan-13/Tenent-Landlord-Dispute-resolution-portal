@@ -394,9 +394,12 @@ const Mediation = {
           `UPDATE mediation_sessions
            SET session_notes = COALESCE(session_notes, '') || $1,
                updated_at    = now()
-           WHERE dispute_id = $2 AND mediator_id = $3
-           ORDER BY created_at DESC
-           LIMIT 1`,
+           WHERE id = (
+             SELECT id FROM mediation_sessions
+             WHERE dispute_id = $2 AND mediator_id = $3
+             ORDER BY created_at DESC
+             LIMIT 1
+           )`,
           [`\n[ESCALATION NOTE] ${reasonText}`, disputeId, actorId]
         );
       }

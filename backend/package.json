@@ -6,9 +6,13 @@
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
+    "build": "npm install",
     "dev": "nodemon server.js",
     "seed": "node utils/seed.js",
     "migrate": "node-pg-migrate"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

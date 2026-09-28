@@ -1,7 +1,8 @@
-require('dotenv').config();
+const path = require('path');
+const fs = require('fs');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 require('./config/db'); // initializes schema on load
 
@@ -12,6 +13,12 @@ const adminRoutes = require('./routes/admin');
 const reviewRoutes = require('./routes/reviews');
 
 const app = express();
+
+// Ensure uploads folder exists in container/runtime
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
 
 // ponytail: parse comma-separated origins so LOCAL + prod both work without code changes
 const allowedOrigins = (process.env.CLIENT_ORIGIN || '*').split(',').map(s => s.trim());
@@ -27,10 +34,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve uploaded files (KYC docs, evidence, settlements, bundles)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadsDir));
 
-// Health check
-app.get('/api/health', (req, res) => {
+// Health check endpoints (supports Render health checks on /, /healthz, or /api/health)
+app.get(['/', '/healthz', '/api/health'], (req, res) => {
   res.json({ status: 'ok', service: 'Tenant-Landlord Dispute Resolution Portal API' });
 });
 
@@ -52,6 +59,6 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`TLDRP API server running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`TLDRP API server running on port ${PORT}`);
 });
