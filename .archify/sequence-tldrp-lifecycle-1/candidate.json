@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "TLDRP Dispute Lifecycle",
+    "subtitle": "Login → File Dispute (POST /api/disputes) → Status Update",
+    "output": "tldrp-dispute-lifecycle.html",
+    "column_fit": "spread",
+    "animation": "trace",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    { "id": "browser", "type": "frontend", "label": "Browser", "sublabel": "React UI" },
+    { "id": "api", "type": "backend", "label": "Node.js API", "sublabel": "Express" },
+    { "id": "auth", "type": "security", "label": "JWT Middleware", "sublabel": "authenticate()" },
+    { "id": "users", "type": "database", "label": "User Model", "sublabel": "Supabase pg" },
+    { "id": "disputes", "type": "database", "label": "Dispute Model", "sublabel": "Supabase pg" }
+  ],
+  "segments": [
+    { "from": 160, "to": 360, "label": "1. Login" },
+    { "from": 380, "to": 620, "label": "2. File Dispute" },
+    { "from": 640, "to": 810, "label": "3. Status Update (Mediator)" }
+  ],
+  "messages": [
+    { "id": "login", "from": "browser", "to": "api", "y": 180, "label": "POST /api/auth/login", "variant": "emphasis" },
+    { "id": "login-db", "from": "api", "to": "users", "y": 218, "label": "findByEmail() + bcrypt.compare()", "variant": "security" },
+    { "id": "login-db-res", "from": "users", "to": "api", "y": 258, "label": "user row", "variant": "return" },
+    { "id": "login-res", "from": "api", "to": "browser", "y": 298, "label": "200 { token (JWT 7d), user }", "variant": "return" },
+
+    { "id": "file-req", "from": "browser", "to": "api", "y": 398, "label": "POST /api/disputes", "variant": "emphasis" },
+    { "id": "jwt-verify", "from": "api", "to": "auth", "y": 428, "label": "authenticate() — verify Bearer JWT", "variant": "security" },
+    { "id": "jwt-ok", "from": "auth", "to": "api", "y": 460, "label": "req.user hydrated, authorize() ok", "variant": "return" },
+    { "id": "find-opposing", "from": "api", "to": "users", "y": 490, "label": "User.findByEmail(respondent_email)", "variant": "default" },
+    { "id": "opposing-res", "from": "users", "to": "api", "y": 522, "label": "opposing party user row", "variant": "return" },
+    { "id": "create", "from": "api", "to": "disputes", "y": 555, "label": "Dispute.create() — INSERT disputes + timeline", "variant": "emphasis" },
+    { "id": "create-res", "from": "disputes", "to": "api", "y": 590, "label": "{ case_number: TLDRP-YYYY-NNNN, status: open_negotiation }", "variant": "return" },
+    { "id": "file-res", "from": "api", "to": "browser", "y": 625, "label": "201 { dispute { case_number, filed_by, opposing_party } }", "variant": "return" },
+
+    { "id": "patch-req", "from": "browser", "to": "api", "y": 660, "label": "PATCH /api/disputes/:id/status", "variant": "emphasis" },
+    { "id": "patch-jwt", "from": "api", "to": "auth", "y": 690, "label": "authenticate() + authorize('mediator','admin')", "variant": "security" },
+    { "id": "patch-jwt-ok", "from": "auth", "to": "api", "y": 722, "label": "role confirmed", "variant": "return" },
+    { "id": "status-update", "from": "api", "to": "disputes", "y": 755, "label": "updateStatus() — UPDATE + INSERT history", "variant": "emphasis" },
+    { "id": "status-res", "from": "disputes", "to": "api", "y": 788, "label": "updated dispute row", "variant": "return" },
+    { "id": "patch-res", "from": "api", "to": "browser", "y": 820, "label": "200 { dispute: { case_status: open_mediation } }", "variant": "return" }
+  ],
+  "activations": [
+    { "participant": "api", "from": 175, "to": 305, "type": "backend" },
+    { "participant": "users", "from": 213, "to": 263, "type": "database" },
+    { "participant": "api", "from": 393, "to": 632, "type": "backend" },
+    { "participant": "auth", "from": 423, "to": 466, "type": "security" },
+    { "participant": "users", "from": 485, "to": 528, "type": "database" },
+    { "participant": "disputes", "from": 550, "to": 597, "type": "database" },
+    { "participant": "api", "from": 655, "to": 828, "type": "backend" },
+    { "participant": "auth", "from": 685, "to": 728, "type": "security" },
+    { "participant": "disputes", "from": 750, "to": 795, "type": "database" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Login",
+      "items": [
+        "POST /api/auth/login verifies the bcrypt hash against the Supabase users table.",
+        "Returns a signed JWT (7-day expiry) stored in React context for all subsequent calls."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "File Dispute",
+      "items": [
+        "JWT middleware runs authenticate() on every protected route — no Redis cache.",
+        "authorize('tenant','landlord') gates role access before any DB write.",
+        "Dispute.create() inserts into disputes + seeds the first case_status_history event.",
+        "Auto-assigned case number: TLDRP-YYYY-NNNN (sequential count per year via pg COUNT)."
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "Status Update",
+      "items": [
+        "PATCH /api/disputes/:id/status is mediator or admin only.",
+        "Every status change appends to case_status_history — an immutable audit trail.",
+        "Supports open_negotiation → open_mediation → resolved or escalated transitions."
+      ]
+    }
+  ]
+}

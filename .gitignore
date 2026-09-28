@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Environment variables — NEVER commit real secrets
+.env
+backend/.env
+
+# Build output
+frontend/dist/
+frontend/.vite/
+
+# OS
+.DS_Store
+
+# Test/scratch scripts
+backend/test-*.js
+backend/transfer-case.js
+backend/clear-tests.js

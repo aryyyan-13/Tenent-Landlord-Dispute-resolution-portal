@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "7df26107-a5e2-4e6a-a694-5cc8878ee8cd",
+  "status": "current",
+  "command": "deliver",
+  "type": "sequence",
+  "input": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-cache-miss-1/candidate.json",
+  "output": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-cache-miss-1/sequence-cache-miss.html",
+  "specification": {
+    "sha256": "58315f0eafd129674ed31ab21a9ca43a2bf0355e5b5e51f5d4ea71287b32152c",
+    "bytes": 2194
+  },
+  "artifact": {
+    "sha256": "e6e0f0651c6928fd6bdba772b86cf223076e8471732a5022f09df6b535815f3c",
+    "bytes": 752681
+  }
+}

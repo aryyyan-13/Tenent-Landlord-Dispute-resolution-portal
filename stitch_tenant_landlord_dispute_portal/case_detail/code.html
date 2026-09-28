@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#e9e8e5", "on-background": "#1a1c1a", "background": "#faf9f6", "primary-container": "#1c2b39", "on-secondary-fixed": "#2c1600", "on-surface": "#1a1c1a", "surface-container": "#efeeeb", "secondary": "#865311", "inverse-on-surface": "#f1f1ee", "secondary-container": "#fdb96f", "surface-bright": "#faf9f6", "tertiary": "#091622", "surface-container-highest": "#e3e2e0", "surface-container-lowest": "#ffffff", "surface-container-low": "#f4f3f1", "inverse-surface": "#2f312f", "on-primary-container": "#8392a4", "on-tertiary-fixed-variant": "#3b4855", "on-tertiary-container": "#8592a1", "on-primary-fixed": "#0d1d2a", "on-tertiary-fixed": "#101d29", "on-primary-fixed-variant": "#394857", "secondary-fixed-dim": "#fdb96f", "on-secondary-fixed-variant": "#683c00", "on-error": "#ffffff", "surface-dim": "#dbdad7", "on-surface-variant": "#44474c", "error-container": "#ffdad6", "primary": "#061624", "surface": "#faf9f6", "error": "#ba1a1a", "surface-tint": "#516070", "tertiary-container": "#1e2b37", "on-secondary-container": "#784704", "inverse-primary": "#b8c8da", "outline-variant": "#c4c6cc", "secondary-fixed": "#ffdcbc", "outline": "#74777c", "on-tertiary": "#ffffff", "tertiary-fixed": "#d6e4f5", "surface-variant": "#e3e2e0", "tertiary-fixed-dim": "#bac8d8", "on-secondary": "#ffffff", "primary-fixed": "#d4e4f7", "on-error-container": "#93000a", "primary-fixed-dim": "#b8c8da", "on-primary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "gutter": "1.5rem", "space-xl": "2rem", "space-md": "1rem", "space-2xl": "3rem", "margin": "2rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem" }, "fontFamily": { "body-md": ["Inter"], "headline-md": ["\"Source Serif 4\""], "label-sm": ["Inter"], "headline-xl-mobile": ["\"Source Serif 4\""], "headline-lg": ["\"Source Serif 4\""], "label-lg": ["Inter"], "headline-sm": ["\"Source Serif 4\""], "body-sm": ["Inter"], "headline-lg-mobile": ["\"Source Serif 4\""], "headline-xl": ["\"Source Serif 4\""], "body-lg": ["Inter"], "label-md": ["Inter"] }, "fontSize": { "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }], "headline-md": ["1.375rem", { "lineHeight": "1.875rem", "fontWeight": "600" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "fontWeight": "500" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[260px] bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-14 px-space-md flex items-center justify-between border-b border-outline-variant"><div class="flex items-center gap-space-sm"><img alt="TLDRP Civic Portal Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XCLZhbAKwHz_X5PQf8Mzbdz-NMUR9VWi-NFOWYky-EU2TPhAFVmbowYngWIGE7GEJ98wkgffE5wYkRX7lAzdLpts7AsF0Ke6GDX9j3n5QJVcjIGqWeaUYWq0a_crHglgSBHw7gLCjpPPyMg0WYwiuEPys_w3rPji7o-t4_2LMJEY1t7kGVJZefca5YwXKUmvVLg5tgpS5PEpFJIce6Q7x4TyYDK7kn2-QvCdQ3M0f0mOmhU5xYhVOSj-0"/><div class="flex flex-col leading-none"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">TLDRP</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Civic Portal</span></div></div><span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant font-medium">v2.4</span></div><div class="px-space-md py-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Dispute Management</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg leading-none">grid_view</span><span>Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="file-dispute" href="#"><span class="material-symbols-outlined text-lg leading-none">gavel</span><span>File a Dispute</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="case-tracking" href="#"><span class="material-symbols-outlined text-lg leading-none">folder_shared</span><span>Case Tracking</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="admin-panel" href="#"><span class="material-symbols-outlined text-lg leading-none">verified_user</span><span>Admin Panel</span></a></nav><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Statutory Resources</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="guidelines-and-statutes" href="#"><span class="material-symbols-outlined text-lg leading-none">menu_book</span><span>Guidelines &amp; Statutes</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="support-and-help" href="#"><span class="material-symbols-outlined text-lg leading-none">help_outline</span><span>Support &amp; Help</span></a></nav></div><div class="p-space-md border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary-container rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col overflow-hidden min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Elena Vance, Esq.</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Senior Mediator</span></div></div><div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm pt-space-xs border-t border-surface-container"><span class="flex items-center gap-1 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span><span class="text-on-surface-variant">Ward 4 Office</span></div></div></aside><div class="pl-[260px] min-h-screen flex flex-col"><header class="fixed top-0 left-[260px] right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base leading-none text-secondary">account_balance</span>Metropolitan Housing Authority • Jurisdiction Ward 4</span></div><div class="flex items-center gap-space-lg"><div class="relative w-80"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg leading-none">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container transition-colors" placeholder="Search case number, property address, or party..." type="text"/></div><a class="font-label-sm text-label-sm text-secondary hover:underline flex items-center gap-1 font-medium" href="tel:311"><span class="material-symbols-outlined text-sm leading-none">call</span>Emergency Escalation</a><div class="relative"><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-xl leading-none">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"/></div></header><main class="w-full pt-14 flex-1 bg-surface"><div class="max-w-7xl mx-auto p-space-xl"><div class="flex flex-col w-full">
+<!-- Case Header & Breadcrumb Surface -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm mb-space-lg">
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-space-xs font-label-sm text-label-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm leading-none">folder_shared</span>
+          Case Tracking
+        </a>
+<span class="text-outline-variant">/</span>
+<span class="font-semibold text-primary">Docket #2024-0142</span>
+</nav>
+<!-- Badges and Statutory Tag -->
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-lg bg-surface-container text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-xs leading-none text-secondary">verified</span>
+          Civic Docket Registry
+        </span>
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#FEF3C7] text-[#92400E]">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wide uppercase">In Mediation</span>
+</div>
+</div>
+</div>
+<!-- Title & Action Hub -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pt-space-xs">
+<div class="space-y-1">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">
+          Case #2024-0142: Security Deposit Refund Dispute
+        </h1>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-space-md font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base leading-none text-outline">calendar_today</span>
+            Filed: Oct 14, 2024
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-base leading-none text-outline">location_city</span>
+            Property: 412 Elm Street, Unit 4B
+          </span>
+<span class="text-outline-variant">•</span>
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-base leading-none text-secondary">payments</span>
+            Claim Amount: $2,400.00
+          </span>
+</div>
+</div>
+<!-- Header Action Controls -->
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-surface-container text-primary hover:bg-surface-container-high transition-colors font-label-md text-label-md font-medium shadow-sm" onclick="window.print()">
+<span class="material-symbols-outlined text-base leading-none">print</span>
+<span>Print Docket Statement</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-error-container text-error hover:bg-error/20 transition-colors font-label-md text-label-md font-semibold" id="escalateBtn">
+<span class="material-symbols-outlined text-base leading-none">gavel</span>
+<span>Escalate to Municipal Court</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Two-Column Workbench Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT COLUMN (~65% width: 8 of 12 columns) -->
+<div class="lg:col-span-8 space-y-space-lg">
+<!-- 1. Case Description & Claim Summary Card -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm bg-surface-container-low -mx-space-lg -mt-space-lg px-space-lg py-3 rounded-t-xl">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl leading-none">description</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Claim Particulars &amp; Tenant Statement</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-highest text-on-surface-variant font-medium">Sec. 8.4 Housing Code</span>
+</div>
+<div class="space-y-space-md">
+<div class="p-space-md bg-surface-container-low rounded-lg">
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              “I vacated 412 Elm Street, Unit 4B on September 30, 2024, following full fulfillment of a 12-month residential tenancy agreement. The joint move-out inspection was executed on the departure afternoon with building superintendent Marcus Lin, where key return was recorded and initial notes reflected standard, normal wear and tear with zero structural or fixture damage.
+            </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed mt-2.5">
+              On November 3, 2024 (34 days post-vacation), Sterling Residential Group issued an email withholding 100% of my $2,400.00 security deposit, itemizing unspecified ‘hallway priming and professional unit deep cleaning.’ Under municipal administrative statute §8.4, itemized security claims must be served within 30 statutory days alongside bona fide contractor receipts. No invoice was attached, nor was any partial refund issued.”
+            </p>
+</div>
+<!-- Claim Facts Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="bg-surface-container p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Deposit Held</span>
+<span class="font-headline-sm text-headline-sm text-primary mt-1">$2,400.00</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Vacate Date</span>
+<span class="font-label-lg text-label-lg text-primary mt-1 font-semibold">Sept 30, 2024</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Notice Lapsed</span>
+<span class="font-label-lg text-label-lg text-error mt-1 font-semibold">34 Days (Late)</span>
+</div>
+<div class="bg-surface-container p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Burden Code</span>
+<span class="font-label-lg text-label-lg text-secondary mt-1 font-semibold">Statute §8.4</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Evidentiary Documents Card -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl leading-none">folder_open</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">Disclosed Evidence &amp; Lease Documents</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-medium">3 Files Registered</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Document 1 -->
+<div class="flex items-center justify-between p-space-md bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-xl">picture_as_pdf</span>
+</div>
+<div class="truncate">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-primary font-semibold truncate">Lease_Contract_Signed_2023.pdf</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono uppercase bg-surface-container px-1.5 rounded">2.1 MB</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Uploaded by Tenant • Oct 14, 2024, 09:34 AM • SHA256 Verified</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 text-secondary hover:text-on-secondary-container font-label-md text-label-md font-semibold px-2 py-1 rounded hover:bg-surface-container-highest transition-colors shrink-0" href="#">
+<span class="material-symbols-outlined text-base leading-none">download</span>
+<span>Download</span>
+</a>
+</div>
+<!-- Document 2 -->
+<div class="flex items-center justify-between p-space-md bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-xl">assignment_turned_in</span>
+</div>
+<div class="truncate">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-primary font-semibold truncate">Condition_Report_Sept30.pdf</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono uppercase bg-surface-container px-1.5 rounded">4.8 MB</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Signed by Both Parties • Oct 14, 2024, 09:40 AM • Certified Sign-off</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 text-secondary hover:text-on-secondary-container font-label-md text-label-md font-semibold px-2 py-1 rounded hover:bg-surface-container-highest transition-colors shrink-0" href="#">
+<span class="material-symbols-outlined text-base leading-none">download</span>
+<span>Download</span>
+</a>
+</div>
+<!-- Document 3 -->
+<div class="flex items-center justify-between p-space-md bg-surface-container-low hover:bg-surface-container transition-colors rounded-lg">
+<div class="flex items-center gap-space-md min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+</div>
+<div class="truncate">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg text-primary font-semibold truncate">Landlord_Deduction_Claim.pdf</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono uppercase bg-surface-container px-1.5 rounded">890 KB</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Uploaded by Landlord • Oct 18, 2024, 03:12 PM • Preliminary ledger</p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 text-secondary hover:text-on-secondary-container font-label-md text-label-md font-semibold px-2 py-1 rounded hover:bg-surface-container-highest transition-colors shrink-0" href="#">
+<span class="material-symbols-outlined text-base leading-none">download</span>
+<span>Download</span>
+</a>
+</div>
+</div>
+</section>
+<!-- 3. Mediation Settlement Panel (Core Resolution Artifact) -->
+<section class="bg-surface-container-low p-space-lg rounded-xl shadow-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-md">
+<div class="flex items-center gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg leading-none">balance</span>
+</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Mediator's Preliminary Evaluation &amp; Proposed Settlement</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Civic Arbitration Chamber • Rule 14 Facilitation</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-secondary-container/30 text-on-secondary-container px-2.5 py-1 rounded font-semibold self-start sm:self-center">
+<span class="material-symbols-outlined text-xs">hourglass_top</span> Expiring in 48h
+          </span>
+</div>
+<!-- Session Evaluation Notes -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg mb-space-md shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-base leading-none">rate_review</span>
+<h3 class="font-label-lg text-label-lg text-primary font-semibold">Mediator Elena Vance, Esq. — Statutory Analysis</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+            “Both parties have submitted initial statements. Landlord's itemized deduction notice was submitted on day 34, exceeding the 30-day statutory limit under Sec 8.4. Tenant acknowledges minor paint scuff in corridor. Under prevailing Ward 4 civic standards, strict timeliness applies to full withholding; however, equitable consideration is warranted for bona fide surface reconditioning.”
+          </p>
+</div>
+<!-- Proposed Resolution Box -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Formal Recommended Term Sheet</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">ID: SETTLE-2024-0142A</span>
+</div>
+<p class="font-body-md text-body-md text-primary font-medium leading-relaxed">
+            “Landlord refunds <span class="font-semibold text-primary underline decoration-secondary decoration-2">$2,000.00</span> of the original $2,400.00 deposit within 7 business days; Tenant releases claim on remaining <span class="font-semibold text-primary">$400.00</span> toward routine wall touch-ups. Both parties agree to waive further small claims litigation.”
+          </p>
+</div>
+<!-- Party Acceptance Status Matrix -->
+<div class="mt-space-md pt-space-md space-y-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm p-3 bg-surface-container-lowest rounded-lg">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-[#DCFCE7] text-[#14532D] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</span>
+<div>
+<span class="font-label-md text-label-md text-primary font-semibold block">Tenant (Marcus Reid)</span>
+<span class="font-label-sm text-label-sm text-[#14532D]">Accepted by Marcus Reid on Oct 22, 2024 at 10:14 AM</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-medium text-[#14532D] bg-[#DCFCE7] px-2 py-0.5 rounded self-start sm:self-auto">Binding Sign-off Completed</span>
+</div>
+<!-- Landlord Response Interactive Bar -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-2.5">
+<span class="w-6 h-6 rounded-full bg-[#FEF3C7] text-[#92400E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm animate-pulse">pending</span>
+</span>
+<div>
+<span class="font-label-md text-label-md text-primary font-semibold block">Landlord (Sterling Residential Group)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Awaiting Sterling Mgmt response • Authorized rep David Sterling</span>
+</div>
+</div>
+<!-- Action CTAs -->
+<div class="flex flex-wrap items-center gap-space-sm shrink-0">
+<button class="px-4 py-2 rounded bg-secondary hover:bg-secondary/90 text-on-secondary font-label-md text-label-md font-semibold transition-colors shadow-sm flex items-center gap-1.5" id="acceptTermsBtn">
+<span class="material-symbols-outlined text-base leading-none">check_circle</span>
+<span>Accept Proposed Settlement</span>
+</button>
+<button class="px-3.5 py-2 rounded bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-md text-label-md font-medium transition-colors" id="rejectTermsBtn">
+                  Reject &amp; Request Formal Hearing
+                </button>
+</div>
+</div>
+<div class="hidden mt-3 p-2 bg-[#DCFCE7] text-[#14532D] font-label-sm text-label-sm rounded text-center font-medium" id="actionFeedback">
+              Response recorded in secure audit log. Case status will update in real-time.
+            </div>
+</div>
+</div>
+</section>
+<!-- 4. Secure Docket Communications Thread -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl leading-none">forum</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary">Secure Docket Communications</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Visible to mediator and both parties • Encrypted civic ledger</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 text-xs text-on-surface-variant font-mono bg-surface-container-low px-2 py-1 rounded">
+<span class="material-symbols-outlined text-xs text-secondary">lock</span> TLS 1.3 Certified
+          </span>
+</div>
+<!-- Chat Log -->
+<div class="space-y-space-md mb-space-lg" id="chatMessages">
+<!-- Message 1: Mediator -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container text-primary-fixed flex items-center justify-center shrink-0 font-semibold text-xs mt-1">
+              EV
+            </div>
+<div class="max-w-2xl bg-surface-container-low p-space-md rounded-xl space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-primary">Elena Vance, Esq.</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">Mediator</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 16, 2024 • 10:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                “Welcome both parties. Please keep communications focused on factual claims and documentation. All exchanges here form part of the municipal evidentiary record.”
+              </p>
+</div>
+</div>
+<!-- Message 2: Tenant -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0 font-semibold text-xs mt-1">
+              MR
+            </div>
+<div class="max-w-2xl bg-surface-container p-space-md rounded-xl space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-primary">Marcus Reid</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-highest text-on-surface-variant">Tenant</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 17, 2024 • 02:40 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                “I have attached photos showing the apartment was thoroughly cleaned on Sept 30. The slight hallway scuff was already noted during check-in in 2023.”
+              </p>
+</div>
+</div>
+<!-- Message 3: Landlord Rep -->
+<div class="flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center shrink-0 font-semibold text-xs mt-1">
+              DS
+            </div>
+<div class="max-w-2xl bg-surface-container-low p-space-md rounded-xl space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-semibold text-primary">David Sterling</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">Landlord Rep</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 19, 2024 • 11:22 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                “We are reviewing the receipts with our maintenance contractor today. We will assess the proposed term sheet with management counsel.”
+              </p>
+</div>
+</div>
+</div>
+<!-- Input Compose Block -->
+<form class="pt-space-md space-y-space-sm" id="replyForm" onsubmit="event.preventDefault(); submitDocketMessage();">
+<div class="relative">
+<textarea class="w-full p-3 font-body-sm text-body-sm bg-surface-container-lowest text-on-surface rounded-lg focus:outline-none focus:bg-surface-container-low transition-colors resize-none placeholder:text-on-surface-variant/60 shadow-sm" id="replyInput" placeholder="Type an official reply to the docket..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-between">
+<button class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-surface-variant hover:text-primary px-2.5 py-1.5 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-base">attach_file</span>
+<span>Attach Evidentiary Exhibit</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-colors shadow-sm" type="submit">
+<span class="material-symbols-outlined text-base leading-none">send</span>
+<span>Send Message</span>
+</button>
+</div>
+</form>
+</section>
+</div>
+<!-- RIGHT COLUMN (~35% width: 4 of 12 columns) -->
+<div class="lg:col-span-4 space-y-space-lg">
+<!-- 1. Mediator Information Card -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Assigned Neutral Mediator</h2>
+<span class="w-2.5 h-2.5 rounded-full bg-secondary" title="Active on docket"></span>
+</div>
+<div class="flex items-center gap-space-md mb-space-md">
+<img alt="Elena Vance, Esq." class="w-16 h-16 rounded-xl object-cover shadow-sm shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"/>
+<div class="min-w-0">
+<h3 class="font-headline-sm text-headline-sm text-primary leading-tight truncate">Elena Vance, Esq.</h3>
+<p class="font-label-sm text-label-sm text-secondary font-medium leading-snug mt-0.5">Senior Housing Ombudsman &amp; Certified Civic Mediator</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mt-1">14 years dispute arbitration • Bar #48921</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg mb-space-md space-y-1">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Neutrality Index</span>
+<span class="font-semibold text-primary">100% Certified</span>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Arbitrated Cases</span>
+<span class="font-semibold text-primary">640+ Housing Claims</span>
+</div>
+</div>
+<button class="w-full py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm" id="caucusBtn">
+<span class="material-symbols-outlined text-base">support_agent</span>
+<span>Request Private Mediation Caucus</span>
+</button>
+</section>
+<!-- 2. Case Progression Timeline -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<h2 class="font-headline-sm text-headline-sm text-primary">Case Progression Timeline</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">Stage 4 / 6</span>
+</div>
+<!-- Custom Vertical Stepper -->
+<div class="relative pl-6 space-y-6">
+<!-- Background continuous vertical spine -->
+<div class="absolute left-2.5 top-2 bottom-3 w-0.5 bg-surface-container-highest"></div>
+<!-- Step 1: Completed -->
+<div class="relative flex items-start group">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#DCFCE7] text-[#14532D] flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</span>
+<div class="min-w-0">
+<p class="font-label-md text-label-md font-semibold text-primary leading-tight">Dispute Filed by Tenant</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Oct 14, 2024 • 09:30 AM</p>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="relative flex items-start group">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#DCFCE7] text-[#14532D] flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</span>
+<div class="min-w-0">
+<p class="font-label-md text-label-md font-semibold text-primary leading-tight">Review Complete; Mediator Vance Assigned</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Oct 15, 2024 • 11:00 AM</p>
+</div>
+</div>
+<!-- Step 3: Completed -->
+<div class="relative flex items-start group">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#DCFCE7] text-[#14532D] flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</span>
+<div class="min-w-0">
+<p class="font-label-md text-label-md font-semibold text-primary leading-tight">Notice of Mediation Served</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Oct 16, 2024 • 02:15 PM • Received</p>
+</div>
+</div>
+<!-- Step 4: Completed -->
+<div class="relative flex items-start group">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-[#DCFCE7] text-[#14532D] flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-xs font-bold">check</span>
+</span>
+<div class="min-w-0">
+<p class="font-label-md text-label-md font-semibold text-primary leading-tight">Evidence Window Closed</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Oct 19, 2024 • 04:00 PM</p>
+</div>
+</div>
+<!-- Step 5: Active Current Node -->
+<div class="relative flex items-start group">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm">
+<span class="w-2 h-2 bg-on-secondary rounded-full"></span>
+</span>
+<div class="min-w-0 bg-surface-container-low p-2 rounded-lg w-full">
+<div class="flex items-center gap-1.5">
+<p class="font-label-md text-label-md font-bold text-secondary leading-tight">Proposed Settlement Terms Issued</p>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Oct 22, 2024 • 10:14 AM</p>
+<span class="inline-block mt-1 font-label-sm text-label-sm text-[#92400E] bg-[#FEF3C7] px-1.5 py-0.5 rounded font-medium">Under Landlord Review</span>
+</div>
+</div>
+<!-- Step 6: Upcoming/Contingent -->
+<div class="relative flex items-start opacity-70">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-surface-container-high text-outline flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+</span>
+<div class="min-w-0">
+<p class="font-label-md text-label-md font-medium text-on-surface leading-tight">Formal Hearing (If Terms Rejected)</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Oct 28, 2024 (Estimated)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Case Party & Hearing Channel Summary Card -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-primary">Case Party Summary</h2>
+<span class="material-symbols-outlined text-outline text-lg">groups</span>
+</div>
+<!-- Complainant -->
+<div class="p-3 bg-surface-container-low rounded-lg space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Complainant</span>
+<span class="font-label-sm text-label-sm text-[#14532D] flex items-center gap-0.5 font-medium">
+<span class="material-symbols-outlined text-xs">verified_user</span> Verified ID
+            </span>
+</div>
+<p class="font-label-lg text-label-lg font-semibold text-primary">Marcus Reid</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tenancy: 2023 - 2024 • Resident</p>
+</div>
+<!-- Respondent -->
+<div class="p-3 bg-surface-container-low rounded-lg space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Respondent</span>
+<span class="font-label-sm text-label-sm text-secondary flex items-center gap-0.5 font-medium">
+<span class="material-symbols-outlined text-xs">domain</span> Corporate
+            </span>
+</div>
+<p class="font-label-lg text-label-lg font-semibold text-primary">Sterling Residential Group</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Rep: David Sterling (Property Manager)</p>
+</div>
+<!-- Hearing Channel -->
+<div class="p-space-md bg-primary-container text-on-primary rounded-lg space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-xl">videocam</span>
+<span class="font-label-md text-label-md font-semibold text-on-primary">Scheduled Caucus Channel</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">
+            Virtual Hearing Room 4 (Encrypted WebRTC, Ward 4 Civic Node)
+          </p>
+<div class="pt-1 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary-container flex items-center gap-1 font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span> Standby Available
+            </span>
+<button class="px-2.5 py-1 rounded bg-secondary text-on-secondary hover:bg-secondary/90 text-xs font-semibold transition-colors">
+              Test Connection
+            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<script>
+  // Client-side interactions for workbench actions
+  function submitDocketMessage() {
+    const input = document.getElementById('replyInput');
+    const text = input.value.trim();
+    if (!text) return;
+
+    const chatContainer = document.getElementById('chatMessages');
+    const newMsg = document.createElement('div');
+    newMsg.className = 'flex items-start gap-space-sm';
+    newMsg.innerHTML = `
+      <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 font-semibold text-xs mt-1">
+        YOU
+      </div>
+      <div class="max-w-2xl bg-surface-container-low p-space-md rounded-xl space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="font-label-md text-label-md font-semibold text-primary">Authorized Participant</span>
+          <span class="font-label-sm text-label-sm px-1.5 py-0.2 rounded bg-surface-container-high text-on-surface-variant">Verified</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Just now</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-on-surface">${escapeHtml(text)}</p>
+      </div>
+    `;
+    chatContainer.appendChild(newMsg);
+    input.value = '';
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+  }
+
+  function escapeHtml(str) {
+    const p = document.createElement('p');
+    p.textContent = str;
+    return p.innerHTML;
+  }
+
+  document.getElementById('acceptTermsBtn')?.addEventListener('click', function() {
+    const fb = document.getElementById('actionFeedback');
+    if (fb) {
+      fb.textContent = 'Settlement proposal successfully accepted by Sterling Residential Group. Preparing closing consent decree.';
+      fb.classList.remove('hidden');
+    }
+  });
+
+  document.getElementById('rejectTermsBtn')?.addEventListener('click', function() {
+    const fb = document.getElementById('actionFeedback');
+    if (fb) {
+      fb.className = 'mt-3 p-2 bg-[#FEE2E2] text-[#7F1D1D] font-label-sm text-label-sm rounded text-center font-medium';
+      fb.textContent = 'Settlement declined. Matter transitioned to formal administrative hearing schedule.';
+      fb.classList.remove('hidden');
+    }
+  });
+
+  document.getElementById('escalateBtn')?.addEventListener('click', function() {
+    alert('Docket #2024-0142: Notice of municipal escalation package generated for Ward 4 Housing Tribunal.');
+  });
+
+  document.getElementById('caucusBtn')?.addEventListener('click', function() {
+    alert('Mediation Caucus requested. Mediator Elena Vance will dispatch a private encrypted scheduling link.');
+  });
+</script></div></main></div></body></html>

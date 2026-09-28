@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "sequence",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/candidate.json",
+    "sha256": "ca5e98294eb5f30c29a83ffdc523f136e36ea17b87ae3f6d97d8377aa90ab44a",
+    "bytes": 5295
+  },
+  "artifact": {
+    "path": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/tldrp-dispute-lifecycle.html",
+    "sha256": "958f29dc681d21a29a85900f96795ce05fa7c7fb40ef33d82668d009cf36fa7c",
+    "bytes": 764630
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/tldrp-dispute-lifecycle.finalize.json",
+    "summaryReceipt": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/tldrp-dispute-lifecycle.finalize-summary.json",
+    "browserCheckReceipt": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/tldrp-dispute-lifecycle.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 9610
+}

@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: tldrp-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        sync: false   # set manually in Render dashboard — Supabase pooler URL
+      - key: JWT_SECRET
+        sync: false   # set manually — use a 64-byte random hex string
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_ORIGIN
+        sync: false   # set to your Vercel URL e.g. https://tldrp.vercel.app

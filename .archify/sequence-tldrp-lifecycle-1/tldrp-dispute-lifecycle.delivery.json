@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "765a9357-9ec2-4797-8d1c-04fa9b5d64b8",
+  "status": "current",
+  "command": "deliver",
+  "type": "sequence",
+  "input": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/candidate.json",
+  "output": "/Users/aryan/Desktop/landlord tenent dispute portal/.archify/sequence-tldrp-lifecycle-1/tldrp-dispute-lifecycle.html",
+  "specification": {
+    "sha256": "ca5e98294eb5f30c29a83ffdc523f136e36ea17b87ae3f6d97d8377aa90ab44a",
+    "bytes": 5295
+  },
+  "artifact": {
+    "sha256": "958f29dc681d21a29a85900f96795ce05fa7c7fb40ef33d82668d009cf36fa7c",
+    "bytes": 764630
+  }
+}

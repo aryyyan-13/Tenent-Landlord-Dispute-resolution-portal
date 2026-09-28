@@ -1,0 +1,12 @@
+{
+  "name": "landlord-tenant-dispute-portal",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:backend": "cd backend && PATH=\"$(brew --prefix node@22)/bin:$PATH\" npm run dev",
+    "dev:frontend": "cd frontend && PATH=\"$(brew --prefix node@22)/bin:$PATH\" npm run dev",
+    "dev": "npx concurrently \"npm run dev:backend\" \"npm run dev:frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^10.0.5"
+  }
+}

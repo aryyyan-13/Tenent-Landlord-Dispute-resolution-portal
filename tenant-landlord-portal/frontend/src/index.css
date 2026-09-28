@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: #FBFAF7;
+  color: #1C2B39;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+::selection {
+  background-color: #A9702E;
+  color: #FBFAF7;
+}
+
+.font-serif {
+  font-feature-settings: "liga" 1;
+}
+
+input:focus-visible,
+button:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #A9702E;
+  outline-offset: 2px;
+}
+
+.status-stripe {
+  border-left-width: 4px;
+}

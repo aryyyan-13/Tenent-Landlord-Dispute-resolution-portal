@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "API Cache Miss Sequence",
+    "output": "sequence-cache-miss.html",
+    "viewBox": [1080, 580],
+    "column_fit": "spread",
+    "animation": "trace",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    { "id": "browser", "type": "frontend", "label": "Browser", "sublabel": "Client" },
+    { "id": "api", "type": "backend", "label": "API Server", "sublabel": "Node.js" },
+    { "id": "redis", "type": "database", "label": "Redis", "sublabel": "Cache" },
+    { "id": "pg", "type": "database", "label": "PostgreSQL", "sublabel": "Database" }
+  ],
+  "segments": [
+    { "from": 150, "to": 250, "label": "Request & Cache Check" },
+    { "from": 260, "to": 370, "label": "Database Query" },
+    { "from": 380, "to": 480, "label": "Cache Update & Response" }
+  ],
+  "messages": [
+    { "id": "req", "from": "browser", "to": "api", "y": 170, "label": "GET /data", "variant": "emphasis" },
+    { "id": "cache-read", "from": "api", "to": "redis", "y": 200, "label": "GET key", "variant": "default" },
+    { "id": "cache-miss", "from": "redis", "to": "api", "y": 230, "label": "null (miss)", "variant": "return" },
+    { "id": "db-query", "from": "api", "to": "pg", "y": 280, "label": "SELECT data", "variant": "emphasis" },
+    { "id": "db-res", "from": "pg", "to": "api", "y": 320, "label": "rows", "variant": "return" },
+    { "id": "cache-write", "from": "api", "to": "redis", "y": 390, "label": "SET key data", "variant": "dashed" },
+    { "id": "api-res", "from": "api", "to": "browser", "y": 450, "label": "200 OK (data)", "variant": "return" }
+  ],
+  "activations": [
+    { "participant": "api", "from": 165, "to": 455, "type": "backend" },
+    { "participant": "redis", "from": 195, "to": 235, "type": "database" },
+    { "participant": "pg", "from": 275, "to": 325, "type": "database" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Cache Miss Flow",
+      "items": [
+        "Browser initiates a request to the API.",
+        "API checks Redis but encounters a cache miss.",
+        "API fetches raw data from PostgreSQL, updates Redis, and returns the response."
+      ]
+    }
+  ]
+}

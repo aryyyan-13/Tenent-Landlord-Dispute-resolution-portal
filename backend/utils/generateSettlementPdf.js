@@ -1,0 +1,148 @@
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+const path = require('path');
+
+const SETTLEMENTS_DIR = path.join(__dirname, '..', 'uploads', 'settlements');
+
+/**
+ * Generates a Mediated Settlement Agreement PDF.
+ *
+ * LEGAL NOTE: The enforceability citation references Section 74 of the
+ * Arbitration and Conciliation Act, 1996 (which governs mediated settlement
+ * agreements in India). The Mediation Act, 2023 (Section 27) is the newer
+ * framework. This text references both for belt-and-suspenders coverage, but
+ * MUST be reviewed by counsel before shipping to real users.
+ *
+ * @param {object} params
+ * @param {string} params.caseNumber
+ * @param {object} params.tenant         - { name, contact }
+ * @param {object} params.landlord       - { name, contact }
+ * @param {string} params.propertyAddress
+ * @param {string} params.disputeSummary
+ * @param {string} params.obligationsText - from renderObligationsAsText()
+ * @param {string} params.mediatorName
+ * @returns {Promise<{ filePath: string, publicPath: string }>}
+ */
+async function generateSettlementPdf({
+  caseNumber,
+  tenant,
+  landlord,
+  propertyAddress,
+  disputeSummary,
+  obligationsText,
+  mediatorName,
+}) {
+  if (!obligationsText) {
+    throw new Error('Cannot generate a settlement PDF with no agreed terms.');
+  }
+  fs.mkdirSync(SETTLEMENTS_DIR, { recursive: true });
+
+  const fileName = `${caseNumber}-settlement-${Date.now()}.pdf`;
+  const filePath = path.join(SETTLEMENTS_DIR, fileName);
+  const publicPath = `/uploads/settlements/${fileName}`;
+
+  const doc = new PDFDocument({ margin: 60, size: 'A4' });
+  const stream = fs.createWriteStream(filePath);
+  doc.pipe(stream);
+
+  // ── Header ──
+  doc
+    .fontSize(20)
+    .font('Helvetica-Bold')
+    .text('MEDIATED SETTLEMENT AGREEMENT', { align: 'center' })
+    .moveDown(0.3);
+
+  doc
+    .fontSize(11)
+    .font('Helvetica')
+    .fillColor('#444444')
+    .text('Tenant-Landlord Dispute Resolution Portal (TLDRP)', { align: 'center' })
+    .moveDown(1.5);
+
+  // ── Case metadata ──
+  const drawRow = (label, value) => {
+    doc.font('Helvetica-Bold').text(label, { continued: true }).font('Helvetica').text(`  ${value}`);
+  };
+
+  drawRow('Case Number:', caseNumber);
+  drawRow('Date of Agreement:', new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' }));
+  doc.moveDown(1);
+
+  drawRow('Tenant:', `${tenant.name}${tenant.contact ? ' — ' + tenant.contact : ''}`);
+  drawRow('Landlord:', `${landlord.name}${landlord.contact ? ' — ' + landlord.contact : ''}`);
+  drawRow('Property:', propertyAddress || 'As described in the case file');
+  doc.moveDown(1);
+
+  // ── Dispute Summary ──
+  doc.font('Helvetica-Bold').fontSize(12).text('Dispute Summary').moveDown(0.3);
+  doc.font('Helvetica').fontSize(11).fillColor('#222222').text(disputeSummary, { lineGap: 3 }).moveDown(1);
+
+  // ── Agreed Terms ──
+  doc.font('Helvetica-Bold').fontSize(12).fillColor('#000000').text('Agreed Terms & Obligations').moveDown(0.3);
+  doc.font('Helvetica').fontSize(11).fillColor('#222222').text(obligationsText, { lineGap: 4 }).moveDown(1);
+
+  // ── Enforceability ──
+  doc.font('Helvetica-Bold').fontSize(12).fillColor('#000000').text('Enforceability Notice').moveDown(0.3);
+  doc
+    .font('Helvetica')
+    .fontSize(10)
+    .fillColor('#555555')
+    .text(
+      'This settlement agreement is reached through facilitated mediation on the Tenant-Landlord Dispute ' +
+      'Resolution Portal. Under Section 27 of the Mediation Act, 2023 and Section 74 of the Arbitration ' +
+      'and Conciliation Act, 1996, a settlement agreement arrived at through mediation shall have the same ' +
+      'legal status as an arbitral award on agreed terms. The parties voluntarily accept these terms without ' +
+      'coercion. This agreement is binding upon both parties and their legal heirs.\n\n' +
+      'NOTE: This citation must be verified by qualified legal counsel before reliance in any court proceeding.',
+      { lineGap: 3 }
+    )
+    .moveDown(2);
+
+  // ── Signatures ──
+  doc
+    .font('Helvetica-Bold')
+    .fontSize(11)
+    .fillColor('#000000')
+    .text('Signatures', { underline: true })
+    .moveDown(1);
+
+  const sigY = doc.y;
+  doc
+    .font('Helvetica')
+    .fontSize(10)
+    .text('_________________________________', { continued: false })
+    .text(`Tenant: ${tenant.name}`)
+    .text('Date: ________________')
+    .moveUp(3);
+
+  doc
+    .text('_________________________________', 300, sigY)
+    .text(`Landlord: ${landlord.name}`, 300)
+    .text('Date: ________________', 300)
+    .moveDown(2);
+
+  doc
+    .moveTo(doc.page.margins.left, doc.y)
+    .lineTo(doc.page.width - doc.page.margins.right, doc.y)
+    .strokeColor('#cccccc')
+    .stroke()
+    .moveDown(0.5);
+
+  doc
+    .font('Helvetica')
+    .fontSize(10)
+    .fillColor('#444444')
+    .text(`Facilitated by mediator: ${mediatorName}`, { align: 'center' })
+    .text('Generated by TLDRP — Tenant-Landlord Dispute Resolution Portal', { align: 'center' });
+
+  doc.end();
+
+  await new Promise((resolve, reject) => {
+    stream.on('finish', resolve);
+    stream.on('error', reject);
+  });
+
+  return { filePath, publicPath };
+}
+
+module.exports = { generateSettlementPdf };
