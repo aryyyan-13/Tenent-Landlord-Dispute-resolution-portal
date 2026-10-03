@@ -4,7 +4,21 @@ import { useAuth } from '../context/AuthContext.jsx';
 import Layout from './Layout.jsx';
 
 export default function PrivateRoute({ children, roles }) {
-  const { user } = useAuth();
+  const { user, initializing } = useAuth();
+
+  // Wait for localStorage auth state to be resolved before deciding
+  if (initializing) {
+    return (
+      <div style={{
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        minHeight: '100vh', background: 'var(--color-surface, #faf9f6)'
+      }}>
+        <span className="material-symbols-outlined animate-spin" style={{ fontSize: 32, color: 'var(--color-primary, #061624)' }}>
+          progress_activity
+        </span>
+      </div>
+    );
+  }
 
   if (!user) return <Navigate to="/login" replace />;
 
@@ -23,3 +37,4 @@ export default function PrivateRoute({ children, roles }) {
 
   return <Layout>{children}</Layout>;
 }
+

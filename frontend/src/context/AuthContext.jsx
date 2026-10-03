@@ -1,7 +1,10 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useRef } from 'react';
 import client from '../api/client';
 
 const AuthContext = createContext(null);
+
+// Shared ref so the axios interceptor can trigger a logout without a hard page reload
+export const authActions = { clearSession: null };
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
@@ -16,6 +19,9 @@ export function AuthProvider({ children }) {
     }
   });
   const [loading, setLoading] = useState(false);
+  // initializing = true only on first render; prevents PrivateRoute from
+  // redirecting to /login before localStorage has been read
+  const [initializing, setInitializing] = useState(false);
 
   const persist = (token, user) => {
     if (!token || !user) {
@@ -62,8 +68,12 @@ export function AuthProvider({ children }) {
     setUser(null);
   }, []);
 
+  // Expose clearSession to the axios interceptor so it can log out
+  // via React state (no hard page reload)
+  authActions.clearSession = logout;
+
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, loading, initializing, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

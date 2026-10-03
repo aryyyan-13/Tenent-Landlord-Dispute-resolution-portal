@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { authActions } from '../context/AuthContext.jsx';
 
 // Normalize VITE_API_URL: strip trailing slashes and ensure clean /api prefix
 const rawApiUrl = (import.meta.env.VITE_API_URL || '').trim().replace(/\/+$/, '');
@@ -22,10 +23,14 @@ client.interceptors.response.use(
   res => res,
   err => {
     if (err.response && err.response.status === 401) {
-      localStorage.removeItem('tldrp_token');
-      localStorage.removeItem('tldrp_user');
-      if (!window.location.pathname.startsWith('/login')) {
-        window.location.href = '/login';
+      // Use React state logout (no hard page reload) so React Router handles
+      // the redirect cleanly — prevents the flash-then-bounce loop.
+      if (authActions.clearSession) {
+        authActions.clearSession();
+      } else {
+        // Fallback before AuthProvider mounts (shouldn't normally happen)
+        localStorage.removeItem('tldrp_token');
+        localStorage.removeItem('tldrp_user');
       }
     }
     return Promise.reject(err);
@@ -33,3 +38,4 @@ client.interceptors.response.use(
 );
 
 export default client;
+
