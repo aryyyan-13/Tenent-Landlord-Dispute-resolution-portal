@@ -7,15 +7,18 @@ const { authenticate } = require('../middleware/auth');
 const { upload } = require('../middleware/upload');
 
 function signToken(user) {
+  const raw = (process.env.JWT_EXPIRES_IN || '').trim();
+  const isValid = /^[1-9]\d*[smhdwy]$/.test(raw);
+  const expiresIn = isValid ? raw : '7d';
   return jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN || '7d'
+    expiresIn
   });
 }
 
 const VALID_ROLES = ['tenant', 'landlord', 'mediator', 'admin'];
 
 // POST /api/auth/register
-router.post('/register', upload.single('kycDocument'), (req, res) => {
+router.post('/register', upload.single('kyc_document'), (req, res) => {
   try {
     const { name, email, password, role, contact, address } = req.body;
 

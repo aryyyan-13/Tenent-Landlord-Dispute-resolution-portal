@@ -20,8 +20,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'Tenant-Landlord Dispute Resolution Portal API' });
+app.get(['/', '/healthz', '/api/health'], (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'Tenant-Landlord Dispute Resolution Portal API',
+    version: '2.1.0',
+    deployed_source: 'tenant-landlord-portal/backend'
+  });
 });
 
 app.use('/api/auth', authRoutes);

@@ -8,9 +8,10 @@ const { upload } = require('../middleware/upload');
 
 function signToken(user) {
   // JWT_EXPIRES_IN must be a non-zero duration string (e.g. '7d', '24h').
-  // If the env var is missing, '0', or falsy, fall back to 7 days.
+  // If the env var is missing, '0', '0s', or falsy, fall back to 7 days.
   const rawExpiry = (process.env.JWT_EXPIRES_IN || '').trim();
-  const expiresIn = rawExpiry && rawExpiry !== '0' ? rawExpiry : '7d';
+  const isValid = /^[1-9]\d*[smhdwy]$/.test(rawExpiry);
+  const expiresIn = isValid ? rawExpiry : '7d';
   return jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
     expiresIn
   });

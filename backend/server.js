@@ -38,7 +38,12 @@ app.use('/uploads', express.static(uploadsDir));
 
 // Health check endpoints (supports Render health checks on /, /healthz, or /api/health)
 app.get(['/', '/healthz', '/api/health'], (req, res) => {
-  res.json({ status: 'ok', service: 'Tenant-Landlord Dispute Resolution Portal API' });
+  res.json({
+    status: 'ok',
+    service: 'Tenant-Landlord Dispute Resolution Portal API',
+    version: '2.1.0',
+    deployed_source: 'backend'
+  });
 });
 
 app.use('/api/auth', authRoutes);
