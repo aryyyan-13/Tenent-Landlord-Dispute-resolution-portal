@@ -137,7 +137,7 @@ export default function CaseDetail() {
 
   return (
     <Layout>
-      <div style={s.page}>
+      <div className="page-container">
 
         {/* ── Case header card ── */}
         <div className={`card ${st.stripe}`} style={{ padding: 'var(--space-lg)' }}>
@@ -329,7 +329,7 @@ export default function CaseDetail() {
         )}
 
         {/* ── Main layout grid ── */}
-        <div style={s.grid}>
+        <div className="case-detail-grid">
           {/* Left column */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
 

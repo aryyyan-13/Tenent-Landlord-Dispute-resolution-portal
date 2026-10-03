@@ -53,10 +53,10 @@ export default function CaseTracking() {
 
   return (
     <Layout>
-      <div style={s.page}>
+      <div className="page-container">
         <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
           {/* Header */}
-          <div style={s.headerRow}>
+          <div style={s.headerRow} className="page-header-row">
             <div>
               <div style={s.breadcrumb}>
                 <span style={{ color: 'var(--color-primary)' }}>Ward 4 Mediation Registry</span>
@@ -138,7 +138,7 @@ export default function CaseTracking() {
                 </button>
               </div>
             </div>
-            <div style={{ overflowX: 'auto' }}>
+            <div className="responsive-table-container">
               <table style={s.table}>
                 <thead>
                   <tr style={s.thead}>

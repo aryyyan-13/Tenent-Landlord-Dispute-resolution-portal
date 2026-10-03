@@ -426,3 +426,212 @@ select.input   { cursor: pointer; }
   to { transform: rotate(360deg); }
 }
 .animate-spin { animation: spin 1s linear infinite; }
+
+/* ─── Comprehensive Responsive System (Mobile, Tablet, Desktop) ─── */
+
+.app-root {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-surface);
+  position: relative;
+}
+
+.app-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: var(--sidebar-width);
+  background: var(--color-surface-container-lowest);
+  border-right: 1px solid var(--color-outline-variant);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  overflow-y: auto;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 0;
+  width: calc(100% - var(--sidebar-width));
+  transition: margin-left 0.25s ease, width 0.25s ease;
+}
+
+.app-topbar {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  height: var(--topbar-height);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-outline-variant);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-xl);
+  transition: left 0.25s ease;
+}
+
+.app-content {
+  margin-top: var(--topbar-height);
+  flex: 1;
+  background: var(--color-surface);
+  min-width: 0;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--color-on-surface);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: var(--radius);
+  align-items: center;
+  justify-content: center;
+}
+.mobile-menu-btn:hover {
+  background: var(--color-surface-container);
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 99;
+}
+
+/* Page containers & responsive layout classes */
+.page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.case-detail-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.dashboard-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-lg);
+}
+
+.dashboard-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.responsive-table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Tablet Breakpoint (<= 1024px) ─── */
+@media (max-width: 1024px) {
+  .case-detail-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .page-container {
+    padding: var(--space-lg);
+  }
+
+  .app-topbar {
+    padding: 0 var(--space-lg);
+  }
+}
+
+/* ─── Mobile & Narrow Tablet (<= 860px) ─── */
+@media (max-width: 860px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+  }
+
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobile-overlay.open {
+    display: block;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .app-main {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .app-topbar {
+    left: 0 !important;
+    padding: 0 var(--space-md);
+  }
+
+  .topbar-jurisdiction-text {
+    display: none !important;
+  }
+
+  .topbar-search-box {
+    display: none !important;
+  }
+
+  .page-container {
+    padding: var(--space-md) var(--space-sm);
+    gap: var(--space-md);
+  }
+
+  .dashboard-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+/* ─── Small Mobile Phones (<= 520px) ─── */
+@media (max-width: 520px) {
+  .dashboard-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .dashboard-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-container {
+    padding: var(--space-sm) 8px;
+  }
+
+  .topbar-emergency-link {
+    display: none !important;
+  }
+}
+

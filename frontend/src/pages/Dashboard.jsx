@@ -115,9 +115,9 @@ export default function Dashboard() {
 
   return (
     <Layout>
-      <div style={s.page}>
+      <div className="page-container">
         {/* Page header */}
-        <header style={s.pageHeader}>
+        <header style={s.pageHeader} className="page-header-row">
           <div>
             <div style={s.breadcrumb}>
               <span>{roleCfg.badge}</span>
@@ -193,7 +193,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        <section style={s.metricsGrid}>
+        <section className="dashboard-metrics-grid">
           <MetricCard
             label={roleCfg.metricLabels[0]}
             value={stats.total}
@@ -267,7 +267,7 @@ export default function Dashboard() {
           </div>
 
           {/* Table */}
-          <div style={{ overflowX: 'auto' }}>
+          <div className="responsive-table-container">
             <table style={s.table}>
               <thead>
                 <tr style={s.thead}>
@@ -378,7 +378,7 @@ export default function Dashboard() {
         </section>
 
         {/* Info cards */}
-        <section style={s.infoGrid}>
+        <section className="dashboard-info-grid">
           <InfoCard icon="support_agent" title="Duty Legal Counsel" body="Tenants and unrepresented landlords are entitled to 30 minutes of impartial procedural consultation prior to formal negotiation." footer="Available: 9:00 AM - 4:00 PM" action="Request counsel" />
           <InfoCard icon="policy" title="Statutory Timelines" body="Security deposit withholdings must include itemized ledger receipts uploaded within 14 calendar days of lease termination." footer="Housing Code § 22-A" action="View regulations" />
           <InfoCard icon="history_edu" title="Signed Settlements" body="All mediated voluntary agreements are registered with the clerk and possess legally binding enforceability upon signature." footer="Ward 4 Clerk Certified" action="Review archive" />

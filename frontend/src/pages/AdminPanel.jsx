@@ -35,7 +35,7 @@ export default function AdminPanel() {
 
   return (
     <Layout>
-      <div style={s.page}>
+      <div className="page-container" style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
         {/* Header */}
         <div style={s.headerRow}>
           <div>
@@ -158,7 +158,7 @@ function UsersTab({ users, setUsers }) {
   };
 
   return (
-    <div className="card" style={{ overflowX: 'auto' }}>
+    <div className="card responsive-table-container">
       <table style={s.table}>
         <thead style={s.thead}>
           <tr>
@@ -201,7 +201,7 @@ function UsersTab({ users, setUsers }) {
 
 function CasesTab({ disputes, setDisputes }) {
   return (
-    <div className="card" style={{ overflowX: 'auto' }}>
+    <div className="card responsive-table-container">
       <table style={s.table}>
         <thead style={s.thead}>
           <tr>
@@ -251,7 +251,7 @@ function AgreementsTab({ agreements, setAgreements }) {
     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
       <div className="card" style={{ padding: 'var(--space-lg)' }}>
         <h3 style={{ margin: '0 0 16px 0', fontSize: '1.25rem', fontFamily: 'var(--font-serif)', color: 'var(--color-primary)' }}>Register New Agreement</h3>
-        <form onSubmit={create} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)' }}>
+        <form onSubmit={create} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-md)' }}>
           <div><label style={s.label}>Landlord ID</label><input required className="input" value={form.landlord_id} onChange={e=>setForm({...form, landlord_id: e.target.value})} /></div>
           <div><label style={s.label}>Tenant ID</label><input required className="input" value={form.tenant_id} onChange={e=>setForm({...form, tenant_id: e.target.value})} /></div>
           <div style={{ gridColumn: '1 / -1' }}><label style={s.label}>Property Address</label><input required className="input" value={form.property_address} onChange={e=>setForm({...form, property_address: e.target.value})} /></div>
@@ -262,7 +262,7 @@ function AgreementsTab({ agreements, setAgreements }) {
         </form>
       </div>
 
-      <div className="card" style={{ overflowX: 'auto' }}>
+      <div className="card responsive-table-container">
         <table style={s.table}>
           <thead style={s.thead}>
             <tr>

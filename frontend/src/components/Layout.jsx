@@ -35,7 +35,7 @@ export default function Layout({ children }) {
   );
 
   const sidebar = (
-    <aside style={styles.sidebar}>
+    <aside className={`app-sidebar ${mobileOpen ? 'open' : ''}`}>
       {/* Logo */}
       <div style={styles.sidebarInner}>
         <div style={styles.logoBar}>
@@ -48,7 +48,17 @@ export default function Layout({ children }) {
               <div style={styles.logoSub}>Civic Portal</div>
             </div>
           </div>
-          <span style={styles.versionBadge}>v2.4</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <span style={styles.versionBadge}>v2.4</span>
+            <button
+              className="mobile-menu-btn"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+              style={{ display: mobileOpen ? 'flex' : 'none', padding: 2 }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>close</span>
+            </button>
+          </div>
         </div>
 
         {/* Dispute Management nav */}
@@ -60,6 +70,7 @@ export default function Layout({ children }) {
                 key={item.path}
                 to={item.path}
                 end={item.path === '/'}
+                onClick={() => setMobileOpen(false)}
                 style={({ isActive }) => ({
                   ...styles.navLink,
                   ...(isActive ? styles.navLinkActive : {}),
@@ -84,7 +95,12 @@ export default function Layout({ children }) {
           <div style={styles.navSectionLabel}>Statutory Resources</div>
           <nav>
             {RESOURCE_ITEMS.map(item => (
-              <a key={item.path} href={item.path} style={styles.navLink}>
+              <a
+                key={item.path}
+                href={item.path}
+                onClick={() => setMobileOpen(false)}
+                style={styles.navLink}
+              >
                 <span className="material-symbols-outlined" style={{ fontSize: 20, lineHeight: 1 }}>
                   {item.icon}
                 </span>
@@ -119,54 +135,51 @@ export default function Layout({ children }) {
   );
 
   return (
-    <div style={styles.root}>
-      {/* Desktop sidebar */}
+    <div className="app-root">
+      {/* Sidebar (Desktop fixed, Mobile off-canvas drawer) */}
       {sidebar}
 
-      {/* Mobile overlay */}
-      {mobileOpen && (
-        <div style={styles.mobileOverlay} onClick={() => setMobileOpen(false)}>
-          <div onClick={e => e.stopPropagation()} style={{ ...styles.sidebar, position: 'relative', height: '100%' }}>
-            {sidebar}
-          </div>
-        </div>
-      )}
+      {/* Mobile backdrop overlay */}
+      <div
+        className={`mobile-overlay ${mobileOpen ? 'open' : ''}`}
+        onClick={() => setMobileOpen(false)}
+      />
 
       {/* Main area */}
-      <div style={styles.main}>
+      <div className="app-main">
         {/* Topbar */}
-        <header style={styles.topbar}>
+        <header className="app-topbar">
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            {/* Mobile menu button */}
+            {/* Mobile menu toggle */}
             <button
-              style={styles.mobileMenuBtn}
-              onClick={() => setMobileOpen(true)}
+              onClick={() => setMobileOpen(prev => !prev)}
               className="mobile-menu-btn"
-              aria-label="Open navigation"
+              aria-label="Toggle navigation"
             >
-              <span className="material-symbols-outlined" style={{ fontSize: 22 }}>menu</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 24 }}>menu</span>
             </button>
             <span style={styles.jurisdiction}>
               <span className="material-symbols-outlined" style={{ fontSize: 16, color: 'var(--color-secondary)', lineHeight: 1 }}>account_balance</span>
-              Metropolitan Housing Authority • Jurisdiction Ward 4
+              <span className="topbar-jurisdiction-text">Metropolitan Housing Authority • Jurisdiction Ward 4</span>
+              <span className="topbar-jurisdiction-short" style={{ display: 'none' }}>Ward 4</span>
             </span>
           </div>
 
           <div style={styles.topbarRight}>
-            {/* Search */}
-            <div style={{ position: 'relative' }}>
+            {/* Search (Desktop & Tablet) */}
+            <div className="topbar-search-box" style={{ position: 'relative' }}>
               <span className="material-symbols-outlined" style={styles.searchIcon}>search</span>
               <input
                 type="text"
-                placeholder="Search case number, property, or party..."
+                placeholder="Search docket, address, party..."
                 style={styles.searchInput}
               />
             </div>
 
-            {/* Emergency */}
-            <a href="tel:311" style={styles.emergencyLink}>
+            {/* Emergency Escalation */}
+            <a href="tel:311" className="topbar-emergency-link" style={styles.emergencyLink}>
               <span className="material-symbols-outlined" style={{ fontSize: 14 }}>call</span>
-              Emergency Escalation
+              Emergency 311
             </a>
 
             {/* Notifications */}
@@ -185,7 +198,7 @@ export default function Layout({ children }) {
         </header>
 
         {/* Page content */}
-        <main style={styles.content}>
+        <main className="app-content">
           {children}
         </main>
       </div>

@@ -56,7 +56,7 @@ export default function FileDispute() {
 
   return (
     <Layout>
-      <div style={s.page}>
+      <div className="page-container" style={{ maxWidth: 1000, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
         {/* Context bar */}
         <div style={s.contextBar}>
           <div style={s.breadcrumb}>
