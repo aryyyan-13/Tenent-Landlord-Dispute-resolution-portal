@@ -36,12 +36,34 @@ router.post('/', authenticate, authorize('tenant', 'landlord'), upload.array('ev
     // The frontend sends: title, description, category, amount, property_address, respondent_name, respondent_email, respondent_role
     const { category, description, title, amount, property_address, respondent_email, respondent_name, respondent_role } = req.body;
 
-    if (!category || !description || !respondent_email) {
-      return res.status(400).json({ error: 'Category, description, and opposing party email are required.' });
+    if (!description || !respondent_email) {
+      return res.status(400).json({ error: 'Description and opposing party email are required.' });
     }
-    if (!CATEGORIES.includes(category)) {
-      return res.status(400).json({ error: `Category must be one of: ${CATEGORIES.join(', ')}` });
-    }
+
+    // Category normalization & fallback: Users should never be blocked by category
+    const validCategories = ['security_deposit', 'rent_payment', 'maintenance', 'property_damage', 'agreement_violation', 'eviction_notice', 'other'];
+    const aliasMap = {
+      eviction: 'eviction_notice',
+      eviction_notice: 'eviction_notice',
+      lease: 'agreement_violation',
+      lease_terms: 'agreement_violation',
+      agreement: 'agreement_violation',
+      agreement_violation: 'agreement_violation',
+      rent: 'rent_payment',
+      rent_payment: 'rent_payment',
+      deposit: 'security_deposit',
+      security_deposit: 'security_deposit',
+      maintenance: 'maintenance',
+      habitability: 'maintenance',
+      damage: 'property_damage',
+      property_damage: 'property_damage',
+      noise: 'other',
+      nuisance: 'other',
+      other: 'other'
+    };
+
+    const rawCat = (category || 'other').toString().toLowerCase().trim().replace(/[-\s]+/g, '_');
+    const finalCategory = aliasMap[rawCat] || (validCategories.includes(rawCat) ? rawCat : 'other');
 
     let opposingParty = await User.findByEmail(respondent_email);
     if (!opposingParty) {
@@ -62,11 +84,15 @@ router.post('/', authenticate, authorize('tenant', 'landlord'), upload.array('ev
       return res.status(400).json({ error: 'You cannot file a dispute against yourself.' });
     }
 
+    const disputeDescription = title
+      ? (rawCat !== finalCategory && category ? `[${title} (${category})] ${description}` : `[${title}] ${description}`)
+      : description;
+
     const dispute = await Dispute.create({
       filedById: req.user.id,
       opposingPartyId: opposingParty.id,
-      category,
-      description: `[${title}] ${description}`,
+      category: finalCategory,
+      description: disputeDescription,
       desiredOutcome: amount ? `Claim: $${amount}` : null,
       propertyAddress: property_address || 'Unknown Address'
     });

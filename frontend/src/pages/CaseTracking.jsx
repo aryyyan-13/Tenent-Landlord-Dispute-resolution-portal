@@ -12,12 +12,16 @@ const STATUS_MAP = {
 };
 
 const CATEGORY_MAP = {
-  security_deposit: 'Security deposit',
-  maintenance:      'Habitability',
-  eviction:         'Eviction protection',
-  lease:            'Lease terms',
-  noise:            'Quiet enjoyment',
-  other:            'Other',
+  security_deposit:    'Security deposit',
+  rent_payment:        'Rent & payment',
+  maintenance:         'Habitability',
+  property_damage:     'Property damage',
+  eviction_notice:     'Eviction protection',
+  eviction:            'Eviction protection',
+  agreement_violation: 'Lease & agreement',
+  lease:               'Lease terms',
+  noise:               'Noise & nuisance',
+  other:               'Other grievance',
 };
 
 export default function CaseTracking() {

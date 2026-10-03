@@ -24,7 +24,10 @@ const CATEGORY_MAP = {
   maintenance:         'Habitability',
   property_damage:     'Property damage',
   agreement_violation: 'Agreement violation',
+  lease:               'Lease terms',
   eviction_notice:     'Eviction',
+  eviction:            'Eviction',
+  noise:               'Noise & nuisance',
   other:               'Other',
 };
 

@@ -35,12 +35,33 @@ router.post('/', authenticate, authorize('tenant', 'landlord'), upload.array('ev
   try {
     const { category, description, opposingPartyEmail } = req.body;
 
-    if (!category || !description || !opposingPartyEmail) {
-      return res.status(400).json({ error: 'Category, description, and opposing party email are required.' });
+    if (!description || !opposingPartyEmail) {
+      return res.status(400).json({ error: 'Description and opposing party email are required.' });
     }
-    if (!CATEGORIES.includes(category)) {
-      return res.status(400).json({ error: `Category must be one of: ${CATEGORIES.join(', ')}` });
-    }
+
+    const validCategories = ['security_deposit', 'rent_payment', 'maintenance', 'property_damage', 'agreement_violation', 'eviction_notice', 'other'];
+    const aliasMap = {
+      eviction: 'eviction_notice',
+      eviction_notice: 'eviction_notice',
+      lease: 'agreement_violation',
+      lease_terms: 'agreement_violation',
+      agreement: 'agreement_violation',
+      agreement_violation: 'agreement_violation',
+      rent: 'rent_payment',
+      rent_payment: 'rent_payment',
+      deposit: 'security_deposit',
+      security_deposit: 'security_deposit',
+      maintenance: 'maintenance',
+      habitability: 'maintenance',
+      damage: 'property_damage',
+      property_damage: 'property_damage',
+      noise: 'other',
+      nuisance: 'other',
+      other: 'other'
+    };
+
+    const rawCat = (category || 'other').toString().toLowerCase().trim().replace(/[-\s]+/g, '_');
+    const finalCategory = aliasMap[rawCat] || (validCategories.includes(rawCat) ? rawCat : 'other');
 
     const opposingParty = User.findByEmail(opposingPartyEmail);
     if (!opposingParty) {
@@ -53,7 +74,7 @@ router.post('/', authenticate, authorize('tenant', 'landlord'), upload.array('ev
     const dispute = Dispute.create({
       filedById: req.user.id,
       opposingPartyId: opposingParty.id,
-      category,
+      category: finalCategory,
       description
     });
 

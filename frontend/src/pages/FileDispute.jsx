@@ -4,12 +4,13 @@ import Layout from '../components/Layout.jsx';
 import client from '../api/client.js';
 
 const CATEGORIES = [
-  { id: 'security_deposit', icon: 'payments',       label: 'Security Deposit', desc: 'Failure to return deposit within 14 days' },
-  { id: 'maintenance',      icon: 'home_repair_service', label: 'Habitability & Maintenance', desc: 'No heat, water leaks, or safety hazards' },
-  { id: 'eviction',         icon: 'gavel',          label: 'Eviction Protection', desc: 'Unlawful detainer or notice disputes' },
-  { id: 'lease',            icon: 'description',    label: 'Lease Terms', desc: 'Disagreements over lease clauses' },
-  { id: 'noise',            icon: 'volume_up',      label: 'Noise & Nuisance', desc: 'Quiet enjoyment violations' },
-  { id: 'other',            icon: 'help_outline',   label: 'Other Grievance', desc: 'Matters not classified above' },
+  { id: 'security_deposit',    icon: 'payments',            label: 'Security Deposit',                   desc: 'Failure to return or improper deduction of deposit' },
+  { id: 'rent_payment',        icon: 'receipt_long',        label: 'Rent & Payments',                    desc: 'Rent arrears, unauthorized increases, or receipt issues' },
+  { id: 'maintenance',         icon: 'home_repair_service', label: 'Habitability & Maintenance',          desc: 'No heat, water leaks, or safety hazards' },
+  { id: 'property_damage',     icon: 'handyman',            label: 'Property Damage',                    desc: 'Wear-and-tear vs tenant/landlord damage claims' },
+  { id: 'eviction_notice',     icon: 'gavel',               label: 'Eviction Protection',                desc: 'Unlawful detainer, notice disputes, or retaliatory action' },
+  { id: 'agreement_violation', icon: 'description',         label: 'Lease & Agreement Violation',        desc: 'Disagreements over lease clauses, covenants, or entry' },
+  { id: 'other',               icon: 'volume_up',           label: 'Noise, Nuisance & Other Grievances', desc: 'Quiet enjoyment disturbances, nuisance, or unclassified matters' },
 ];
 
 export default function FileDispute() {
