@@ -321,7 +321,7 @@ export default function CaseDetail() {
                   ? <a href={BACKENDURL + actionResult.settlementPdfUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--status-resolved-text)' }}>Download settlement PDF</a>
                   : actionResult.caseBundleUrl
                   ? <a href={BACKENDURL + actionResult.caseBundleUrl} target="_blank" rel="noreferrer" style={{ color: 'var(--status-escalated-text)' }}>Download case bundle</a>
-                  : (actionResult.message || JSON.stringify(actionResult.session || {}))
+                  : (actionResult.message || 'Both parties (Tenant and Landlord) have been notified to review and vote.')
               )}
             </div>
             <button onClick={() => setActionResult(null)} style={{ marginTop: 8, fontSize: 11, background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', opacity: 0.7 }}>Dismiss</button>
@@ -345,52 +345,90 @@ export default function CaseDetail() {
             {sessions.length > 0 && (
               <div>
                 <h2 style={s.sectionTitle}>Mediation sessions</h2>
-                {sessions.map(session => (
-                  <div key={session.id} className="card" style={{ padding: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
-                      <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: 'var(--text-label-md-size)' }}>
-                        {session.scheduled_at ? new Date(session.scheduled_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Session'}
-                      </div>
-                      <span className={`badge ${session.status === 'completed' ? 'badge--resolved' : session.status === 'cancelled' ? 'badge--escalated' : 'badge--in-progress'}`}>
-                        {session.status}
-                      </span>
-                    </div>
-                    {session.session_notes && (
-                      <div style={{ fontSize: 'var(--text-body-sm-size)', color: 'var(--color-on-surface-variant)', marginBottom: 8 }}>
-                        <strong>Notes:</strong> {session.session_notes}
-                      </div>
-                    )}
-                    {session.proposed_resolution && (
-                      <div style={{ background: 'var(--color-surface-container-low)', padding: 12, borderRadius: 'var(--radius)', fontSize: 'var(--text-body-sm-size)', marginBottom: 12, whiteSpace: 'pre-line' }}>
-                        <strong style={{ display: 'block', marginBottom: 4 }}>Proposed resolution:</strong>
-                        {session.proposed_resolution}
-                      </div>
-                    )}
+                {sessions.map(session => {
+                  const userRole = user?.role;
+                  const myDecision = userRole === 'tenant' ? session.tenant_decision : userRole === 'landlord' ? session.landlord_decision : null;
+                  const opposingRole = userRole === 'tenant' ? 'landlord' : 'tenant';
+                  const opposingDecision = userRole === 'tenant' ? session.landlord_decision : session.tenant_decision;
 
-                    {/* Accept/Reject controls — only for party on this dispute, status open_mediation */}
-                    {canDecide && session.id === latestSession?.id && !isResolved && !isEscalated && (
-                      <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                        <button
-                          className="btn btn-sm btn-secondary"
-                          onClick={() => submitDecision('Accepted')}
-                          disabled={decisionLoading}
-                          style={{ background: 'var(--status-resolved-border)', color: '#fff' }}
-                        >
-                          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>check_circle</span>
-                          Accept resolution
-                        </button>
-                        <button
-                          className="btn btn-sm btn-destructive"
-                          onClick={() => submitDecision('Rejected')}
-                          disabled={decisionLoading}
-                        >
-                          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>cancel</span>
-                          Reject resolution
-                        </button>
+                  return (
+                    <div key={session.id} className="card" style={{ padding: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                        <div style={{ fontWeight: 600, color: 'var(--color-primary)', fontSize: 'var(--text-label-md-size)' }}>
+                          {session.scheduled_at ? new Date(session.scheduled_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Session'}
+                        </div>
+                        <span className={`badge ${session.status === 'completed' ? 'badge--resolved' : session.status === 'cancelled' ? 'badge--escalated' : 'badge--in-progress'}`}>
+                          {session.status}
+                        </span>
                       </div>
-                    )}
-                  </div>
-                ))}
+                      {session.session_notes && (
+                        <div style={{ fontSize: 'var(--text-body-sm-size)', color: 'var(--color-on-surface-variant)', marginBottom: 8 }}>
+                          <strong>Notes:</strong> {session.session_notes}
+                        </div>
+                      )}
+                      {session.proposed_resolution && (
+                        <div style={{ background: 'var(--color-surface-container-low)', padding: 14, borderRadius: 'var(--radius)', fontSize: 'var(--text-body-sm-size)', marginBottom: 12 }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8, flexWrap: 'wrap', gap: 6 }}>
+                            <strong style={{ color: 'var(--color-primary)' }}>Proposed Binding Resolution:</strong>
+                            <div style={{ display: 'flex', gap: 6 }}>
+                              <span className={`badge ${session.tenant_decision === 'Accepted' ? 'badge--resolved' : session.tenant_decision === 'Rejected' ? 'badge--escalated' : 'badge--neutral'}`} style={{ fontSize: 11 }}>
+                                Tenant: {session.tenant_decision || 'Pending'}
+                              </span>
+                              <span className={`badge ${session.landlord_decision === 'Accepted' ? 'badge--resolved' : session.landlord_decision === 'Rejected' ? 'badge--escalated' : 'badge--neutral'}`} style={{ fontSize: 11 }}>
+                                Landlord: {session.landlord_decision || 'Pending'}
+                              </span>
+                            </div>
+                          </div>
+                          <div style={{ whiteSpace: 'pre-line', lineHeight: 1.5, color: 'var(--color-on-surface)' }}>
+                            {session.proposed_resolution}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Accept/Reject controls or status message */}
+                      {canDecide && session.id === latestSession?.id && !isResolved && !isEscalated && (
+                        <div>
+                          {myDecision === 'Accepted' ? (
+                            <div style={{ padding: '8px 12px', background: 'var(--status-resolved-bg)', border: '1px solid var(--status-resolved-border)', borderRadius: 'var(--radius)', color: 'var(--status-resolved-text)', fontSize: 'var(--text-body-sm-size)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>check_circle</span>
+                              <span>You have <strong>accepted</strong> this proposed resolution. Awaiting {opposingRole}&apos;s decision ({opposingDecision || 'Pending'}).</span>
+                            </div>
+                          ) : myDecision === 'Rejected' ? (
+                            <div style={{ padding: '8px 12px', background: 'rgba(254,226,226,0.6)', border: '1px solid var(--status-escalated-border)', borderRadius: 'var(--radius)', color: 'var(--status-escalated-text)', fontSize: 'var(--text-body-sm-size)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>cancel</span>
+                              <span>You rejected this proposed resolution. The case is being escalated.</span>
+                            </div>
+                          ) : (
+                            <div>
+                              <div style={{ fontSize: '0.8125rem', color: 'var(--color-secondary)', fontWeight: 600, marginBottom: 6 }}>
+                                Action required: Both parties must accept for this to become a legally binding settlement.
+                              </div>
+                              <div style={{ display: 'flex', gap: 8 }}>
+                                <button
+                                  className="btn btn-sm btn-secondary"
+                                  onClick={() => submitDecision('Accepted')}
+                                  disabled={decisionLoading}
+                                  style={{ background: 'var(--status-resolved-border)', color: '#fff' }}
+                                >
+                                  <span className="material-symbols-outlined" style={{ fontSize: 16 }}>check_circle</span>
+                                  Accept resolution
+                                </button>
+                                <button
+                                  className="btn btn-sm btn-destructive"
+                                  onClick={() => submitDecision('Rejected')}
+                                  disabled={decisionLoading}
+                                >
+                                  <span className="material-symbols-outlined" style={{ fontSize: 16 }}>cancel</span>
+                                  Reject resolution
+                                </button>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             )}
 

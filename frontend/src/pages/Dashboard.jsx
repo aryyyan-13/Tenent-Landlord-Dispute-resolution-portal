@@ -36,6 +36,33 @@ const FILTERS = [
   { key: 'mediation_failed',       label: 'Escalated' },
 ];
 
+const ROLE_CONFIG = {
+  tenant: {
+    badge: 'Tenant Grievance Portal',
+    title: 'Tenant Dispute & Resolution Dashboard',
+    subtitle: 'Track your filed grievances, review mediator-proposed resolutions, and confirm binding settlements.',
+    metricLabels: ['My Filings', 'In Mediation', 'Settled Cases', 'Escalations'],
+  },
+  landlord: {
+    badge: 'Property Owner Registry',
+    title: 'Landlord Tenancy Dispute Dashboard',
+    subtitle: 'Review tenant claims across your rental units, vote on proposed settlement agreements, and monitor dispute status.',
+    metricLabels: ['Property Cases', 'In Mediation', 'Settled Agreements', 'Escalated to Court'],
+  },
+  admin: {
+    badge: 'Housing Authority Directorate',
+    title: 'Civic Dispute & Escalations Control Center',
+    subtitle: 'District-wide caseload oversight, neutral mediator allocations, and statutory Rent Authority enforcement.',
+    metricLabels: ['Total Docket', 'Active Mediations', 'Settlements', 'Court Referrals'],
+  },
+  mediator: {
+    badge: 'Neutral Mediation Desk',
+    title: 'Mediator Hearing & Resolution Workbench',
+    subtitle: 'Manage assigned disputes, draft enforceable settlement proposals, and track party decisions.',
+    metricLabels: ['Assigned Cases', 'Hearing Sessions', 'Settlements Signed', 'Referred Cases'],
+  }
+};
+
 export default function Dashboard() {
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -81,6 +108,11 @@ export default function Dashboard() {
       return new Date(b.created_at) - new Date(a.created_at);
     });
 
+  const role = user?.role || 'tenant';
+  const roleCfg = ROLE_CONFIG[role] || ROLE_CONFIG.tenant;
+  const mediationCases = safeDisputes.filter(d => d.case_status === 'open_mediation');
+  const escalatedCases = safeDisputes.filter(d => ESCALATED_STATUSES.has(d.case_status));
+
   return (
     <Layout>
       <div style={s.page}>
@@ -88,13 +120,13 @@ export default function Dashboard() {
         <header style={s.pageHeader}>
           <div>
             <div style={s.breadcrumb}>
-              <span>Ward 4 Registry</span>
+              <span>{roleCfg.badge}</span>
               <span>•</span>
               <span>Docket Session Q{new Date().getMonth() < 3 ? 1 : new Date().getMonth() < 6 ? 2 : new Date().getMonth() < 9 ? 3 : 4}</span>
             </div>
-            <h1 style={s.pageTitle}>Dispute resolution dashboard</h1>
+            <h1 style={s.pageTitle}>{roleCfg.title}</h1>
             <p style={s.pageSubtitle}>
-              Active civic filings and scheduled mediation hearings under Metropolitan Housing Jurisdiction.
+              {roleCfg.subtitle}
             </p>
           </div>
           <div style={{ display: 'flex', gap: 8, alignSelf: 'flex-start' }}>
@@ -111,41 +143,90 @@ export default function Dashboard() {
           </div>
         </header>
 
+        {/* ── Role-Specific Action Banners ── */}
+        {(role === 'tenant' || role === 'landlord') && mediationCases.length > 0 && (
+          <div className="card" style={{ padding: 'var(--space-md) var(--space-lg)', background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.6) 0%, rgba(253, 230, 138, 0.35) 100%)', border: '1px solid #f59e0b', borderLeft: '6px solid #d97706', marginBottom: 'var(--space-lg)', borderRadius: 'var(--radius)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 30, color: '#d97706' }}>gavel</span>
+                <div>
+                  <div style={{ fontWeight: 700, color: '#92400e', fontSize: '1rem' }}>
+                    {role === 'tenant' ? 'Mediation Action Required — Review Proposed Resolution' : 'Mediation Action Required — Review Proposed Settlement'}
+                  </div>
+                  <div style={{ fontSize: '0.875rem', color: '#78350f', marginTop: 2 }}>
+                    A mediator has proposed binding terms for <strong>Case #{mediationCases[0].case_number}</strong>. Review and vote to finalize agreement.
+                  </div>
+                </div>
+              </div>
+              <button
+                className="btn btn-sm"
+                style={{ background: '#d97706', color: '#fff', fontWeight: 600, padding: '8px 16px' }}
+                onClick={() => navigate(`/cases/${mediationCases[0].id}`)}
+              >
+                Review Proposal →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {role === 'admin' && escalatedCases.length > 0 && (
+          <div className="card" style={{ padding: 'var(--space-md) var(--space-lg)', background: 'rgba(254, 226, 226, 0.5)', border: '1px solid var(--status-escalated-border)', borderLeft: '6px solid var(--status-escalated-border)', marginBottom: 'var(--space-lg)', borderRadius: 'var(--radius)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 30, color: 'var(--status-escalated-border)' }}>report_problem</span>
+                <div>
+                  <div style={{ fontWeight: 700, color: '#991b1b', fontSize: '1rem' }}>
+                    Rent Authority Escalation — {escalatedCases.length} Case(s) Referred
+                  </div>
+                  <div style={{ fontSize: '0.875rem', color: '#7f1d1d', marginTop: 2 }}>
+                    Mediation was unsuccessful. Certified case bundles are ready for statutory transfer.
+                  </div>
+                </div>
+              </div>
+              <button
+                className="btn btn-sm btn-destructive"
+                onClick={() => setFilter('mediation_failed')}
+              >
+                View Escalated Docket →
+              </button>
+            </div>
+          </div>
+        )}
+
         <section style={s.metricsGrid}>
           <MetricCard
-            label="Total cases"
+            label={roleCfg.metricLabels[0]}
             value={stats.total}
-            suffix="registered"
+            suffix={role === 'tenant' ? 'grievances' : role === 'landlord' ? 'units filed' : 'registered'}
             icon="folder"
             stripe="card-stripe--primary"
-            footer={<><span className="material-symbols-outlined" style={{ fontSize: 14 }}>trending_up</span> Ward 4 caseload</>}
+            footer={<><span className="material-symbols-outlined" style={{ fontSize: 14 }}>trending_up</span> {role === 'admin' ? 'District caseload' : 'Total records'}</>}
           />
           <MetricCard
-            label="Active cases"
+            label={roleCfg.metricLabels[1]}
             value={stats.active}
-            suffix="pending resolution"
+            suffix="pending"
             icon="gavel"
             stripe="card-stripe--in-progress"
             valueColor="var(--color-secondary)"
-            footer={<span>{safeDisputes.filter(d => d.case_status === 'open_mediation').length} in mediation · {safeDisputes.filter(d => d.case_status === 'open_negotiation').length} under review</span>}
+            footer={<span>{mediationCases.length} in mediation · {safeDisputes.filter(d => d.case_status === 'open_negotiation').length} in review</span>}
           />
           <MetricCard
-            label="Resolved cases"
+            label={roleCfg.metricLabels[2]}
             value={stats.resolved}
-            suffix="successfully mediated"
+            suffix="settled"
             icon="verified"
             stripe="card-stripe--resolved"
             footer={<><span className="material-symbols-outlined" style={{ fontSize: 14 }}>task_alt</span> {stats.total ? Math.round(stats.resolved / stats.total * 100) : 0}% settlement rate</>}
           />
-          {/* §5.1: Escalated-cases card always shown prominently */}
           <MetricCard
-            label="Escalated cases"
+            label={roleCfg.metricLabels[3]}
             value={stats.escalated}
-            suffix="referred / failed"
+            suffix="failed / court"
             icon="warning"
             stripe="card-stripe--escalated"
             valueColor="var(--status-escalated-border)"
-            footer={<><span className="material-symbols-outlined" style={{ fontSize: 14 }}>gavel</span> Awaiting Rent Authority referral</>}
+            footer={<><span className="material-symbols-outlined" style={{ fontSize: 14 }}>gavel</span> Rent Authority referral</>}
           />
         </section>
 
@@ -253,9 +334,26 @@ export default function Dashboard() {
                       <td style={{ ...s.td, textAlign: 'right' }}>
                         <button
                           onClick={() => navigate(`/cases/${d.id}`)}
-                          style={s.viewLink}
+                          style={{
+                            ...s.viewLink,
+                            ...(d.case_status === 'open_mediation' && (role === 'tenant' || role === 'landlord')
+                              ? { color: '#b45309', fontWeight: 600 }
+                              : ['resolved_settlement_mediation', 'resolved_settlement_negotiation'].includes(d.case_status)
+                              ? { color: 'var(--status-resolved-border)', fontWeight: 600 }
+                              : isEsc
+                              ? { color: 'var(--status-escalated-border)', fontWeight: 600 }
+                              : {})
+                          }}
                         >
-                          View details
+                          {d.case_status === 'open_mediation' && (role === 'tenant' || role === 'landlord')
+                            ? 'Review & Vote'
+                            : d.case_status === 'open_mediation' && role === 'mediator'
+                            ? 'Manage Session'
+                            : ['resolved_settlement_mediation', 'resolved_settlement_negotiation'].includes(d.case_status)
+                            ? 'View Settlement'
+                            : isEsc
+                            ? 'View Escalation'
+                            : 'View details'}
                           <span className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
                         </button>
                       </td>

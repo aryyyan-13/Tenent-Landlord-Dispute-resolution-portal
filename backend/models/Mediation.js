@@ -229,7 +229,27 @@ const Mediation = {
        ORDER BY ms.created_at DESC`,
       [disputeId]
     );
-    return res.rows;
+
+    let signatures = [];
+    try {
+      const sigsRes = await db.query(
+        `SELECT ss.signer_role, ss.decision, ss.decided_at, ss.signer_id
+         FROM settlement_signatures ss
+         JOIN settlement_agreements sa ON sa.id = ss.settlement_agreement_id
+         WHERE sa.dispute_id = $1`,
+        [disputeId]
+      );
+      signatures = sigsRes.rows;
+    } catch {
+      // safe fallback
+    }
+
+    return res.rows.map(session => ({
+      ...session,
+      tenant_decision: signatures.find(s => s.signer_role === 'tenant')?.decision || 'Pending',
+      landlord_decision: signatures.find(s => s.signer_role === 'landlord')?.decision || 'Pending',
+      signatures
+    }));
   },
 
   async updateNotes(id, { sessionDate, sessionNotes, proposedResolution, proposedResolutionJson }) {
