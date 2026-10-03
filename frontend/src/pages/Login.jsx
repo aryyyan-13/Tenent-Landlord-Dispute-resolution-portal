@@ -37,7 +37,7 @@ export default function Login() {
       setSuccess(true);
       setTimeout(() => navigate('/'), 800);
     } catch (err) {
-      setError(err.response?.data?.message || 'Authentication failed. Check your credentials.');
+      setError(err.response?.data?.error || err.response?.data?.message || err.message || 'Authentication failed. Check your credentials.');
     } finally {
       setSubmitting(false);
     }

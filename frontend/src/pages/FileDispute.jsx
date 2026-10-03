@@ -41,7 +41,12 @@ export default function FileDispute() {
     setLoading(true);
     try {
       const { data } = await client.post('/disputes', formData);
-      navigate(`/cases/${data.id}`);
+      const caseId = data?.dispute?.id || data?.id;
+      if (caseId) {
+        navigate(`/cases/${caseId}`);
+      } else {
+        navigate('/cases');
+      }
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to file dispute');
     } finally {
