@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Circular Outer Legal Seal Boundary -->
+  <circle cx="250" cy="250" r="236" fill="#FAF9F6" stroke="#0F2137" stroke-width="6"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#D97706" stroke-width="2.5" stroke-dasharray="6,4"/>
+  <circle cx="250" cy="250" r="212" fill="#FFFFFF" stroke="#0F2137" stroke-width="3" filter="url(#subtleShadow)"/>
+
+  <!-- National Tri-color subtle arc accents at bottom -->
+  <path d="M 170 422 A 190 190 0 0 0 330 422" fill="none" stroke="#FF9933" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 185 432 A 190 190 0 0 0 315 432" fill="none" stroke="#138808" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Ashoka Chakra 24-Spoke Radial Motif Watermark behind scales -->
+  <g transform="translate(250, 230)" opacity="0.12">
+    <circle cx="0" cy="0" r="105" fill="none" stroke="#0F2137" stroke-width="4"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#0F2137" stroke-width="3"/>
+    <!-- 24 Spokes -->
+    <line x1="0" y1="-105" x2="0" y2="105" stroke="#0F2137" stroke-width="2"/>
+    <line x1="-105" y1="0" x2="105" y2="0" stroke="#0F2137" stroke-width="2"/>
+    <line x1="-74.2" y1="-74.2" x2="74.2" y2="74.2" stroke="#0F2137" stroke-width="2"/>
+    <line x1="-74.2" y1="74.2" x2="74.2" y2="-74.2" stroke="#0F2137" stroke-width="2"/>
+    <line x1="-38.2" y1="-92.4" x2="38.2" y2="92.4" stroke="#0F2137" stroke-width="1.8"/>
+    <line x1="38.2" y1="-92.4" x2="-38.2" y2="92.4" stroke="#0F2137" stroke-width="1.8"/>
+    <line x1="-92.4" y1="-38.2" x2="92.4" y2="38.2" stroke="#0F2137" stroke-width="1.8"/>
+    <line x1="92.4" y1="-38.2" x2="-92.4" y2="38.2" stroke="#0F2137" stroke-width="1.8"/>
+    <line x1="-18.3" y1="-98.3" x2="18.3" y2="98.3" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="18.3" y1="-98.3" x2="-18.3" y2="98.3" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="-98.3" y1="-18.3" x2="98.3" y2="18.3" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="98.3" y1="-18.3" x2="-98.3" y2="18.3" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="-58.8" y1="-80.9" x2="58.8" y2="80.9" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="58.8" y1="-80.9" x2="-58.8" y2="80.9" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="-80.9" y1="-58.8" x2="80.9" y2="58.8" stroke="#0F2137" stroke-width="1.5"/>
+    <line x1="80.9" y1="-58.8" x2="-80.9" y2="58.8" stroke="#0F2137" stroke-width="1.5"/>
+  </g>
+
+  <!-- Civic Tenancy / Shelter Pediment (Roof structure) -->
+  <g id="housing-pediment">
+    <path d="M 160 162 L 250 96 L 340 162 Z" fill="url(#navyGrad)" stroke="#D97706" stroke-width="2.5"/>
+    <!-- Keystone finial -->
+    <circle cx="250" cy="85" r="9" fill="url(#goldGrad)" stroke="#0F2137" stroke-width="2"/>
+    <rect x="200" y="160" width="100" height="7" rx="3.5" fill="#D97706"/>
+  </g>
+
+  <!-- Central Judicial Balance Pillar / Column of Justice -->
+  <g id="scales-of-justice">
+    <!-- Pillar Capital & Shaft -->
+    <rect x="244" y="167" width="12" height="175" rx="3" fill="url(#navyGrad)"/>
+    <rect x="238" y="167" width="24" height="8" rx="2" fill="url(#goldGrad)"/>
+    
+    <!-- Central Pivot Joint -->
+    <circle cx="250" cy="195" r="14" fill="#FFFFFF" stroke="#0F2137" stroke-width="4"/>
+    <circle cx="250" cy="195" r="6" fill="url(#goldGrad)"/>
+
+    <!-- Balance Crossbeam (Perfect Equilibrium) -->
+    <path d="M 148 198 L 250 193 L 352 198" fill="none" stroke="url(#navyGrad)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 150 198 L 250 193 L 350 198" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round"/>
+
+    <!-- Left Balance Pan (Tenant Side) -->
+    <g id="tenant-pan">
+      <circle cx="150" cy="198" r="5" fill="#D97706"/>
+      <line x1="150" y1="198" x2="118" y2="258" stroke="#0F2137" stroke-width="2.5"/>
+      <line x1="150" y1="198" x2="182" y2="258" stroke="#0F2137" stroke-width="2.5"/>
+      <!-- Pan Bowl -->
+      <path d="M 112 258 Q 150 286 188 258 Z" fill="url(#goldGrad)" stroke="#0F2137" stroke-width="3"/>
+      <!-- Tenant Human Figure Silhouette -->
+      <circle cx="150" cy="242" r="5.5" fill="#0F2137"/>
+      <path d="M 141 256 C 141 249 145 247 150 247 C 155 247 159 249 159 256 Z" fill="#0F2137"/>
+    </g>
+
+    <!-- Right Balance Pan (Landlord / Property Owner Side) -->
+    <g id="landlord-pan">
+      <circle cx="350" cy="198" r="5" fill="#D97706"/>
+      <line x1="350" y1="198" x2="318" y2="258" stroke="#0F2137" stroke-width="2.5"/>
+      <line x1="350" y1="198" x2="382" y2="258" stroke="#0F2137" stroke-width="2.5"/>
+      <!-- Pan Bowl -->
+      <path d="M 312 258 Q 350 286 388 258 Z" fill="url(#goldGrad)" stroke="#0F2137" stroke-width="3"/>
+      <!-- Residential Building Silhouette inside pan -->
+      <rect x="343" y="238" width="14" height="18" fill="#0F2137"/>
+      <polygon points="340,238 350,229 360,238" fill="#0F2137"/>
+      <!-- Windows -->
+      <rect x="346" y="242" width="3" height="3.5" fill="#FFFFFF"/>
+      <rect x="351" y="242" width="3" height="3.5" fill="#FFFFFF"/>
+      <rect x="346" y="248" width="3" height="3.5" fill="#FFFFFF"/>
+      <rect x="351" y="248" width="3" height="3.5" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Solid Base / Pedestal -->
+    <path d="M 215 342 L 285 342 L 295 358 L 205 358 Z" fill="url(#navyGrad)" stroke="#0F2137" stroke-width="2"/>
+    <rect x="195" y="358" width="110" height="9" rx="3" fill="url(#goldGrad)" stroke="#0F2137" stroke-width="1.5"/>
+  </g>
+
+  <!-- Legal Inscription Banner / Ribbon Text -->
+  <g id="text-inscriptions">
+    <!-- Top Arc Text: TENANT LANDLORD DISPUTE RESOLUTION -->
+    <path id="topArc" d="M 72 230 A 185 185 0 0 1 428 230" fill="none"/>
+    <text font-family="'Source Serif 4', Georgia, serif" font-size="16.5" font-weight="700" fill="#0F2137" letter-spacing="3.8">
+      <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+        TENANT LANDLORD DISPUTE RESOLUTION
+      </textPath>
+    </text>
+
+    <!-- Subtitle Banner: GOVERNMENT OF INDIA -->
+    <text x="250" y="388" font-family="'Inter', Arial, sans-serif" font-size="12" font-weight="800" fill="#B45309" letter-spacing="4" text-anchor="middle">
+      GOVERNMENT OF INDIA
+    </text>
+
+    <!-- Hindi / National Devnagari Typography: किराएदार-मकान मालिक विवाद समाधान -->
+    <text x="250" y="407" font-family="'Source Serif 4', 'Noto Sans Devanagari', serif" font-size="14.5" font-weight="700" fill="#0F2137" text-anchor="middle" letter-spacing="1">
+      किराया अधिकरण एवं समाधान पोर्टल
+    </text>
+
+    <!-- Acronym Badge TLDRP -->
+    <g transform="translate(250, 442)">
+      <rect x="-48" y="-12" width="96" height="24" rx="4" fill="#0F2137"/>
+      <text x="0" y="5" font-family="'Inter', sans-serif" font-size="12.5" font-weight="900" fill="#FFFFFF" letter-spacing="2.5" text-anchor="middle">
+        TLDRP
+      </text>
+    </g>
+  </g>
+
+  <!-- Left & Right Decorative Laurels / Stars of Neutrality -->
+  <g fill="#D97706">
+    <polygon points="62,250 65,242 73,242 66,237 69,229 62,234 55,229 58,237 51,242 59,242"/>
+    <polygon points="438,250 441,242 449,242 442,237 445,229 438,234 431,229 434,237 427,242 435,242"/>
+  </g>
+</svg>

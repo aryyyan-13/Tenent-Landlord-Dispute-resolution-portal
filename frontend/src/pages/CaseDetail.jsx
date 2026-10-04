@@ -175,14 +175,17 @@ export default function CaseDetail() {
                 </span>
               </div>
             </div>
-            <div style={{ display: 'flex', gap: 8 }}>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+              <button className="btn btn-outline btn-sm" onClick={() => window.print()} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 16 }}>print</span> Print Docket Statement
+              </button>
               {canEscalate && !isEscalated && !isResolved && (
                 <>
                   <button className="btn btn-primary btn-sm" onClick={() => setActionResult('propose-panel')}>
                     <span className="material-symbols-outlined" style={{ fontSize: 16 }}>edit_document</span> Propose Resolution
                   </button>
                   <button className="btn btn-destructive btn-sm" onClick={() => setActionResult('escalate-panel')}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 16 }}>gavel</span> Escalate Now
+                    <span className="material-symbols-outlined" style={{ fontSize: 16 }}>gavel</span> Escalate to Court
                   </button>
                 </>
               )}
@@ -333,11 +336,36 @@ export default function CaseDetail() {
           {/* Left column */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-xl)' }}>
 
-            {/* Description */}
+            {/* Description & Claim Facts */}
             <div>
-              <h2 style={s.sectionTitle}>Dispute description</h2>
-              <div className="card" style={{ padding: 'var(--space-md)', fontSize: 'var(--text-body-sm-size)', lineHeight: 1.6, color: 'var(--color-on-surface)' }}>
-                {dispute.description || 'No description provided.'}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                <h2 style={s.sectionTitle}>Claim Particulars & Dispute Statement</h2>
+                <span className="badge badge--neutral" style={{ fontSize: 11 }}>Sec. 8.4 Housing Code</span>
+              </div>
+              <div className="card" style={{ padding: 'var(--space-lg)', display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <div style={{ padding: 'var(--space-md)', background: 'var(--color-surface-container-low)', borderRadius: 8, fontSize: 'var(--text-body-sm-size)', lineHeight: 1.6, color: 'var(--color-on-surface)' }}>
+                  {dispute.description || 'No formal statement filed.'}
+                </div>
+
+                {/* Claim Facts Grid (Stitch) */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 10 }}>
+                  <div style={{ background: 'var(--color-surface-container)', padding: '10px 12px', borderRadius: 8, display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-on-surface-variant)', fontWeight: 600 }}>Claim Amount</span>
+                    <span style={{ fontSize: '1.1rem', fontFamily: 'var(--font-serif)', color: 'var(--color-primary)', fontWeight: 600, marginTop: 2 }}>{dispute.desired_outcome || 'Full restitution'}</span>
+                  </div>
+                  <div style={{ background: 'var(--color-surface-container)', padding: '10px 12px', borderRadius: 8, display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-on-surface-variant)', fontWeight: 600 }}>Filing Date</span>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--color-primary)', fontWeight: 600, marginTop: 4 }}>{new Date(dispute.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
+                  </div>
+                  <div style={{ background: 'var(--color-surface-container)', padding: '10px 12px', borderRadius: 8, display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-on-surface-variant)', fontWeight: 600 }}>Burden Code</span>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--color-secondary)', fontWeight: 600, marginTop: 4 }}>Statute §8.4</span>
+                  </div>
+                  <div style={{ background: 'var(--color-surface-container)', padding: '10px 12px', borderRadius: 8, display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-on-surface-variant)', fontWeight: 600 }}>Chamber Venue</span>
+                    <span style={{ fontSize: '0.9rem', color: 'var(--color-primary)', fontWeight: 600, marginTop: 4 }}>Ward 4 Hybrid</span>
+                  </div>
+                </div>
               </div>
             </div>
 

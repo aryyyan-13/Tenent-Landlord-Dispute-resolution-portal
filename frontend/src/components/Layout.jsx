@@ -8,15 +8,16 @@ import { useAuth } from '../context/AuthContext.jsx';
 ──────────────────────────────────────────────────── */
 
 const NAV_ITEMS = [
-  { path: '/',            label: 'Dashboard',    icon: 'grid_view',     roles: null },
-  { path: '/file-dispute',label: 'File a Dispute',icon: 'gavel',        roles: ['tenant', 'landlord'] },
-  { path: '/cases',       label: 'Case Tracking', icon: 'folder_shared', roles: null },
-  { path: '/admin',       label: 'Admin Panel',   icon: 'verified_user', roles: ['admin'] },
+  { path: '/',            label: 'Dashboard',      icon: 'grid_view',     roles: null },
+  { path: '/file-dispute',label: 'File a Dispute', icon: 'gavel',         roles: ['tenant', 'landlord'] },
+  { path: '/cases',       label: 'Case Tracking',  icon: 'folder_shared', roles: null },
+  { path: '/admin',       label: 'Admin Panel',    icon: 'verified_user', roles: ['admin'] },
+  { path: '/profile',     label: 'Settings & KYC', icon: 'badge',         roles: null },
 ];
 
 const RESOURCE_ITEMS = [
-  { path: '#guidelines', label: 'Guidelines & Statutes', icon: 'menu_book' },
-  { path: '#help',       label: 'Support & Help',        icon: 'help_outline' },
+  { path: '/guidelines', label: 'Guidelines & Statutes', icon: 'menu_book' },
+  { path: '/support',    label: 'Support & Help',        icon: 'help_outline' },
 ];
 
 function initials(name = '') {
@@ -95,17 +96,20 @@ export default function Layout({ children }) {
           <div style={styles.navSectionLabel}>Statutory Resources</div>
           <nav>
             {RESOURCE_ITEMS.map(item => (
-              <a
+              <NavLink
                 key={item.path}
-                href={item.path}
+                to={item.path}
                 onClick={() => setMobileOpen(false)}
-                style={styles.navLink}
+                style={({ isActive }) => ({
+                  ...styles.navLink,
+                  ...(isActive ? styles.navLinkActive : {}),
+                })}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: 20, lineHeight: 1 }}>
                   {item.icon}
                 </span>
                 <span>{item.label}</span>
-              </a>
+              </NavLink>
             ))}
           </nav>
         </div>

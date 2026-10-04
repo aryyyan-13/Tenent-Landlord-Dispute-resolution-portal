@@ -1,0 +1,532 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#e9e8e5", "on-background": "#1a1c1a", "background": "#faf9f6", "primary-container": "#1c2b39", "on-secondary-fixed": "#2c1600", "on-surface": "#1a1c1a", "surface-container": "#efeeeb", "secondary": "#865311", "inverse-on-surface": "#f1f1ee", "secondary-container": "#fdb96f", "surface-bright": "#faf9f6", "tertiary": "#091622", "surface-container-highest": "#e3e2e0", "surface-container-lowest": "#ffffff", "surface-container-low": "#f4f3f1", "inverse-surface": "#2f312f", "on-primary-container": "#8392a4", "on-tertiary-fixed-variant": "#3b4855", "on-tertiary-container": "#8592a1", "on-primary-fixed": "#0d1d2a", "on-tertiary-fixed": "#101d29", "on-primary-fixed-variant": "#394857", "secondary-fixed-dim": "#fdb96f", "on-secondary-fixed-variant": "#683c00", "on-error": "#ffffff", "surface-dim": "#dbdad7", "on-surface-variant": "#44474c", "error-container": "#ffdad6", "primary": "#061624", "surface": "#faf9f6", "error": "#ba1a1a", "surface-tint": "#516070", "tertiary-container": "#1e2b37", "on-secondary-container": "#784704", "inverse-primary": "#b8c8da", "outline-variant": "#c4c6cc", "secondary-fixed": "#ffdcbc", "outline": "#74777c", "on-tertiary": "#ffffff", "tertiary-fixed": "#d6e4f5", "surface-variant": "#e3e2e0", "tertiary-fixed-dim": "#bac8d8", "on-secondary": "#ffffff", "primary-fixed": "#d4e4f7", "on-error-container": "#93000a", "primary-fixed-dim": "#b8c8da", "on-primary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "gutter": "1.5rem", "space-xl": "2rem", "space-md": "1rem", "space-2xl": "3rem", "margin": "2rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem" }, "fontFamily": { "body-md": ["Inter"], "headline-md": ["\"Source Serif 4\""], "label-sm": ["Inter"], "headline-xl-mobile": ["\"Source Serif 4\""], "headline-lg": ["\"Source Serif 4\""], "label-lg": ["Inter"], "headline-sm": ["\"Source Serif 4\""], "body-sm": ["Inter"], "headline-lg-mobile": ["\"Source Serif 4\""], "headline-xl": ["\"Source Serif 4\""], "body-lg": ["Inter"], "label-md": ["Inter"] }, "fontSize": { "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }], "headline-md": ["1.375rem", { "lineHeight": "1.875rem", "fontWeight": "600" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "fontWeight": "500" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[260px] bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-14 px-space-md flex items-center justify-between border-b border-outline-variant"><div class="flex items-center gap-space-sm"><img alt="TLDRP Official Emblem" class="h-10 w-10 rounded-full border border-outline-variant object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X1Fm-iV3nWHOEHhXVwHDJsCT1-eJrbQXPcuaEI6xmc1SqBaKKzmx0fkBJy_J_jo5WqpN4s1PB_mekJmoaJAteXpZ7fy3SWiWBuzRbBImr7VM2e67PBVnMFH9bB4wFHGXSfzGCuWg61SoKqHCS862u-tVenTXmSfDxVMJVjyoUIsNbBeefuEq9Ge03hKPnDst_n9oYTcyaaLg7E_hPdCN-70fm7cjefNulplhX7oDKWDLIdIED81fWbksM"><div class="flex flex-col leading-none"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">TLDRP</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Civic Portal</span></div></div><span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant font-medium">v2.4</span></div><div class="px-space-md py-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Dispute Management</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="dashboard" href="#">Dashboard</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="file-dispute" href="#">File a Dispute</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="case-tracking" href="#">Case Tracking</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="hearing-room" href="#">Hearing Room</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="admin-panel" href="#">Admin Panel</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="settings-and-kyc" href="#">Settings &amp; KYC</a></nav><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Statutory Resources</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="guidelines-and-statutes" href="#">Guidelines &amp; Statutes</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="support-and-help" href="#">Support &amp; Help</a></nav></div><div class="p-space-md border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="relative flex-shrink-0"><img alt="Elena Vance, Esq." class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary-container rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col overflow-hidden min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Elena Vance, Esq.</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Senior Mediator</span></div></div><div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm pt-space-xs border-t border-surface-container"><span class="flex items-center gap-1 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span><span class="text-on-surface-variant">Ward 4 Office</span></div></div></aside><div class="pl-[260px] min-h-screen flex flex-col"><header class="fixed top-0 left-[260px] right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base leading-none text-secondary">account_balance</span>Metropolitan Housing Authority • Jurisdiction Ward 4</span></div><div class="flex items-center gap-space-lg"><div class="relative w-80"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg leading-none">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container transition-colors" placeholder="Search case number, property address, or party..." type="text"></div><a class="font-label-sm text-label-sm text-secondary hover:underline flex items-center gap-1 font-medium" href="tel:311"><span class="material-symbols-outlined text-sm leading-none">call</span>Emergency Escalation</a><div class="relative"><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl leading-none">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></div><img alt="Elena Vance, Esq." class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"></div></header><main class="w-full pt-14 flex-1 bg-surface"><div class="flex flex-col w-full">
+<div class="w-full max-w-7xl mx-auto px-margin py-space-xl flex flex-col gap-space-lg">
+<!-- Top Breadcrumb & Status Ribbon -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
+<span class="hover:text-primary transition-colors cursor-pointer">Statutory Resources</span>
+<span class="text-outline-variant font-normal">/</span>
+<span class="hover:text-primary transition-colors cursor-pointer">Municipal Tenancy Code</span>
+<span class="text-outline-variant font-normal">/</span>
+<span class="text-primary font-semibold">Guidelines &amp; Legal Statutes</span>
+</nav>
+<div class="flex items-center gap-space-sm bg-surface-container px-3 py-1.5 rounded-lg shadow-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold tracking-wide uppercase">Codex Rev. 2024.11-W4 • Legally Binding</span>
+</div>
+</div>
+<!-- Page Header Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg bg-surface-container-lowest p-space-xl rounded-xl shadow-sm">
+<div class="max-w-3xl flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-secondary font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-base">gavel</span>
+<span class="">Metropolitan Housing Ordinance • Ward 4 Legislative Directorate</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">
+          Statutory Guidelines &amp; Tenancy Ordinance Codex
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+          Official procedural rules, mediation timeframes, and municipal rental statutes governing Ward 4 jurisdiction. Impartial reference protocols certified for mediation officers, property owners, and registered tenants.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="flex items-center gap-2 bg-surface-container-low hover:bg-surface-container text-primary font-label-lg text-label-lg px-4 py-2.5 rounded transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">print</span>
+<span class="">Print Section</span>
+</button>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-5 py-2.5 rounded transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg">download</span>
+<span class="">Full Ordinance Codex (PDF)</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Ledger Bar -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row items-center gap-space-md">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl leading-none">manage_search</span>
+<input class="w-full h-11 pl-11 pr-4 bg-surface-container-low text-primary font-body-sm text-body-sm rounded focus:bg-surface-container-lowest focus:outline-none transition-colors" id="statute-search-input" placeholder="Search statutes, keyword (e.g., 'Security deposit', 'Habitability', '30-day notice'), or citation (§)..." type="text">
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-end md:self-auto">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium mr-1">Sort:</span>
+<button class="bg-surface-container px-3 py-2 rounded text-primary font-label-sm text-label-sm font-semibold">Statutory Index</button>
+<button class="hover:bg-surface-container px-3 py-2 rounded text-on-surface-variant font-label-sm text-label-sm transition-colors">Recent Amendments</button>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold mr-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_alt</span> Quick Filters:
+        </span>
+<button class="bg-primary-container text-on-primary px-3 py-1 rounded text-label-sm font-label-sm transition-all shadow-sm">
+          Tenancy Code § 8 (Active)
+        </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface px-3 py-1 rounded text-label-sm font-label-sm transition-colors">
+          ADR Rules 2024
+        </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface px-3 py-1 rounded text-label-sm font-label-sm transition-colors">
+          Eviction Moratorium Guidelines
+        </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface px-3 py-1 rounded text-label-sm font-label-sm transition-colors">
+          Treble Damages Penalties
+        </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface-variant hover:text-on-surface px-3 py-1 rounded text-label-sm font-label-sm transition-colors">
+          Heat &amp; Utility Regulations
+        </button>
+</div>
+</div>
+<!-- Main Master-Detail Ledger Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left Navigation Accordion (4 Columns) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">Codex Chapters</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">14 Chapters Total</span>
+</div>
+<!-- Accordion Module 1 (Active) -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden transition-all">
+<button class="w-full flex items-center justify-between p-3.5 text-left font-label-lg text-label-lg text-primary bg-surface-container hover:bg-surface-container-high transition-colors" type="button">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">folder_open</span>
+<span class="font-bold">Chapter 8: Security Deposit Escrow</span>
+</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_less</span>
+</button>
+<div class="flex flex-col py-1.5 px-2 bg-surface-container-low">
+<a class="flex items-center justify-between px-3 py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#sec-8-1">
+<span class="">§ 8.1 Interest Accrual Requirements</span>
+<span class="font-label-sm text-label-sm text-outline">p. 42</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#sec-8-2">
+<span class="">§ 8.2 Escrow Bank Disclosures</span>
+<span class="font-label-sm text-label-sm text-outline">p. 44</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#sec-8-3">
+<span class="">§ 8.3 Itemized Deductions Standard</span>
+<span class="font-label-sm text-label-sm text-outline">p. 48</span>
+</a>
+<div class="flex items-center justify-between px-3 py-2.5 rounded bg-primary text-on-primary font-body-sm font-medium shadow-sm">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+<span class="">§ 8.4(b) Deposit Restitution Timelines</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed">Active</span>
+</div>
+<a class="flex items-center justify-between px-3 py-2 rounded text-body-sm font-body-sm text-on-surface-variant hover:bg-surface-container transition-colors" href="#sec-8-5">
+<span class="">§ 8.5 Successor Landlord Liability</span>
+<span class="font-label-sm text-label-sm text-outline">p. 56</span>
+</a>
+</div>
+</div>
+<!-- Accordion Module 2 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden">
+<button class="w-full flex items-center justify-between p-3.5 text-left font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg">folder</span>
+<span class="">Chapter 9: Maintenance &amp; Habitability</span>
+</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span>
+</button>
+</div>
+<!-- Accordion Module 3 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden">
+<button class="w-full flex items-center justify-between p-3.5 text-left font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg">folder</span>
+<span class="">Chapter 14: Dispute Conciliation Protocols</span>
+</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span>
+</button>
+</div>
+<!-- Accordion Module 4 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden">
+<button class="w-full flex items-center justify-between p-3.5 text-left font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg">folder</span>
+<span class="">Chapter 18: Eviction Pre-condition Filings</span>
+</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span>
+</button>
+</div>
+<!-- Accordion Module 5 -->
+<div class="rounded-lg bg-surface-container-low overflow-hidden">
+<button class="w-full flex items-center justify-between p-3.5 text-left font-label-lg text-label-lg text-on-surface hover:bg-surface-container transition-colors" type="button">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-lg">folder</span>
+<span class="">Chapter 22: Rent Control &amp; Annual Caps</span>
+</span>
+<span class="material-symbols-outlined text-on-surface-variant text-base">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Municipal Authority Advisory Badge Card -->
+<div class="bg-secondary-fixed text-on-secondary-fixed p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<span class="font-label-lg text-label-lg font-bold">Binding Ward 4 Jurisprudence</span>
+</div>
+<p class="font-body-sm text-body-sm leading-relaxed text-on-secondary-fixed/90">
+            Mediated settlements through TLDRP carry identical legal standing to small claims municipal judgements pursuant to Ward 4 Civ. Proc. § 108.
+          </p>
+<div class="pt-2">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm font-bold text-secondary underline hover:text-on-secondary-fixed transition-colors" href="#">
+              View Directorate Seal of Compliance →
+            </a>
+</div>
+</div>
+<!-- Quick Citation Lookup Helper -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs">
+<span class="font-label-md text-label-md text-primary font-bold">Citation Direct Jump</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Enter exact section identifier to isolate legislative history.</p>
+<div class="flex gap-2 mt-1">
+<input class="flex-1 h-9 px-3 bg-surface-container-low rounded font-body-sm text-body-sm text-primary focus:outline-none focus:bg-surface-container" placeholder="e.g. § 8.4(b)" type="text">
+<button class="bg-primary text-on-primary px-3 rounded font-label-sm text-label-sm font-semibold hover:bg-primary-container">Go</button>
+</div>
+</div>
+</aside>
+<!-- Right Main Reading Ledger (8 Columns) -->
+<main class="lg:col-span-8 flex flex-col gap-space-xl">
+<!-- Featured Statute Article Ledger Card -->
+<article class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm flex flex-col gap-space-lg">
+<!-- Article Metadata Topline -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="bg-primary-fixed text-on-primary-fixed px-2.5 py-1 rounded font-label-sm text-label-sm font-bold">
+                MUNICIPAL CODE § 8.4(b)
+              </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">
+                Enacted Oct 2021 • Amended Jun 2024
+              </span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container transition-colors" title="Bookmark Section">
+<span class="material-symbols-outlined text-lg">bookmark</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container transition-colors" title="Copy Citation Link">
+<span class="material-symbols-outlined text-lg">link</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container transition-colors" title="Share Statute">
+<span class="material-symbols-outlined text-lg">share</span>
+</button>
+</div>
+</div>
+<!-- Section Heading -->
+<div class="flex flex-col gap-1">
+<h2 class="font-headline-lg text-headline-lg text-primary">
+              Mandatory Security Deposit Restitution, Interest Computations, and Treble Damages Timelines
+            </h2>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span class="">Jurisdiction: Ward 4 Residential Leases</span>
+<span class="">•</span>
+<span class="text-secondary font-medium">Standard Penalty Provision: Treble Default</span>
+</div>
+</div>
+<!-- Official Legislative Text -->
+<div class="flex flex-col gap-space-sm bg-surface-container-low p-space-lg rounded-xl">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">verified</span> Certified Legislative Text
+              </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant italic">Vol. 44, Sec. 18-b</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-primary font-normal italic leading-relaxed">
+              “(1) Upon tenant surrender of the premises and return of all keys or access devices, the lessor shall have a strict statutory window of precisely thirty (30) calendar days to transmit either (A) the entire escrowed security deposit sum with statutory municipal interest accrued, or (B) a verified itemized ledger enumerating reasonable deductions for actual damages beyond standard wear and tear, accompanied by exact receipts and unexpended residual balances.”
+            </p>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+              “(2) Failure of the lessor to remit the full security deposit or itemized notification within forty-five (45) calendar days from receipt of written demand by registered mail or verified TLDRP civic portal filing constitutes prima facie evidence of bad faith. Upon such finding by the neutral hearing officer, the lessor shall be mandatorily assessed statutory treble damages (300% of the withheld amount), plus reasonable mediation administration costs and statutory interest computed at 5.25% per annum.”
+            </p>
+</div>
+<!-- Plain-Language Interpretation Summary Box -->
+<div class="bg-surface-container p-space-lg rounded-xl flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-secondary text-xl">psychology_alt</span>
+<span class="font-label-lg text-label-lg font-bold">Plain-Language Translation: What This Means for You</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-secondary text-base">person</span>
+<span class="">For Tenants</span>
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-1.5 list-disc pl-4">
+<li class="">You must receive your deposit back or a detailed list of deductions within <strong>30 calendar days</strong> of turning in keys.</li>
+<li class="">Landlords cannot deduct for normal wear and tear (such as faded paint or minor scuffs).</li>
+<li class="">If 45 days pass without restitution or legitimate deductions, you qualify to file a TLDRP claim for <strong>3x the withheld amount</strong>.</li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex flex-col gap-space-xs shadow-sm">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-primary font-semibold">
+<span class="material-symbols-outlined text-primary text-base">real_estate_agent</span>
+<span class="">For Property Owners / Landlords</span>
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant flex flex-col gap-1.5 list-disc pl-4">
+<li class="">Deductions require itemized receipts or contractor estimates attached directly to the move-out ledger.</li>
+<li class="">All escrow funds must have accrued the municipal minimum interest rate (currently 2.1% base).</li>
+<li class="">Missing the 30-day notice window completely invalidates right to deduct from escrowed deposit amounts.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Statutory Calculation Formula Visualization -->
+<div class="flex flex-col gap-space-sm">
+<span class="font-label-md text-label-md text-primary font-bold uppercase tracking-wider">
+              Statutory Damage Calculation Protocol
+            </span>
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Standard Statutory Settlement Formula (§ 8.4.2)</span>
+<div class="font-headline-md text-headline-md text-primary tracking-tight flex items-center gap-2">
+<code class="bg-surface-container-lowest px-3 py-1 rounded text-primary font-mono text-body-md font-bold">P = (D × 3.0) + (I × Y) + C</code>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Where: D = Withheld Deposit, I = 5.25% Statutory Interest, Y = Years withheld, C = $150 Conciliation Fee</span>
+</div>
+<div class="bg-secondary-fixed text-on-secondary-fixed px-4 py-3 rounded-lg text-center shrink-0">
+<div class="font-label-sm text-label-sm uppercase font-semibold">Sample Assessment</div>
+<div class="font-headline-md text-headline-md font-bold text-secondary">$5,550.00</div>
+<div class="font-label-sm text-label-sm text-on-secondary-fixed/80">on $1,800 withheld deposit</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Interactive Statutory Timeline Calculator Widget -->
+<section class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">calendar_month</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Interactive Statutory Timeline Calculator</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Select official lease surrender date to calculate non-negotiable legal milestones under § 8.4.</p>
+</div>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded text-label-sm font-label-sm font-semibold">Ward 4 Calendar Rules</span>
+</div>
+<!-- Date Selector Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md bg-surface-container-low p-space-md rounded-xl items-center">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-medium" for="move-out-date">Key Handover / Surrender Date</label>
+<input class="h-10 px-3 bg-surface-container-lowest rounded text-body-sm font-body-sm text-primary focus:outline-none" id="move-out-date" type="date" value="2024-10-01">
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-medium" for="deposit-amount">Original Security Deposit Sum ($)</label>
+<input class="h-10 px-3 bg-surface-container-lowest rounded text-body-sm font-body-sm text-primary focus:outline-none" id="deposit-amount" type="number" value="2100">
+</div>
+<div class="flex items-end">
+<button class="w-full h-10 bg-primary hover:bg-primary-container text-on-primary rounded font-label-lg text-label-lg transition-colors flex items-center justify-center gap-2 shadow-sm" id="recalc-btn" type="button">
+<span class="material-symbols-outlined text-base">sync</span>
+<span class="">Recalculate Deadlines</span>
+</button>
+</div>
+</div>
+<!-- Calculated Interactive Milestones Spine -->
+<div class="flex flex-col gap-space-md relative pl-2">
+<!-- Continuous Hairline Spine Visual -->
+<div class="absolute left-6 top-4 bottom-4 w-0.5 bg-surface-container-highest"></div>
+<!-- Milestone 1 -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center shrink-0 z-10 font-label-md font-bold text-label-md shadow-sm">
+                0d
+              </div>
+<div class="flex-1 bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="font-label-lg text-label-lg text-primary font-semibold flex items-center gap-2">
+<span class="">Key Return &amp; Property Surrender</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-sm text-on-surface-variant">Baseline</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Formal surrender logged with property agent.</p>
+</div>
+<div class="text-right sm:shrink-0">
+<span class="font-label-md text-label-md text-primary font-bold" id="milestone-day0">Oct 01, 2024</span>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Confirmed Handover</div>
+</div>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 z-10 font-label-md font-bold text-label-md shadow-sm">
+                30d
+              </div>
+<div class="flex-1 bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="font-label-lg text-label-lg text-primary font-semibold flex items-center gap-2">
+<span class="">Mandatory Deposit Restitution or Accounting</span>
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded text-label-sm font-semibold">Strict Deadline</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Landlord must deliver funds or itemized invoices by this date.</p>
+</div>
+<div class="text-right sm:shrink-0">
+<span class="font-label-md text-label-md text-secondary font-bold" id="milestone-day30">Oct 31, 2024</span>
+<div class="font-label-sm text-label-sm text-on-surface-variant">End of 30-Day Window</div>
+</div>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 z-10 font-label-md font-bold text-label-md shadow-sm">
+                45d
+              </div>
+<div class="flex-1 bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="font-label-lg text-label-lg text-primary font-semibold flex items-center gap-2">
+<span class="">Formal Grievance Filing Window Opens</span>
+<span class="bg-primary text-on-primary px-2 py-0.5 rounded text-label-sm font-semibold">Portal Action</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Tenant can officially initiate Form DIR-104 arbitration hearing.</p>
+</div>
+<div class="text-right sm:shrink-0">
+<span class="font-label-md text-label-md text-primary font-bold" id="milestone-day45">Nov 15, 2024</span>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Conciliation Eligibility</div>
+</div>
+</div>
+</div>
+<!-- Milestone 4 -->
+<div class="relative flex items-start gap-space-md">
+<div class="w-9 h-9 rounded-full bg-error-container text-on-error-container flex items-center justify-center shrink-0 z-10 font-label-md font-bold text-label-md shadow-sm">
+                60d
+              </div>
+<div class="flex-1 bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<div class="font-label-lg text-label-lg text-error font-semibold flex items-center gap-2">
+<span class="">Treble Damages Statutory Accrual Threshold</span>
+<span class="bg-error text-on-error px-2 py-0.5 rounded text-label-sm font-semibold">Statutory Bad Faith</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Presumption of bad faith attaches. Restitution multiplies to 300% ($6,300.00).</p>
+</div>
+<div class="text-right sm:shrink-0">
+<span class="font-label-md text-label-md text-error font-bold" id="milestone-day60">Nov 30, 2024</span>
+<div class="font-label-sm text-label-sm text-error">Treble Penalty Active</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Downloadable Civic Regulatory Packs -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">folder_special</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Certified Civic Regulatory Packs</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Direct Municipal Artifacts</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Download Item 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between gap-space-md hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary">
+<span class="material-symbols-outlined text-2xl">description</span>
+<span class="font-mono text-label-sm font-bold bg-surface-container px-2 py-0.5 rounded">PDF • 1.4 MB</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-primary font-bold">Form DIR-104 Instruction Booklet</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Step-by-step procedural manual for drafting deposit recovery submissions, verified receipts, and inspection proofs.
+                </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">v2024.3 Public Ed.</span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md font-bold text-secondary hover:text-primary transition-colors" href="#">
+<span class="">Download</span>
+<span class="material-symbols-outlined text-base">download</span>
+</a>
+</div>
+</div>
+<!-- Download Item 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between gap-space-md hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary">
+<span class="material-symbols-outlined text-2xl">balance</span>
+<span class="font-mono text-label-sm font-bold bg-surface-container px-2 py-0.5 rounded">PDF • 680 KB</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-primary font-bold">Standard Mediation Ground Rules</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Confidentiality commitments, party conduct regulations, and pre-hearing disclosure obligations for virtual conciliation rooms.
+                </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Neutral Hearing Div.</span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md font-bold text-secondary hover:text-primary transition-colors" href="#">
+<span class="">Download</span>
+<span class="material-symbols-outlined text-base">download</span>
+</a>
+</div>
+</div>
+<!-- Download Item 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between gap-space-md hover:bg-surface-container-low transition-colors">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-secondary">
+<span class="material-symbols-outlined text-2xl">table_chart</span>
+<span class="font-mono text-label-sm font-bold bg-surface-container px-2 py-0.5 rounded">XLSX • 340 KB</span>
+</div>
+<h4 class="font-label-lg text-label-lg text-primary font-bold">2024 Ward 4 Rent Adjustment Ledger</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Municipal CPI statutory matrix and maximum permissible allowable capital improvement adjustments for multifamily units.
+                </p>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Annual Gazetted</span>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md font-bold text-secondary hover:text-primary transition-colors" href="#">
+<span class="">Download</span>
+<span class="material-symbols-outlined text-base">download</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Legal Disclaimer Footer Strip -->
+<div class="bg-surface-container p-space-md rounded-xl flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base">info</span>
+<span class="font-label-sm text-label-sm">
+          Civic Legal Notice: This Codex presents codified law under Ward 4 Housing Authority statutes and does not substitute for independent legal counsel.
+        </span>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Ordinance Errata Log</a>
+<a class="font-label-sm text-label-sm text-secondary hover:underline" href="#">Municipal Code Clerk Contact</a>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple interactive timeline recalculator
+  (function initCodexCalculator() {
+    const dateInput = document.getElementById('move-out-date');
+    const depositInput = document.getElementById('deposit-amount');
+    const recalcBtn = document.getElementById('recalc-btn');
+
+    function formatDate(d) {
+      return d.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+    }
+
+    function recalculate() {
+      if (!dateInput.value) return;
+      const baseDate = new Date(dateInput.value + 'T00:00:00');
+      
+      const day30 = new Date(baseDate);
+      day30.setDate(baseDate.getDate() + 30);
+      
+      const day45 = new Date(baseDate);
+      day45.setDate(baseDate.getDate() + 45);
+
+      const day60 = new Date(baseDate);
+      day60.setDate(baseDate.getDate() + 60);
+
+      document.getElementById('milestone-day0').textContent = formatDate(baseDate);
+      document.getElementById('milestone-day30').textContent = formatDate(day30);
+      document.getElementById('milestone-day45').textContent = formatDate(day45);
+      document.getElementById('milestone-day60').textContent = formatDate(day60);
+    }
+
+    if (recalcBtn) {
+      recalcBtn.addEventListener('click', recalculate);
+    }
+    if (dateInput) {
+      dateInput.addEventListener('change', recalculate);
+    }
+  })();
+</script></main></div>
+
+</body></html>

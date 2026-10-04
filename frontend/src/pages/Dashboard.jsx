@@ -146,6 +146,35 @@ export default function Dashboard() {
           </div>
         </header>
 
+        {/* ── Scheduled Hearing Notice Banner (Stitch) ── */}
+        {mediationCases.length > 0 && (
+          <section className="card" style={{ padding: 'var(--space-md) var(--space-lg)', background: 'var(--color-surface-container-low)', borderRadius: 'var(--radius)', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16, marginBottom: 'var(--space-lg)', borderLeft: '4px solid var(--color-secondary)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              <div style={{ width: 40, height: 40, borderRadius: 8, background: 'var(--color-secondary-fixed)', color: 'var(--color-on-secondary-fixed)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 22 }}>event_available</span>
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 2 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--color-secondary)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Hearing Notice</span>
+                  <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--color-secondary)' }} />
+                  <span style={{ fontSize: 12, color: 'var(--color-on-surface-variant)' }}>Chambers 2B / Remote Hybrid</span>
+                </div>
+                <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: 500, color: 'var(--color-on-surface)' }}>
+                  Mediation Session Active: <strong style={{ color: 'var(--color-primary)' }}>Case #{mediationCases[0].case_number}</strong> convenes with Mediator Elena Vance, Esq.
+                </p>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
+              <button className="btn btn-sm btn-outline" onClick={() => navigate(`/cases/${mediationCases[0].id}`)}>
+                View Schedule
+              </button>
+              <button className="btn btn-sm btn-primary" onClick={() => navigate(`/cases/${mediationCases[0].id}`)}>
+                Join Hearing Room
+              </button>
+            </div>
+          </section>
+        )}
+
         {/* ── Role-Specific Action Banners ── */}
         {(role === 'tenant' || role === 'landlord') && mediationCases.length > 0 && (
           <div className="card" style={{ padding: 'var(--space-md) var(--space-lg)', background: 'linear-gradient(135deg, rgba(254, 243, 199, 0.6) 0%, rgba(253, 230, 138, 0.35) 100%)', border: '1px solid #f59e0b', borderLeft: '6px solid #d97706', marginBottom: 'var(--space-lg)', borderRadius: 'var(--radius)' }}>
@@ -332,7 +361,13 @@ export default function Dashboard() {
                         </span>
                       </td>
                       <td style={s.td}>
-                        <span className={`badge ${st.cls}`}>{st.label}</span>
+                        <span className={`status-pill ${
+                          d.case_status === 'open_mediation' ? 'status-pill--in-progress' :
+                          d.case_status?.startsWith('resolved') ? 'status-pill--resolved' :
+                          isEsc ? 'status-pill--escalated' : 'status-pill--review'
+                        }`}>
+                          {st.label}
+                        </span>
                       </td>
                       <td style={{ ...s.td, textAlign: 'right' }}>
                         <button

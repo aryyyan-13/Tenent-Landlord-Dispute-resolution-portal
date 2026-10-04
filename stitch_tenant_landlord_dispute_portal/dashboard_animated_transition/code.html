@@ -1,0 +1,1031 @@
+<!DOCTYPE html><html lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Dignified Civic Entrance Animation Styles */
+@media (prefers-reduced-motion: no-preference) {
+  /* Top Portal Progress Bar */
+  .civic-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #865311, #fdb96f, #061624);
+    z-index: 100;
+    width: 0%;
+    opacity: 0;
+    transition: width 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  }
+  .civic-progress-bar.animate-progress {
+    width: 100%;
+    opacity: 1;
+  }
+  .civic-progress-bar.fade-out {
+    opacity: 0;
+    transition: opacity 0.4s ease 0.2s;
+  }
+
+  /* Left Sidebar Smooth In */
+  .anim-sidebar {
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  }
+  .anim-sidebar.is-entered {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Header Fade In */
+  .anim-header {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  }
+  .anim-header.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Main Title Block */
+  .anim-hero-text {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  }
+  .anim-hero-text.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* KPI Cards Stagger */
+  .anim-kpi-card {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  }
+  .anim-kpi-card.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Urgent Notice Banner Gentle Slide-down */
+  .anim-hearing-banner {
+    opacity: 0;
+    transform: translateY(-12px);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  }
+  .anim-hearing-banner.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Table Container and Rows Stagger */
+  .anim-table-section {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s ease;
+  }
+  .anim-table-section.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .anim-row {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  }
+  .anim-row.is-entered {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Bottom Resource Cards */
+  .anim-resource-card {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
+  }
+  .anim-resource-card.is-entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#e9e8e5", "on-background": "#1a1c1a", "background": "#faf9f6", "primary-container": "#1c2b39", "on-secondary-fixed": "#2c1600", "on-surface": "#1a1c1a", "surface-container": "#efeeeb", "secondary": "#865311", "inverse-on-surface": "#f1f1ee", "secondary-container": "#fdb96f", "surface-bright": "#faf9f6", "tertiary": "#091622", "surface-container-highest": "#e3e2e0", "surface-container-lowest": "#ffffff", "surface-container-low": "#f4f3f1", "inverse-surface": "#2f312f", "on-primary-container": "#8392a4", "on-tertiary-fixed-variant": "#3b4855", "on-tertiary-container": "#8592a1", "on-primary-fixed": "#0d1d2a", "on-tertiary-fixed": "#101d29", "on-primary-fixed-variant": "#394857", "secondary-fixed-dim": "#fdb96f", "on-secondary-fixed-variant": "#683c00", "on-error": "#ffffff", "surface-dim": "#dbdad7", "on-surface-variant": "#44474c", "error-container": "#ffdad6", "primary": "#061624", "surface": "#faf9f6", "error": "#ba1a1a", "surface-tint": "#516070", "tertiary-container": "#1e2b37", "on-secondary-container": "#784704", "inverse-primary": "#b8c8da", "outline-variant": "#c4c6cc", "secondary-fixed": "#ffdcbc", "outline": "#74777c", "on-tertiary": "#ffffff", "tertiary-fixed": "#d6e4f5", "surface-variant": "#e3e2e0", "tertiary-fixed-dim": "#bac8d8", "on-secondary": "#ffffff", "primary-fixed": "#d4e4f7", "on-error-container": "#93000a", "primary-fixed-dim": "#b8c8da", "on-primary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "gutter": "1.5rem", "space-xl": "2rem", "space-md": "1rem", "space-2xl": "3rem", "margin": "2rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem" }, "fontFamily": { "body-md": ["Inter"], "headline-md": ["\"Source Serif 4\""], "label-sm": ["Inter"], "headline-xl-mobile": ["\"Source Serif 4\""], "headline-lg": ["\"Source Serif 4\""], "label-lg": ["Inter"], "headline-sm": ["\"Source Serif 4\""], "body-sm": ["Inter"], "headline-lg-mobile": ["\"Source Serif 4\""], "headline-xl": ["\"Source Serif 4\""], "body-lg": ["Inter"], "label-md": ["Inter"] }, "fontSize": { "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }], "headline-md": ["1.375rem", { "lineHeight": "1.875rem", "fontWeight": "600" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "fontWeight": "500" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+<!-- Portal Top Loading / Reveal Progress Bar -->
+<div aria-hidden="true" class="civic-progress-bar animate-progress fade-out" id="civicProgressBar" style="width: 0%; opacity: 1;"></div>
+<div id="sidebarBackdrop" onclick="toggleMobileSidebar()" class="fixed inset-0 bg-primary/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity"></div><aside class="anim-sidebar fixed left-0 top-0 h-screen w-[260px] bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col justify-between select-none is-entered -translate-x-full lg:translate-x-0 transition-transform duration-300 shadow-2xl lg:shadow-none" id="mainSidebar"><div class="flex flex-col"><div class="h-14 px-space-md flex items-center justify-between border-b border-outline-variant"><div class="flex items-center gap-space-sm"><img alt="TLDRP Civic Portal Logo" class="h-8 w-8 object-contain rounded-full" src="https://lh3.googleusercontent.com/aida/AEtjO1X1Fm-iV3nWHOEHhXVwHDJsCT1-eJrbQXPcuaEI6xmc1SqBaKKzmx0fkBJy_J_jo5WqpN4s1PB_mekJmoaJAteXpZ7fy3SWiWBuzRbBImr7VM2e67PBVnMFH9bB4wFHGXSfzGCuWg61SoKqHCS862u-tVenTXmSfDxVMJVjyoUIsNbBeefuEq9Ge03hKPnDst_n9oYTcyaaLg7E_hPdCN-70fm7cjefNulplhX7oDKWDLIdIED81fWbksM"><div class="flex flex-col leading-none"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">TLDRP</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Civic Portal</span></div></div><div class="flex items-center gap-1.5"><span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant font-medium">v2.4</span><button type="button" onclick="toggleMobileSidebar()" class="lg:hidden p-1 rounded hover:bg-surface-container text-on-surface-variant" aria-label="Close Menu"><span class="material-symbols-outlined text-xl">close</span></button></div></div><div class="px-space-md py-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Dispute Management</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-2 transition-colors rounded-lg bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container" data-path="dashboard" href="#"><span class="material-symbols-outlined text-lg leading-none">grid_view</span><span class="">Dashboard</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="file-dispute" href="#"><span class="material-symbols-outlined text-lg leading-none">gavel</span><span class="">File a Dispute</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="case-tracking" href="#"><span class="material-symbols-outlined text-lg leading-none">folder_shared</span><span class="">Case Tracking</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="admin-panel" href="#"><span class="material-symbols-outlined text-lg leading-none">verified_user</span><span class="">Admin Panel</span></a></nav><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Statutory Resources</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="guidelines-and-statutes" href="#"><span class="material-symbols-outlined text-lg leading-none">menu_book</span><span class="">Guidelines &amp; Statutes</span></a><a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="support-and-help" href="#"><span class="material-symbols-outlined text-lg leading-none">help_outline</span><span class="">Support &amp; Help</span></a></nav></div><div class="p-space-md border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary-container rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col overflow-hidden min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Elena Vance, Esq.</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Senior Mediator</span></div></div><div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm pt-space-xs border-t border-surface-container"><span class="flex items-center gap-1 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span><span class="text-on-surface-variant">Ward 4 Office</span></div></div></aside><div class="pl-0 lg:pl-[260px] min-h-screen flex flex-col transition-all"><header class="anim-header fixed top-0 left-0 lg:left-[260px] right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-3 sm:px-space-md lg:px-space-xl is-entered" id="portalHeader"><div class="flex items-center gap-2 sm:gap-space-md min-w-0"><button type="button" onclick="toggleMobileSidebar()" class="lg:hidden p-1.5 rounded hover:bg-surface-container text-primary flex items-center justify-center flex-shrink-0" aria-label="Open navigation menu"><span class="material-symbols-outlined text-2xl">menu</span></button><div class="flex items-center gap-2 min-w-0"><img alt="TLDRP Emblem" class="h-7 w-7 object-contain rounded-full flex-shrink-0 lg:hidden" src="https://lh3.googleusercontent.com/aida/AEtjO1X1Fm-iV3nWHOEHhXVwHDJsCT1-eJrbQXPcuaEI6xmc1SqBaKKzmx0fkBJy_J_jo5WqpN4s1PB_mekJmoaJAteXpZ7fy3SWiWBuzRbBImr7VM2e67PBVnMFH9bB4wFHGXSfzGCuWg61SoKqHCS862u-tVenTXmSfDxVMJVjyoUIsNbBeefuEq9Ge03hKPnDst_n9oYTcyaaLg7E_hPdCN-70fm7cjefNulplhX7oDKWDLIdIED81fWbksM"><span class="font-label-sm sm:font-label-md text-on-surface-variant flex items-center gap-1 font-medium truncate"><span class="material-symbols-outlined text-base text-secondary flex-shrink-0 hidden xs:inline">account_balance</span><span class="truncate">Metro Housing • Ward 4</span></span></div></div><div class="flex items-center gap-1.5 sm:gap-space-md lg:gap-space-lg flex-shrink-0"><div class="relative hidden sm:block w-36 md:w-56 lg:w-72"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-base sm:text-lg leading-none">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container transition-colors" placeholder="Search case, address..." type="text"></div><button class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded border border-outline-variant bg-surface-container-low hover:bg-surface-container hover:border-secondary text-primary font-label-sm text-label-sm font-medium transition-all shadow-sm active:scale-95" id="btnSimulateTransition" title="Test entrance animation sequence"><span class="material-symbols-outlined text-base text-secondary animate-pulse">refresh</span><span class="hidden lg:inline">Simulate Re-login Transition</span><span class="lg:hidden">Re-login</span></button><a class="font-label-sm text-secondary hover:underline flex items-center gap-1 font-medium p-1 sm:p-0" href="tel:311" title="Emergency Escalation"><span class="material-symbols-outlined text-base leading-none text-error">emergency</span><span class="hidden md:inline text-error font-semibold">Emergency Escalation</span></a><div class="relative"><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-xl leading-none">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></div><img alt="Profile" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover border border-outline-variant flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"></div></header><main class="w-full pt-14 flex-1 bg-surface"><div class="max-w-7xl mx-auto p-4 sm:p-space-md lg:p-space-xl"><div class="flex flex-col w-full">
+<!-- Page Header -->
+<header class="anim-hero-text flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl is-entered" id="dashHero">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span class="">Ward 4 Registry</span>
+<span class="">•</span>
+<span class="">Docket Session Q2</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary font-normal tracking-tight">
+        Dispute resolution dashboard
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Active civic filings and scheduled mediation hearings under Metropolitan Housing Jurisdiction.
+      </p>
+</div>
+<div class="flex items-stretch sm:items-center gap-2 sm:gap-space-sm w-full sm:w-auto self-stretch md:self-auto">
+<button class="inline-flex items-center gap-2 bg-surface-container-lowest text-primary hover:bg-surface-container-low px-4 py-2 rounded shadow-sm text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-base">download</span>
+<span class="">Export Docket</span>
+</button>
+<button class="inline-flex items-center gap-2 bg-secondary text-on-secondary hover:bg-secondary/90 px-4 py-2 rounded shadow-sm text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-base leading-none">add</span>
+<span class="">File a new dispute</span>
+</button>
+</div>
+</header>
+<!-- Metric Overview Cards -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-md lg:gap-space-lg mb-space-xl" id="kpiGrid">
+<!-- Card 1: Total Cases -->
+<div class="anim-kpi-card bg-surface-container-lowest rounded p-5 relative overflow-hidden shadow-sm flex flex-col justify-between is-entered">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-medium">Total cases</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary">128</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">registered</span>
+</div>
+</div>
+<span class="p-2 rounded bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl">folder</span>
+</span>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-medium">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+          +12 this month
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ward 4 caseload</span>
+</div>
+</div>
+<!-- Card 2: Active Cases -->
+<div class="anim-kpi-card bg-surface-container-lowest rounded p-5 relative overflow-hidden shadow-sm flex flex-col justify-between is-entered">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary-container"></div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-medium">Active cases</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-secondary">42</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">pending resolution</span>
+</div>
+</div>
+<span class="p-2 rounded bg-secondary-fixed/50 text-secondary">
+<span class="material-symbols-outlined text-xl">gavel</span>
+</span>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span class="font-label-sm text-label-sm text-on-surface">18 in active mediation</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">24 under initial review</span>
+</div>
+</div>
+<!-- Card 3: Resolved Cases -->
+<div class="anim-kpi-card bg-surface-container-lowest rounded p-5 relative overflow-hidden shadow-sm flex flex-col justify-between is-entered">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-medium">Resolved cases</span>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-headline-xl text-headline-xl text-primary">86</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">successfully mediated</span>
+</div>
+</div>
+<span class="p-2 rounded bg-surface-container-low text-primary">
+<span class="material-symbols-outlined text-xl">verified</span>
+</span>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between text-body-sm font-body-sm">
+<span class="font-label-sm text-label-sm text-primary font-semibold inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">task_alt</span>
+          67.2% amicable settlement rate
+        </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">YTD average</span>
+</div>
+</div>
+</section>
+<!-- Scheduled Hearing Notice Banner -->
+<section class="anim-hearing-banner bg-surface-container-low rounded p-3 sm:p-4 mb-space-xl relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 shadow-sm" id="hearingNoticeBanner">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-9 h-9 rounded bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed flex-shrink-0">
+<span class="material-symbols-outlined text-xl">event_available</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold text-secondary">Hearing notice</span>
+<span class="w-1 h-1 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Courtroom 2B / Remote Hybrid</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">
+          Mediation Session Scheduled: <span class="font-semibold">Case #2024-089 (Oakwood Apts)</span> convenes Thursday, 2:00 PM EST with Mediator Elena Vance.
+        </p>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 w-full md:w-auto justify-end">
+<button class="bg-surface-container-lowest text-primary hover:bg-surface-container px-3 py-1.5 rounded font-label-sm text-label-sm transition-colors shadow-sm">
+        Reschedule
+      </button>
+<button class="bg-primary text-on-primary hover:bg-primary/90 px-3 py-1.5 rounded font-label-sm text-label-sm transition-colors shadow-sm">
+        Join Hearing Room
+      </button>
+</div>
+</section>
+<!-- Recent Cases Worklist Section -->
+<section class="anim-table-section bg-surface-container-lowest rounded shadow-sm flex flex-col is-entered" id="caseTableContainer">
+<!-- Section Toolbar: Tabs & Search -->
+<div class="p-space-lg bg-surface-container-lowest flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="space-y-1">
+<h2 class="font-headline-md text-headline-md text-primary font-normal">Recent case activity</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Review filings, upcoming mediation milestones, and official registry updates.</p>
+</div>
+<!-- Filter Controls -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
+<!-- Filter Tabs -->
+<nav class="flex items-center bg-surface-container-low p-1 rounded font-label-sm text-label-sm overflow-x-auto max-w-full space-x-1" id="caseFilters">
+<button class="filter-tab px-3 py-1.5 rounded bg-surface-container-lowest text-primary font-semibold shadow-sm transition-all" data-filter="all">All disputes</button>
+<button class="filter-tab px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface transition-all" data-filter="tenancy">Tenancy claims</button>
+<button class="filter-tab px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface transition-all" data-filter="landlord">Landlord claims</button>
+<button class="filter-tab px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface transition-all" data-filter="attention">Requires attention</button>
+</nav>
+<!-- Live Case Filter Bar -->
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">filter_list</span>
+<input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low rounded text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-lowest transition-colors" id="tableSearch" placeholder="Filter current list..." type="text">
+</div>
+</div>
+</div>
+<!-- Case Table View -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse" id="docketTable">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-3 px-space-md font-semibold">Case ID &amp; Property</th>
+<th class="py-3 px-space-md font-semibold">Category</th>
+<th class="py-3 px-space-md font-semibold">Parties involved</th>
+<th class="py-3 px-space-md font-semibold">Assigned mediator</th>
+<th class="py-3 px-space-md font-semibold">Next step / Deadline</th>
+<th class="py-3 px-space-md font-semibold">Status</th>
+<th class="py-3 px-space-md text-right font-semibold">Docket action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-sm">
+<!-- Case 1 -->
+<tr class="anim-row hover:bg-surface-container-low/50 transition-colors group bg-surface-container-lowest is-entered" data-category="tenancy" data-status="attention">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">#2024-0142</span>
+<span class="font-body-sm text-body-sm text-on-surface mt-0.5">412 Elm St Apt 4B</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[220px]">Unreturned security deposit</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                Security deposit
+              </span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Marcus Reid <span class="text-on-surface-variant font-normal">(Tenant)</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs. Sterling Mgmt <span class="text-on-surface-variant font-normal">(Landlord)</span></span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs font-semibold text-primary">EV</div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Elena Vance, Esq.</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-1.5 text-secondary font-medium font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-base">schedule</span>
+<span class="">Hearing in 2 days</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="inline-flex items-center gap-1.5 pl-2 pr-3 py-1 rounded bg-secondary-fixed/40 text-on-secondary-fixed text-label-sm font-label-sm font-medium relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<span class="">In mediation</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-right">
+<a class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold hover:text-on-secondary-fixed transition-colors" href="#">
+<span class="">View details</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Case 2 -->
+<tr class="anim-row hover:bg-surface-container-low/50 transition-colors group bg-surface-container-low/30 is-entered" data-category="landlord" data-status="resolved">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">#2024-0139</span>
+<span class="font-body-sm text-body-sm text-on-surface mt-0.5">88 Grand Ave Suite 12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[220px]">Routine maintenance dispute</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                Habitability
+              </span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Grand Heights LLC <span class="text-on-surface-variant font-normal">(Landlord)</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs. Sarah Chen <span class="text-on-surface-variant font-normal">(Tenant)</span></span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs font-semibold text-primary">JM</div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Judge Mercer</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Case closed on 05/18</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="inline-flex items-center gap-1.5 pl-2 pr-3 py-1 rounded bg-surface-container-high text-primary text-label-sm font-label-sm font-medium relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<span class="">Resolved</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-right">
+<a class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold hover:text-on-secondary-fixed transition-colors" href="#">
+<span class="">View details</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Case 3 -->
+<tr class="anim-row hover:bg-surface-container-low/50 transition-colors group bg-surface-container-lowest is-entered" data-category="tenancy" data-status="attention">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">#2024-0128</span>
+<span class="font-body-sm text-body-sm text-on-surface mt-0.5">1024 Belmont St #2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[220px]">Unlawful eviction notice</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm">
+                Eviction protection
+              </span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">David Alvarez <span class="text-on-surface-variant font-normal">(Tenant)</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs. Apex Horizons Inc <span class="text-on-surface-variant font-normal">(Landlord)</span></span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs font-semibold text-primary">EV</div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Elena Vance, Esq.</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-1.5 text-error font-medium font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-base">warning</span>
+<span class="">Municipal filing filed</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="inline-flex items-center gap-1.5 pl-2 pr-3 py-1 rounded bg-error-container text-on-error-container text-label-sm font-label-sm font-medium relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-error"></div>
+<span class="">Escalated to court</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-right">
+<a class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold hover:text-on-secondary-fixed transition-colors" href="#">
+<span class="">View details</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Case 4 -->
+<tr class="anim-row hover:bg-surface-container-low/50 transition-colors group bg-surface-container-low/30 is-entered" data-category="landlord" data-status="attention">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">#2024-0115</span>
+<span class="font-body-sm text-body-sm text-on-surface mt-0.5">310 North Oak Terrace</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[220px]">Sublease agreement breach</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                Lease terms
+              </span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Benton Properties <span class="text-on-surface-variant font-normal">(Landlord)</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs. Clara Oswald <span class="text-on-surface-variant font-normal">(Tenant)</span></span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs font-semibold text-primary">RN</div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Robert Novak</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-base text-secondary">hourglass_top</span>
+<span class="">Awaiting evidence upload</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="inline-flex items-center gap-1.5 pl-2 pr-3 py-1 rounded bg-secondary-fixed/40 text-on-secondary-fixed text-label-sm font-label-sm font-medium relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary"></div>
+<span class="">Under review</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-right">
+<a class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold hover:text-on-secondary-fixed transition-colors" href="#">
+<span class="">View details</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</td>
+</tr>
+<!-- Case 5 -->
+<tr class="anim-row hover:bg-surface-container-low/50 transition-colors group bg-surface-container-lowest is-entered" data-category="tenancy" data-status="resolved">
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-primary">#2024-0098</span>
+<span class="font-body-sm text-body-sm text-on-surface mt-0.5">77 Maple Way Unit 10C</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate max-w-[220px]">Noise abatement covenant</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                Quiet enjoyment
+              </span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex flex-col space-y-0.5">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Liam Gallagher <span class="text-on-surface-variant font-normal">(Tenant)</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs. Highgate Realty <span class="text-on-surface-variant font-normal">(Landlord)</span></span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-xs font-semibold text-primary">EV</div>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Elena Vance, Esq.</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top">
+<span class="font-label-sm text-label-sm text-primary font-medium">Compliance deadline Oct 1</span>
+</td>
+<td class="py-4 px-space-md align-top">
+<div class="inline-flex items-center gap-1.5 pl-2 pr-3 py-1 rounded bg-surface-container-high text-primary text-label-sm font-label-sm font-medium relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary"></div>
+<span class="">Settlement signed</span>
+</div>
+</td>
+<td class="py-4 px-space-md align-top text-right">
+<a class="inline-flex items-center gap-1 text-secondary font-label-sm text-label-sm font-semibold hover:text-on-secondary-fixed transition-colors" href="#">
+<span class="">View details</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination and Statutory Registry Note -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm font-label-sm text-label-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">shield</span>
+<span class="">All records certified under District Municipal Rental Ordinance • Section 14-C</span>
+</div>
+<div class="flex items-center gap-space-md">
+<span class="">Showing 5 of 42 active cases</span>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container-lowest text-on-surface shadow-sm disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-primary text-on-primary font-semibold shadow-sm">
+            1
+          </button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm">
+            2
+          </button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm">
+            3
+          </button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Secondary Information Block: Housing Resources & Mediation Officers -->
+<section class="mt-space-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md lg:gap-space-lg" id="resourceCardsGrid">
+<!-- Legal Aid & Tenant Advocates -->
+<div class="anim-resource-card bg-surface-container-lowest rounded p-space-lg shadow-sm flex flex-col justify-between is-entered">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-base">support_agent</span>
+<span class="">Duty Legal Counsel</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Tenants and unrepresented landlords are entitled to 30 minutes of impartial procedural consultation prior to formal negotiation.
+        </p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-secondary font-medium">Available: 9:00 AM - 4:00 PM</span>
+<a class="font-label-sm text-label-sm text-primary font-semibold hover:underline" href="#">Request counsel</a>
+</div>
+</div>
+<!-- Ward Eviction Moratorium Rules -->
+<div class="anim-resource-card bg-surface-container-lowest rounded p-space-lg shadow-sm flex flex-col justify-between is-entered">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-base">policy</span>
+<span class="">Statutory Timelines</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Security deposit withholdings must include itemized ledger receipts uploaded within 14 calendar days of lease termination.
+        </p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Housing Code § 22-A</span>
+<a class="font-label-sm text-label-sm text-primary font-semibold hover:underline" href="#">View regulations</a>
+</div>
+</div>
+<!-- Official Mediation Notice Desk -->
+<div class="anim-resource-card bg-surface-container-lowest rounded p-space-lg shadow-sm flex flex-col justify-between is-entered">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-base">history_edu</span>
+<span class="">Signed Settlements</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          All mediated voluntary agreements are registered with the clerk and possess legally binding enforceability upon signature.
+        </p>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ward 4 Clerk Certified</span>
+<a class="font-label-sm text-label-sm text-primary font-semibold hover:underline" href="#">Review archive</a>
+</div>
+</div>
+</section>
+<!-- Interactive Filtering, Search & Entrance Transition Animation Script -->
+<script>
+    (function() {
+      // Table Filtering Logic
+      const searchInput = document.getElementById('tableSearch');
+      const filterTabs = document.querySelectorAll('#caseFilters .filter-tab');
+      const tableRows = document.querySelectorAll('#docketTable tbody tr');
+
+      let currentFilter = 'all';
+      let currentQuery = '';
+
+      function filterTable() {
+        tableRows.forEach(row => {
+          const category = row.getAttribute('data-category');
+          const status = row.getAttribute('data-status');
+          const textContent = row.textContent.toLowerCase();
+
+          let matchesCategory = false;
+          if (currentFilter === 'all') {
+            matchesCategory = true;
+          } else if (currentFilter === 'tenancy') {
+            matchesCategory = (category === 'tenancy');
+          } else if (currentFilter === 'landlord') {
+            matchesCategory = (category === 'landlord');
+          } else if (currentFilter === 'attention') {
+            matchesCategory = (status === 'attention');
+          }
+
+          const matchesQuery = !currentQuery || textContent.includes(currentQuery);
+
+          if (matchesCategory && matchesQuery) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.toLowerCase().trim();
+          filterTable();
+        });
+      }
+
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => {
+            t.classList.remove('bg-surface-container-lowest', 'text-primary', 'font-semibold', 'shadow-sm');
+            t.classList.add('text-on-surface-variant');
+          });
+          tab.classList.add('bg-surface-container-lowest', 'text-primary', 'font-semibold', 'shadow-sm');
+          tab.classList.remove('text-on-surface-variant');
+
+          currentFilter = tab.getAttribute('data-filter');
+          filterTable();
+        });
+      });
+
+      // Civic Portal Orchestrated Entrance Animation Sequence
+      const progressBar = document.getElementById('civicProgressBar');
+      const sidebar = document.getElementById('mainSidebar');
+      const header = document.getElementById('portalHeader');
+      const hero = document.getElementById('dashHero');
+      const banner = document.getElementById('hearingNoticeBanner');
+      const kpis = document.querySelectorAll('.anim-kpi-card');
+      const tableSection = document.getElementById('caseTableContainer');
+      const rows = document.querySelectorAll('.anim-row');
+      const resourceCards = document.querySelectorAll('.anim-resource-card');
+      const simulateBtn = document.getElementById('btnSimulateTransition');
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function runPortalEntranceSequence() {
+        if (prefersReducedMotion) {
+          // Instant display for accessibility
+          sidebar?.classList.add('is-entered');
+          header?.classList.add('is-entered');
+          hero?.classList.add('is-entered');
+          banner?.classList.add('is-entered');
+          kpis.forEach(k => k.classList.add('is-entered'));
+          tableSection?.classList.add('is-entered');
+          rows.forEach(r => r.classList.add('is-entered'));
+          resourceCards.forEach(c => c.classList.add('is-entered'));
+          return;
+        }
+
+        // Reset state
+        progressBar.classList.remove('animate-progress', 'fade-out');
+        progressBar.style.width = '0%';
+        progressBar.style.opacity = '1';
+
+        sidebar?.classList.remove('is-entered');
+        header?.classList.remove('is-entered');
+        hero?.classList.remove('is-entered');
+        banner?.classList.remove('is-entered');
+        kpis.forEach(k => k.classList.remove('is-entered'));
+        tableSection?.classList.remove('is-entered');
+        rows.forEach(r => r.classList.remove('is-entered'));
+        resourceCards.forEach(c => c.classList.remove('is-entered'));
+
+        // Stage 0: Subtle top progress bar slide across (indicates authenticated docket sync)
+        requestAnimationFrame(() => {
+          progressBar.classList.add('animate-progress');
+        });
+
+        // Stage 1: Sidebar glides in smoothly from left + Header settles
+        setTimeout(() => {
+          sidebar?.classList.add('is-entered');
+          header?.classList.add('is-entered');
+        }, 120);
+
+        // Stage 2: Page headline & docket title fade up
+        setTimeout(() => {
+          hero?.classList.add('is-entered');
+        }, 260);
+
+        // Stage 3: Urgent hearing alert drops in with gentle slide-down
+        setTimeout(() => {
+          banner?.classList.add('is-entered');
+        }, 380);
+
+        // Stage 4: KPI summary cards stagger-fade upward
+        kpis.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('is-entered');
+          }, 480 + (index * 90));
+        });
+
+        // Stage 5: Table container fades up
+        setTimeout(() => {
+          tableSection?.classList.add('is-entered');
+        }, 700);
+
+        // Stage 6: Dispute rows cascade in sequentially
+        rows.forEach((row, idx) => {
+          setTimeout(() => {
+            row.classList.add('is-entered');
+          }, 800 + (idx * 65));
+        });
+
+        // Stage 7: Statutory resources cards glide in
+        resourceCards.forEach((c, i) => {
+          setTimeout(() => {
+            c.classList.add('is-entered');
+          }, 1100 + (i * 80));
+        });
+
+        // Conclude progress bar fade-out
+        setTimeout(() => {
+          progressBar.classList.add('fade-out');
+        }, 850);
+      }
+
+      // Trigger on page load
+      window.addEventListener('DOMContentLoaded', () => {
+        runPortalEntranceSequence();
+      });
+
+      // Interactive trigger button for re-testing sequence anytime
+      if (simulateBtn) {
+        simulateBtn.addEventListener('click', () => {
+          runPortalEntranceSequence();
+        });
+      }
+    })();
+  </script>
+</div></div></main></div>
+
+<div id="portalModalsContainer" class=""><!-- Global Toast Notification Container --><div id="portalToast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-3 bg-primary text-on-primary px-4 py-3 rounded shadow-lg border border-outline-variant"><span id="portalToastIcon" class="material-symbols-outlined text-secondary-container text-xl">info</span><div class="flex flex-col"><span id="portalToastTitle" class="font-label-md font-semibold text-white">Notice</span><span id="portalToastMsg" class="font-body-sm text-surface-variant">Action processed successfully.</span></div><button onclick="hideToast()" class="ml-3 text-on-primary/70 hover:text-white"><span class="material-symbols-outlined text-base">close</span></button></div><!-- Notification Dropdown Menu attached to header bell --><div id="notificationDropdown" class="hidden fixed top-14 right-14 w-80 bg-surface-container-lowest border border-outline-variant rounded-lg shadow-xl z-50 p-3 flex flex-col gap-2"><div class="flex items-center justify-between border-b border-surface-container pb-2"><span class="font-label-md font-semibold text-primary flex items-center gap-1.5"><span class="material-symbols-outlined text-base text-secondary">notifications</span>Statutory Notices</span><span class="font-label-sm bg-error-container text-on-error-container px-2 py-0.5 rounded font-semibold">2 New</span></div><div class="flex flex-col gap-2 max-h-72 overflow-y-auto"><div class="p-2 rounded bg-surface-container-low/50 hover:bg-surface-container cursor-pointer transition-colors border-l-2 border-secondary"><p class="font-label-sm font-semibold text-primary">Hearing Docket Confirmation</p><p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Mediation Session #2024-089 scheduled for Thursday at 2:00 PM EST.</p><span class="font-label-sm text-[10px] text-on-surface-variant/80 mt-1 block">15 mins ago</span></div><div class="p-2 rounded bg-surface-container-low/50 hover:bg-surface-container cursor-pointer transition-colors border-l-2 border-error"><p class="font-label-sm font-semibold text-error">Urgent Stay Application</p><p class="font-body-sm text-xs text-on-surface-variant mt-0.5">Section 21 interim protection docket submitted for Belmont St.</p><span class="font-label-sm text-[10px] text-on-surface-variant/80 mt-1 block">1 hour ago</span></div></div><div class="pt-2 border-t border-surface-container text-center"><button onclick="closeModal('notificationDropdown')" class="font-label-sm text-secondary hover:underline font-semibold">Close notifications</button></div></div><!-- Common Interactive Modal Backdrop and Template --><div id="civicModalBackdrop" class="hidden fixed inset-0 bg-primary/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"><div id="civicModalCard" class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-2xl max-w-lg w-full p-4 sm:p-6 relative max-h-[90vh] overflow-y-auto"><div class="flex items-center justify-between pb-3 border-b border-surface-container mb-4"><div class="flex items-center gap-2"><span id="modalHeaderIcon" class="material-symbols-outlined text-secondary text-2xl">gavel</span><h3 id="modalHeaderTitle" class="font-headline-sm text-headline-sm text-primary font-semibold">Hearing Chamber</h3></div><button onclick="closeCivicModal()" class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container"><span class="material-symbols-outlined text-lg leading-none">close</span></button></div><div id="modalBodyContent" class="space-y-4 text-body-sm text-on-surface"></div><div id="modalFooterActions" class="pt-4 border-t border-surface-container flex justify-end gap-2 mt-4"></div></div></div></div><script class="">
+  function showToast(title, msg, icon = 'check_circle') {
+    const toast = document.getElementById('portalToast');
+    const toastTitle = document.getElementById('portalToastTitle');
+    const toastMsg = document.getElementById('portalToastMsg');
+    const toastIcon = document.getElementById('portalToastIcon');
+    if (!toast) return;
+    toastTitle.innerText = title;
+    toastMsg.innerText = msg;
+    toastIcon.innerText = icon;
+    toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-20');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => hideToast(), 4500);
+  }
+  function hideToast() {
+    const toast = document.getElementById('portalToast');
+    if (toast) {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-20');
+    }
+  }
+  function openCivicModal(title, icon, contentHtml, footerHtml) {
+    const backdrop = document.getElementById('civicModalBackdrop');
+    const titleEl = document.getElementById('modalHeaderTitle');
+    const iconEl = document.getElementById('modalHeaderIcon');
+    const bodyEl = document.getElementById('modalBodyContent');
+    const footerEl = document.getElementById('modalFooterActions');
+    if (!backdrop) return;
+    titleEl.innerText = title;
+    iconEl.innerText = icon;
+    bodyEl.innerHTML = contentHtml;
+    footerEl.innerHTML = footerHtml || '<button onclick="closeCivicModal()" class="px-4 py-2 rounded bg-surface-container text-primary font-label-sm font-semibold hover:bg-surface-container-high transition-colors">Close</button>';
+    backdrop.classList.remove('hidden');
+  }
+  function closeCivicModal() {
+    const backdrop = document.getElementById('civicModalBackdrop');
+    if (backdrop) backdrop.classList.add('hidden');
+  }
+  function toggleNotifications() {
+    const dropdown = document.getElementById('notificationDropdown');
+    if (dropdown) dropdown.classList.toggle('hidden');
+  }
+  function closeModal(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
+  }
+
+  // Sidebar Navigation Click Handling
+  document.querySelectorAll('aside nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('aside nav a').forEach(a => {
+        a.className = 'flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm';
+        a.removeAttribute('aria-current');
+      });
+      link.className = 'flex items-center gap-space-sm px-space-md py-2 transition-colors rounded-lg bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container';
+      link.setAttribute('aria-current', 'page');
+      const pageName = link.innerText.trim();
+      showToast('Switched View', `Navigated to ${pageName} docket view.`, 'folder');
+    });
+  });
+
+  // Emergency Escalation Handler
+  document.querySelectorAll('header a[href="tel:311"]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCivicModal(
+        'Emergency Stay Application',
+        'emergency',
+        `<div class="space-y-3">
+          <p class="font-body-md text-error font-medium">Statutory Urgent Escalation (Under Section 21 Model Tenancy Act)</p>
+          <p>For immediate eviction threats, unauthorized lockouts, or essential utility suspensions without tribunal decree.</p>
+          <div class="bg-surface-container-low p-3 rounded border border-outline-variant space-y-2">
+            <label class="font-label-sm block font-semibold text-primary">Affected Case or Property Unit</label>
+            <input type="text" value="Case #2024-0128 - 1024 Belmont St #2" class="w-full h-9 px-3 rounded bg-surface-container-lowest border border-outline-variant text-body-sm" />
+            <label class="font-label-sm block font-semibold text-primary mt-2">Nature of Urgent Violation</label>
+            <select class="w-full h-9 px-2 rounded bg-surface-container-lowest border border-outline-variant text-body-sm">
+              <option>Unlawful Lockout / Eviction Notice</option>
+              <option>Water / Power Service Disconnection</option>
+              <option>Retaliatory Action / Harassment</option>
+            </select>
+          </div>
+          <p class="font-label-sm text-on-surface-variant">A duty registrar will immediately review within 4 statutory hours.</p>
+        </div>`,
+        `<button onclick="closeCivicModal()" class="px-3 py-1.5 rounded bg-surface-container text-primary font-label-sm font-semibold">Cancel</button>
+         <button onclick="closeCivicModal(); showToast('Emergency Petition Logged', 'Ref #EM-9921 lodged with On-Call Presiding Officer.', 'check_circle');" class="px-4 py-1.5 rounded bg-error text-on-error font-label-sm font-semibold shadow-sm">Issue Emergency Stay Petition</button>`
+      );
+    });
+  });
+
+  // Notification Bell Toggle
+  document.querySelectorAll('header button span').forEach(span => {
+    if (span.innerText.trim() === 'notifications') {
+      span.parentElement.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleNotifications();
+      });
+    }
+  });
+
+  // Hearing Banner Buttons
+  document.querySelectorAll('#hearingNoticeBanner button').forEach(btn => {
+    if (btn.innerText.includes('Join Hearing Room')) {
+      btn.addEventListener('click', () => {
+        openCivicModal(
+          'Virtual Hearing Chamber (Case #2024-089)',
+          'video_camera_front',
+          `<div class="space-y-4">
+            <div class="flex items-center justify-between p-3 rounded bg-secondary-fixed/30 border border-secondary-container">
+              <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-md font-semibold text-secondary">Room Ready • Encrypted Session</span></div>
+              <span class="font-label-sm text-secondary font-medium">Courtroom 2B</span>
+            </div>
+            <div class="space-y-1 font-body-sm text-on-surface">
+              <p><span class="font-semibold">Mediator:</span> Elena Vance, Esq. (Presiding)</p>
+              <p><span class="font-semibold">Matter:</span> Oakwood Apts Unreturned Deposit &amp; Repair Escrow</p>
+              <p><span class="font-semibold">Parties Present:</span> Landlord Legal Rep &amp; Tenant Co-signer verified</p>
+            </div>
+            <div class="bg-surface-container-low p-3 rounded text-center text-label-sm text-on-surface-variant">
+              Microphone &amp; camera verification complete. Official audio recording active.
+            </div>
+          </div>`,
+          `<button onclick="closeCivicModal()" class="px-3 py-1.5 rounded bg-surface-container text-primary font-label-sm font-semibold">Cancel</button>
+           <button onclick="closeCivicModal(); showToast('Connected to Hearing', 'Joined Room 2B. Audio feed live.', 'mic');" class="px-4 py-1.5 rounded bg-primary text-on-primary font-label-sm font-semibold shadow-sm flex items-center gap-1"><span class="material-symbols-outlined text-sm">meeting_room</span> Enter Chamber</button>`
+        );
+      });
+    } else if (btn.innerText.includes('Reschedule')) {
+      btn.addEventListener('click', () => {
+        openCivicModal(
+          'Reschedule Mediation Session',
+          'edit_calendar',
+          `<div class="space-y-3">
+            <p class="text-body-sm text-on-surface-variant">Hearing notice: Case #2024-089 (Oakwood Apts). Requests require minimum 24hr statutory advance notice.</p>
+            <label class="font-label-sm block font-semibold text-primary">Select New Hearing Slot</label>
+            <input type="datetime-local" class="w-full h-9 px-3 rounded bg-surface-container-lowest border border-outline-variant text-body-sm" value="2024-06-18T14:00" />
+            <label class="font-label-sm block font-semibold text-primary mt-2">Reason for Adjournment</label>
+            <textarea class="w-full p-2 rounded bg-surface-container-lowest border border-outline-variant text-body-sm" rows="3" placeholder="State reason for party unavailable or awaiting statutory records..."></textarea>
+          </div>`,
+          `<button onclick="closeCivicModal()" class="px-3 py-1.5 rounded bg-surface-container text-primary font-label-sm font-semibold">Dismiss</button>
+           <button onclick="closeCivicModal(); showToast('Reschedule Submitted', 'Adjournment request dispatched to Mediator Vance.', 'schedule');" class="px-4 py-1.5 rounded bg-secondary text-on-secondary font-label-sm font-semibold shadow-sm">Submit Request</button>`
+        );
+      });
+    }
+  });
+
+  // Export Docket Button
+  document.querySelectorAll('header button').forEach(btn => {
+    if (btn.innerText.includes('Export Docket')) {
+      btn.addEventListener('click', () => {
+        showToast('Docket Exported', 'Certified PDF & CSV generated with SHA-256 stamp (Ref #DKT-2024-Q2).', 'download_done');
+      });
+    } else if (btn.innerText.includes('File a new dispute')) {
+      btn.addEventListener('click', () => {
+        openCivicModal(
+          'File a New Rental Dispute',
+          'note_add',
+          `<div class="space-y-3">
+            <p class="text-body-sm text-on-surface-variant">Form 1-A under Metropolitan Rent Control Regulations. Initiate filing for registration before Ward 4 Registry.</p>
+            <div>
+              <label class="font-label-sm block font-semibold text-primary">Dispute Type</label>
+              <select class="w-full h-9 px-2 rounded bg-surface-container-lowest border border-outline-variant text-body-sm">
+                <option>Security Deposit Withholding (> 14 Days)</option>
+                <option>Uninhabitable Conditions & Maintenance Failure</option>
+                <option>Unlawful Notice to Vacate</option>
+                <option>Rent Increase Above Statutory Ceiling</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-label-sm block font-semibold text-primary">Property Address in Ward 4</label>
+              <input type="text" placeholder="e.g. 502 Pine Ave Apt 3" class="w-full h-9 px-3 rounded bg-surface-container-lowest border border-outline-variant text-body-sm" />
+            </div>
+            <div>
+              <label class="font-label-sm block font-semibold text-primary">Contested Amount ($)</label>
+              <input type="number" placeholder="2400.00" class="w-full h-9 px-3 rounded bg-surface-container-lowest border border-outline-variant text-body-sm" />
+            </div>
+          </div>`,
+          `<button onclick="closeCivicModal()" class="px-3 py-1.5 rounded bg-surface-container text-primary font-label-sm font-semibold">Cancel</button>
+           <button onclick="closeCivicModal(); showToast('Filing Submitted', 'Case docket initialized. Assigned provisional tracking ID.', 'check_circle');" class="px-4 py-1.5 rounded bg-secondary text-on-secondary font-label-sm font-semibold shadow-sm">Create Filing</button>`
+        );
+      });
+    }
+  });
+
+  // Table Case 'View details' click handling
+  document.querySelectorAll('#docketTable a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const row = a.closest('tr');
+      const caseId = row.querySelector('.font-label-md')?.innerText || 'Case Details';
+      const prop = row.querySelector('.font-body-sm')?.innerText || '';
+      openCivicModal(
+        `Docket Record: ${caseId}`,
+        'description',
+        `<div class="space-y-3">
+          <div class="flex items-center justify-between pb-2 border-b border-surface-container">
+            <span class="font-semibold text-primary">${prop}</span>
+            <span class="font-label-sm px-2 py-0.5 rounded bg-secondary-fixed/40 text-on-secondary-fixed font-semibold">Under Statutory Docket</span>
+          </div>
+          <div class="text-body-sm space-y-1">
+            <p><span class="font-semibold text-on-surface">Filing Authority:</span> Ward 4 Housing Tribunal</p>
+            <p><span class="font-semibold text-on-surface">Parties:</span> ${row.querySelectorAll('td')[2]?.innerText.replace(/\n/g, ' ') || 'Parties'}</p>
+            <p><span class="font-semibold text-on-surface">Assigned Mediator:</span> ${row.querySelectorAll('td')[3]?.innerText.replace(/\n/g, ' ') || 'Elena Vance, Esq.'}</p>
+            <p><span class="font-semibold text-on-surface">Status:</span> ${row.querySelectorAll('td')[5]?.innerText.trim()}</p>
+          </div>
+          <div class="bg-surface-container-low p-3 rounded text-body-sm text-on-surface-variant">
+            Evidence repository contains 4 certified tenancy agreement exhibits and certified timestamped bank statements.
+          </div>
+        </div>`,
+        `<button onclick="closeCivicModal()" class="px-3 py-1.5 rounded bg-surface-container text-primary font-label-sm font-semibold">Close</button>
+         <button onclick="closeCivicModal(); showToast('Case File Downloaded', 'Certified docket copy downloaded.', 'download');" class="px-4 py-1.5 rounded bg-primary text-on-primary font-label-sm font-semibold shadow-sm">Download Full Brief</button>`
+      );
+    });
+  });
+
+  // Pagination Button Handling
+  document.querySelectorAll('#caseTableContainer .flex.items-center.gap-1 button').forEach((btn, idx) => {
+    const text = btn.innerText.trim();
+    if (text === '1' || text === '2' || text === '3') {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#caseTableContainer .flex.items-center.gap-1 button').forEach(b => {
+          if (['1', '2', '3'].includes(b.innerText.trim())) {
+            b.className = 'w-7 h-7 flex items-center justify-center rounded bg-surface-container-lowest text-on-surface hover:bg-surface-container shadow-sm';
+          }
+        });
+        btn.className = 'w-7 h-7 flex items-center justify-center rounded bg-primary text-on-primary font-semibold shadow-sm';
+        showToast('Page Changed', `Loaded docket registry page ${text}.`, 'pageview');
+      });
+    }
+  });
+
+  // Bottom Resource Cards Links
+  document.querySelectorAll('#resourceCardsGrid .anim-resource-card').forEach(card => {
+    const title = card.querySelector('.font-label-md')?.innerText || '';
+    const link = card.querySelector('a');
+    if (link) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (title.includes('Duty Legal Counsel')) {
+          openCivicModal(
+            'Book Duty Legal Counsel',
+            'support_agent',
+            `<div class="space-y-3">
+              <p class="text-body-sm text-on-surface-variant">Schedule a free 30-minute impartial procedural consultation prior to scheduled dispute negotiation.</p>
+              <label class="font-label-sm block font-semibold text-primary">Available Time Slots Today</label>
+              <div class="grid grid-cols-2 gap-2 font-label-sm text-center">
+                <button class="p-2 rounded border border-secondary bg-secondary-fixed/20 text-on-secondary-fixed font-semibold">10:30 AM (In-person)</button>
+                <button class="p-2 rounded border border-outline-variant hover:bg-surface-container text-on-surface">01:15 PM (Virtual)</button>
+                <button class="p-2 rounded border border-outline-variant hover:bg-surface-container text-on-surface">03:00 PM (Virtual)</button>
+                <button class="p-2 rounded border border-outline-variant hover:bg-surface-container text-on-surface">04:15 PM (In-person)</button>
+              </div>
+              <p class="font-label-sm text-on-surface-variant text-xs mt-2">Consultation provided by Ward 4 Legal Aid Society pursuant to Section 18 of the Housing Code.</p>
+            </div>`,
+            `<button onclick="closeCivicModal()" class="px-3 py-1.5 rounded bg-surface-container text-primary font-label-sm font-semibold">Dismiss</button>
+             <button onclick="closeCivicModal(); showToast('Appointment Confirmed', 'Duty Counsel appointment set for 10:30 AM today.', 'event_available');" class="px-4 py-1.5 rounded bg-secondary text-on-secondary font-label-sm font-semibold shadow-sm">Confirm Booking</button>`
+          );
+        } else if (title.includes('Statutory Timelines')) {
+          openCivicModal(
+            'Housing Code § 22-A Regulations',
+            'policy',
+            `<div class="space-y-3 text-body-sm">
+              <p class="font-semibold text-primary">Security Deposit Escrow & Deductions</p>
+              <p class="text-on-surface-variant">1. Landlords must hold all security deposits in a segregated interest-bearing municipal escrow account.</p>
+              <p class="text-on-surface-variant">2. Itemized ledgers with contractor receipts must be uploaded to the TLDRP portal within 14 calendar days of vacancy.</p>
+              <p class="text-on-surface-variant">3. Statutory penalty for non-compliance constitutes double damages payable to the tenant.</p>
+            </div>`,
+            `<button onclick="closeCivicModal()" class="px-4 py-2 rounded bg-primary text-on-primary font-label-sm font-semibold">Acknowledge</button>`
+          );
+        } else {
+          openCivicModal(
+            'Ward 4 Clerk Settlement Archive',
+            'history_edu',
+            `<div class="space-y-3 text-body-sm">
+              <p class="text-on-surface-variant">Voluntary Mediation Agreements Repository (Ward 4 Jurisdiction).</p>
+              <div class="p-3 rounded bg-surface-container-low border border-outline-variant text-xs space-y-1">
+                <p><span class="font-semibold text-primary">Total Certified Settlements (2024):</span> 86</p>
+                <p><span class="font-semibold text-primary">Compliance Adherence Rate:</span> 94.8%</p>
+                <p><span class="font-semibold text-primary">Clerk Signature:</span> M. Thornton, Registrar</p>
+              </div>
+            </div>`,
+            `<button onclick="closeCivicModal(); showToast('Archive Synchronized', 'Showing latest 86 indexed records.', 'archive');" class="px-4 py-2 rounded bg-primary text-on-primary font-label-sm font-semibold">Access Archive Index</button>`
+          );
+        }
+      });
+    }
+  });
+</script><script>function toggleMobileSidebar() { const sidebar = document.getElementById('mainSidebar'); const backdrop = document.getElementById('sidebarBackdrop'); if (!sidebar || !backdrop) return; const isClosed = sidebar.classList.contains('-translate-x-full'); if (isClosed) { sidebar.classList.remove('-translate-x-full'); sidebar.classList.add('translate-x-0'); backdrop.classList.remove('hidden'); } else { sidebar.classList.add('-translate-x-full'); sidebar.classList.remove('translate-x-0'); backdrop.classList.add('hidden'); } } document.querySelectorAll('#mainSidebar nav a').forEach(item => { item.addEventListener('click', () => { if (window.innerWidth < 1024) { toggleMobileSidebar(); } }); });</script></body></html>

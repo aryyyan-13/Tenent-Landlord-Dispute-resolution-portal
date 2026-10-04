@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container-high": "#e9e8e5", "on-background": "#1a1c1a", "background": "#faf9f6", "primary-container": "#1c2b39", "on-secondary-fixed": "#2c1600", "on-surface": "#1a1c1a", "surface-container": "#efeeeb", "secondary": "#865311", "inverse-on-surface": "#f1f1ee", "secondary-container": "#fdb96f", "surface-bright": "#faf9f6", "tertiary": "#091622", "surface-container-highest": "#e3e2e0", "surface-container-lowest": "#ffffff", "surface-container-low": "#f4f3f1", "inverse-surface": "#2f312f", "on-primary-container": "#8392a4", "on-tertiary-fixed-variant": "#3b4855", "on-tertiary-container": "#8592a1", "on-primary-fixed": "#0d1d2a", "on-tertiary-fixed": "#101d29", "on-primary-fixed-variant": "#394857", "secondary-fixed-dim": "#fdb96f", "on-secondary-fixed-variant": "#683c00", "on-error": "#ffffff", "surface-dim": "#dbdad7", "on-surface-variant": "#44474c", "error-container": "#ffdad6", "primary": "#061624", "surface": "#faf9f6", "error": "#ba1a1a", "surface-tint": "#516070", "tertiary-container": "#1e2b37", "on-secondary-container": "#784704", "inverse-primary": "#b8c8da", "outline-variant": "#c4c6cc", "secondary-fixed": "#ffdcbc", "outline": "#74777c", "on-tertiary": "#ffffff", "tertiary-fixed": "#d6e4f5", "surface-variant": "#e3e2e0", "tertiary-fixed-dim": "#bac8d8", "on-secondary": "#ffffff", "primary-fixed": "#d4e4f7", "on-error-container": "#93000a", "primary-fixed-dim": "#b8c8da", "on-primary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-lg": "1.5rem", "gutter": "1.5rem", "space-xl": "2rem", "space-md": "1rem", "space-2xl": "3rem", "margin": "2rem", "space-xs": "0.25rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "margin-mobile": "1rem" }, "fontFamily": { "body-md": ["Inter"], "headline-md": ["\"Source Serif 4\""], "label-sm": ["Inter"], "headline-xl-mobile": ["\"Source Serif 4\""], "headline-lg": ["\"Source Serif 4\""], "label-lg": ["Inter"], "headline-sm": ["\"Source Serif 4\""], "body-sm": ["Inter"], "headline-lg-mobile": ["\"Source Serif 4\""], "headline-xl": ["\"Source Serif 4\""], "body-lg": ["Inter"], "label-md": ["Inter"] }, "fontSize": { "body-md": ["1rem", { "lineHeight": "1.5rem", "fontWeight": "400" }], "headline-md": ["1.375rem", { "lineHeight": "1.875rem", "fontWeight": "600" }], "label-sm": ["0.75rem", { "lineHeight": "1rem", "fontWeight": "500" }], "headline-xl-mobile": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-lg": ["1.75rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "label-lg": ["0.875rem", { "lineHeight": "1.25rem", "fontWeight": "600" }], "headline-sm": ["1.125rem", { "lineHeight": "1.625rem", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "headline-lg-mobile": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" }], "label-md": ["0.8125rem", { "lineHeight": "1.125rem", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-screen w-[260px] bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col justify-between select-none"><div class="flex flex-col"><div class="h-14 px-space-md flex items-center justify-between border-b border-outline-variant"><div class="flex items-center gap-space-sm"><img alt="TLDRP Official Portal Emblem" class="h-10 w-10 rounded-full object-contain border border-outline-variant shrink-0" src="https://lh3.googleusercontent.com/aida/AEtjO1X1Fm-iV3nWHOEHhXVwHDJsCT1-eJrbQXPcuaEI6xmc1SqBaKKzmx0fkBJy_J_jo5WqpN4s1PB_mekJmoaJAteXpZ7fy3SWiWBuzRbBImr7VM2e67PBVnMFH9bB4wFHGXSfzGCuWg61SoKqHCS862u-tVenTXmSfDxVMJVjyoUIsNbBeefuEq9Ge03hKPnDst_n9oYTcyaaLg7E_hPdCN-70fm7cjefNulplhX7oDKWDLIdIED81fWbksM"><div class="flex flex-col leading-none"><span class="font-headline-sm text-headline-sm text-primary tracking-tight">TLDRP</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Civic Portal</span></div></div><span class="font-label-sm text-label-sm bg-surface-container-high text-on-surface-variant px-space-xs py-0.5 rounded border border-outline-variant font-medium">v2.4</span></div><div class="px-space-md py-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Dispute Management</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="dashboard" href="#">Dashboard</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="file-dispute" href="#">File a Dispute</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="case-tracking" href="#">Case Tracking</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="hearing-room" href="#">Hearing Room</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="admin-panel" href="#">Admin Panel</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="settings-and-kyc" href="#">Settings &amp; KYC</a></nav><div class="px-space-md pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Statutory Resources</span></div><nav class="flex flex-col px-space-sm gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold border-l-2 border-secondary-container"><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="guidelines-and-statutes" href="#">Guidelines &amp; Statutes</a><a class="flex items-center px-space-md py-2 text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors rounded-lg font-body-sm text-body-sm" data-path="support-and-help" href="#">Support &amp; Help</a></nav></div><div class="p-space-md border-t border-outline-variant bg-surface-container-lowest"><div class="flex items-center gap-space-sm"><div class="relative flex-shrink-0"><img alt="Elena Vance, Esq." class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"><span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary-container rounded-full ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col overflow-hidden min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Elena Vance, Esq.</span><span class="font-label-sm text-label-sm text-on-surface-variant truncate">Senior Mediator</span></div></div><div class="mt-space-sm flex items-center justify-between font-label-sm text-label-sm pt-space-xs border-t border-surface-container"><span class="flex items-center gap-1 text-on-surface-variant"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Active</span><span class="text-on-surface-variant">Ward 4 Office</span></div></div></aside><div class="pl-[260px] min-h-screen flex flex-col"><header class="fixed top-0 left-[260px] right-0 h-14 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant z-40 flex items-center justify-between px-space-xl"><div class="flex items-center gap-space-md"><span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1.5 font-medium"><span class="material-symbols-outlined text-base leading-none text-secondary">account_balance</span>Metropolitan Housing Authority • Jurisdiction Ward 4</span></div><div class="flex items-center gap-space-lg"><div class="relative w-80"><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg leading-none">search</span><input class="w-full h-8 pl-8 pr-3 text-body-sm font-body-sm bg-surface-container-low border border-outline-variant rounded-lg text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:border-primary-container transition-colors" placeholder="Search case number, property address, or party..." type="text"></div><a class="font-label-sm text-label-sm text-secondary hover:underline flex items-center gap-1 font-medium" href="tel:311"><span class="material-symbols-outlined text-sm leading-none">call</span>Emergency Escalation</a><div class="relative"><button class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl leading-none">notifications</span></button><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></div><img alt="Elena Vance, Esq." class="w-8 h-8 rounded-full object-cover border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-KGtIKDtAO7Oao6cHe_5v0GCX_p6nAagXciUbc4Ret1RNOWQQJ-C1ysl4MvuPg2vJgH3lv7YMqXAUC_6t7rPDJus5oJ1ndfe1nldt7erABMtDd4DBmmKkjffXK_9kU5VO2DF5g8_eX6l6zkpWcwomRZ8PgbGmwwPOnck6c6t_Uw0tLpqBVLmwUDOPtJU97YT20frSjNxSyq8vqFDq-WgW5ZOKfcc3V1USReKzKESX0iRswz03lYve"></div></header><main class="w-full pt-14 flex-1 bg-surface"><div class="flex flex-col w-full">
+<div class="max-w-[1280px] w-full mx-auto px-margin py-space-xl flex flex-col gap-space-lg">
+<!-- Breadcrumb & Municipal Header Context -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Portal Administration</span>
+<span class="material-symbols-outlined text-xs leading-none">chevron_right</span>
+<span class="">Account &amp; Security</span>
+<span class="material-symbols-outlined text-xs leading-none">chevron_right</span>
+<span class="text-on-surface font-semibold">Profile &amp; Credentials</span>
+</div>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pt-space-xs">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-primary tracking-tight">Identity &amp; Regulatory Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-3xl">
+            Manage statutory identification, municipal KYC standing, cryptographic signature keys, and judicial notification protocols.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<div class="bg-surface-container px-space-md py-1.5 rounded-lg flex items-center gap-2">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Clearance Level: Tier III (Statutory)</span>
+</div>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg px-space-md py-2 rounded-lg flex items-center gap-1.5 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-sm">print</span>
+<span class="">Export Certificate Dossier</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Main Grid Structure: Sidebar Sub-Navigation + Deep Form Views -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Sub-Navigation Navigation Strip -->
+<nav class="lg:col-span-3 flex flex-col gap-1 bg-surface-container-lowest p-space-sm rounded-lg shadow-sm">
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#personal-legal">
+<span class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base">badge</span>
+            Personal &amp; Legal Profile
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">navigate_next</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg bg-surface-container-high text-primary font-semibold font-label-md text-label-md" href="#kyc-standing">
+<span class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base text-secondary">verified_user</span>
+            KYC &amp; Municipal Identity
+          </span>
+<span class="w-1.5 h-4 bg-secondary rounded-full"></span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#digital-signature">
+<span class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base">key</span>
+            Digital Signature &amp; Keyring
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">navigate_next</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#mediator-credentials">
+<span class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base">gavel</span>
+            Mediator Accreditations
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">navigate_next</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#notification-protocols">
+<span class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base">mark_email_read</span>
+            Notification Protocols
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">navigate_next</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-2.5 rounded-lg text-on-surface-variant hover:bg-surface-container-low transition-colors font-label-md text-label-md" href="#audit-log">
+<span class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-base">receipt_long</span>
+            Audit Log &amp; Sessions
+          </span>
+<span class="material-symbols-outlined text-xs text-outline">navigate_next</span>
+</a>
+<div class="mt-space-md pt-space-md bg-surface-container-low p-space-md rounded-lg flex flex-col gap-2">
+<span class="font-label-sm text-label-sm font-semibold text-primary uppercase tracking-wide">Statutory Registry Notice</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Identity verification is legally binding under §44-A Municipal Housing Code. Revocation or changes require 48 hours for administrative re-index.
+          </p>
+<a class="font-label-sm text-label-sm text-secondary hover:underline inline-flex items-center gap-1 mt-1 font-semibold" href="#">
+            Registry Bylaws v4.11
+            <span class="material-symbols-outlined text-xs">open_in_new</span>
+</a>
+</div>
+</nav>
+<!-- Main Dossier Content Stream -->
+<div class="lg:col-span-9 flex flex-col gap-space-lg">
+<!-- CARD 1: KYC Municipal Identity & Clearance -->
+<section class="bg-surface-container-lowest rounded-lg p-space-xl shadow-sm flex flex-col gap-space-lg" id="kyc-standing">
+<div class="flex flex-col sm:flex-row sm:items-start justify-between gap-space-sm pb-space-sm bg-surface-container-low p-space-md rounded-lg">
+<div class="flex items-start gap-space-md">
+<div class="p-2.5 bg-primary-container text-on-primary rounded-lg">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<div class="flex items-center gap-2 flex-wrap">
+<h2 class="font-headline-md text-headline-md text-primary">Municipal Verified • Level 3 Civic Clearance</h2>
+<span class="bg-surface-container-high text-on-surface px-2 py-0.5 rounded text-label-sm font-label-sm font-semibold">Current</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Verified with Metropolitan Housing Authority • Ward 4 Housing Records Registry
+                </p>
+</div>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md px-space-md py-1.5 rounded-lg flex items-center gap-1.5 self-start transition-colors">
+<span class="material-symbols-outlined text-sm">cached</span>
+              Re-verify Identity
+            </button>
+</div>
+<!-- Document Inspection & Attributes Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Statutory Verification ID</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary font-mono">KYC-W4-2023-88192-X</span>
+<span class="text-label-sm text-on-surface-variant mt-1">Validated on Oct 14, 2023 09:12 UTC</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Issuing Jurisdiction</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Ward 4 Administrative Court</span>
+<span class="text-label-sm text-on-surface-variant mt-1">Active Jurisdiction Ward 4 &amp; Ward 7</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Renewal Requirement</span>
+<span class="font-label-lg text-label-lg font-semibold text-secondary">Annual Audit: Nov 15, 2025</span>
+<span class="text-label-sm text-on-surface-variant mt-1">Autonomous background rescan pending</span>
+</div>
+</div>
+<!-- Government ID Preview Component -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col md:flex-row gap-space-lg items-center justify-between">
+<div class="flex items-center gap-space-md w-full md:w-auto">
+<div class="w-16 h-12 rounded bg-surface-container-high flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-3xl">id_card</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-semibold text-primary">Municipal RealID Identification</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono">DOC_ID_99018.PDF</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono mt-0.5">
+                  ID Number: •••• •••• 4091 (Secured Vault Token #V-8820)
+                </span>
+<span class="text-label-sm text-on-surface-variant text-xs mt-0.5">SHA-256 Checksum: 8a73b22e0fc5e6...7d91</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm w-full md:w-auto justify-end">
+<button class="bg-surface-container-highest hover:bg-surface-container-high text-on-surface font-label-md text-label-md px-space-md py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Inspect Dossier
+              </button>
+<button class="bg-primary text-on-primary hover:bg-primary-container font-label-md text-label-md px-space-md py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">upload_file</span>
+                Replace ID
+              </button>
+</div>
+</div>
+<!-- Clearance Status Matrix -->
+<div class="flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Civic Permissions Scope</span>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface">Binding Consent Execution</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface">Ward 4 Escrow Holding Approvals</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded-lg flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface">Summons Subpoena Endorsement</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CARD 2: Digital Signature & Settlement Authorization -->
+<section class="bg-surface-container-lowest rounded-lg p-space-xl shadow-sm flex flex-col gap-space-lg" id="digital-signature">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Digital Signature &amp; Settlement Authorization</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Cryptographic keystore used to sign binding mediation accords, formal orders, and eviction stays.
+              </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high text-on-surface px-2.5 py-1 rounded text-label-sm font-label-sm font-semibold flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                Hardware Security Module (HSM) Synced
+              </span>
+</div>
+</div>
+<!-- Dual Block: Cryptographic Seal Preview + Signature Key Data -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Notary Seal & Visual Stamp Preview -->
+<div class="lg:col-span-5 bg-surface-container-low p-space-lg rounded-lg flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="w-full flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-2">
+<span class="">Notary Visual Rendering</span>
+<span class="font-mono text-xs">STAMP-V4-AUTONOMOUS</span>
+</div>
+<!-- Stylized Civic Seal -->
+<div class="w-48 h-48 rounded-full bg-surface-container-lowest flex flex-col items-center justify-center p-3 relative shadow-inner my-2">
+<svg class="w-full h-full text-primary" viewBox="0 0 160 160">
+<!-- Outer Circular Seal Path & Text -->
+<circle cx="80" cy="80" fill="none" opacity="0.4" r="76" stroke="currentColor" stroke-dasharray="2 2" stroke-width="1.5"></circle>
+<circle cx="80" cy="80" fill="none" opacity="0.8" r="70" stroke="currentColor" stroke-width="1"></circle>
+<circle cx="80" cy="80" fill="none" opacity="0.4" r="58" stroke="currentColor" stroke-width="0.75"></circle>
+<!-- Center Civic Emblem -->
+<g text-anchor="middle" transform="translate(80, 72) scale(0.65)">
+<path d="M-20,-15 L20,-15 L16,-5 L-16,-5 Z" fill="currentColor" opacity="0.9"></path>
+<path d="M-15,-5 L-15,25 L-10,25 L-10,-5 Z" fill="currentColor"></path>
+<path d="M10,-5 L10,25 L15,25 L15,-5 Z" fill="currentColor"></path>
+<path d="M-2, -5 L-2, 25 L2, 25 L2, -5 Z" fill="currentColor"></path>
+<path d="M-25, 25 L25, 25 L20, 32 L-20, 32 Z" fill="currentColor" opacity="0.9"></path>
+</g>
+<text fill="currentColor" font-family="Source Serif 4" font-size="6.5" font-weight="600" letter-spacing="1" text-anchor="middle">
+<textPath href="#circlePath" startOffset="50%">METROPOLITAN HOUSING AUTHORITY</textPath>
+</text>
+<defs>
+<path d="M 80, 80 m -64, 0 a 64,64 0 1,1 128,0 a 64,64 0 1,1 -128,0" id="circlePath"></path>
+</defs>
+<text fill="currentColor" font-family="Inter" font-size="7" font-weight="700" text-anchor="middle" x="80" y="122">OFFICIAL NOTARY SEAL</text>
+<text fill="currentColor" font-family="Inter" font-size="5.5" font-weight="500" opacity="0.7" text-anchor="middle" x="80" y="132">WARD 4 MUNICIPAL COURT</text>
+</svg>
+</div>
+<div class="mt-2 text-center">
+<span class="font-headline-sm text-headline-sm text-primary italic font-serif">Elena Vance, Esq.</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant font-mono mt-0.5">RSA-PSS / SHA-384 / 4096-BIT</span>
+</div>
+</div>
+<!-- Cryptographic Fingerprints & Controls -->
+<div class="lg:col-span-7 flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Certificate Thumbprint (SHA-1)</span>
+<div class="bg-surface-container-low p-2.5 rounded font-mono text-label-sm text-primary flex items-center justify-between">
+<span class="truncate">3F:9C:2A:7E:11:80:C9:44:B2:1A:89:D0:55:F1:C7:E2:04:88:99:AA</span>
+<button class="text-secondary hover:text-primary transition-colors ml-2" title="Copy Thumbprint">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Public Key Keyring ID</span>
+<div class="bg-surface-container-low p-2.5 rounded font-mono text-label-sm text-on-surface-variant flex items-center justify-between">
+<span class="truncate">pub-key-ed25519-civic-ward4-elena-vance-49910a</span>
+<span class="text-xs bg-surface-container px-1.5 py-0.5 rounded text-primary font-semibold">Active</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-md">
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Signing Cap Threshold</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">$150,000 USD</span>
+<span class="text-xs text-on-surface-variant">Residential Rent Disputes</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Key Expiration</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary">Dec 31, 2026</span>
+<span class="text-xs text-on-surface-variant">Automatic rotation ready</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-space-md py-2 rounded-lg flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">vpn_key</span>
+                  Rotate Keypair
+                </button>
+<button class="bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md px-space-md py-2 rounded-lg flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                  Public Certificate (.CRT)
+                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- CARD 3: Role Credentials & Mediator Accreditations -->
+<section class="bg-surface-container-lowest rounded-lg p-space-xl shadow-sm flex flex-col gap-space-lg" id="mediator-credentials">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Role Credentials &amp; Mediator Accreditations</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                Statutory qualifications registered with State Bar Association and the Department of Consumer &amp; Regulatory Affairs.
+              </p>
+</div>
+<button class="bg-surface-container-high hover:bg-surface-container text-on-surface font-label-md text-label-md px-space-md py-1.5 rounded-lg flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">add</span>
+              Add Credential
+            </button>
+</div>
+<!-- Credential Cards List -->
+<div class="flex flex-col gap-space-md">
+<!-- Row 1: State Bar -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">balance</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary">State Bar Association • Housing Mediation Division</span>
+<span class="bg-surface-container text-on-surface text-label-sm font-label-sm px-2 py-0.5 rounded font-semibold">Good Standing</span>
+</div>
+<div class="flex items-center gap-3 text-body-sm text-on-surface-variant mt-0.5 flex-wrap">
+<span class="">License No: <strong class="font-mono text-primary font-medium">#BAR-882901-CIV</strong></span>
+<span class="">•</span>
+<span class="">Admitted: April 2014</span>
+<span class="">•</span>
+<span class="">Jurisdiction: District 4 Appellate Division</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button class="text-on-surface-variant hover:text-primary p-1.5 rounded hover:bg-surface-container transition-colors" title="View Verification URL">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Row 2: Municipal Ombudsman Certification -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">assignment_ind</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary">Senior Housing Ombudsman Certification</span>
+<span class="bg-surface-container text-on-surface text-label-sm font-label-sm px-2 py-0.5 rounded font-semibold">Certified Fellow</span>
+</div>
+<div class="flex items-center gap-3 text-body-sm text-on-surface-variant mt-0.5 flex-wrap">
+<span class="">Credential: <strong class="font-mono text-primary font-medium">#OM-4491</strong></span>
+<span class="">•</span>
+<span class="">Authority: National Dispute Registry Board</span>
+<span class="">•</span>
+<span class="">Annual CEU: 48/48 Credits Fulfilled</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button class="text-on-surface-variant hover:text-primary p-1.5 rounded hover:bg-surface-container transition-colors" title="View Verification URL">
+<span class="material-symbols-outlined text-lg">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Row 3: Territorial Coverage -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded bg-surface-container-high text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">map</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary">Metropolitan Administrative Wards Assignment</span>
+<span class="bg-surface-container text-on-surface text-label-sm font-label-sm px-2 py-0.5 rounded font-semibold">Active Roster</span>
+</div>
+<div class="flex items-center gap-3 text-body-sm text-on-surface-variant mt-0.5 flex-wrap">
+<span class="">Assigned Territories: <strong class="text-primary font-medium">Ward 4 (Primary), Ward 7 (Reciprocal)</strong></span>
+<span class="">•</span>
+<span class="">Caseload Capacity: Normal (14/20 Active Disputes)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button class="bg-surface-container-high hover:bg-surface-container text-on-surface text-label-sm font-label-sm px-3 py-1.5 rounded font-medium transition-colors">
+                  Adjust Capacity
+                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- CARD 4: Notification & Legal Summons Delivery Protocols -->
+<section class="bg-surface-container-lowest rounded-lg p-space-xl shadow-sm flex flex-col gap-space-lg" id="notification-protocols">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Notification &amp; Summons Delivery Protocols</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+              Specify statutory service channels for notices of hearing, expedited orders, and emergency rent relief petitions.
+            </p>
+</div>
+<div class="flex flex-col divide-y divide-surface-container-high">
+<!-- Delivery Channel 1 -->
+<div class="flex items-center justify-between py-space-md gap-space-md">
+<div class="flex flex-col max-w-xl">
+<span class="font-label-lg text-label-lg font-semibold text-primary">Certified Electronic Legal Notice (e-Summons)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  Delivery of court-mandated conference dates and mediator appointment orders via cryptographic read-receipt dispatch.
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-mono mt-1">Destination: elena.vance@ward4-housing.gov</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Delivery Channel 2 -->
+<div class="flex items-center justify-between py-space-md gap-space-md">
+<div class="flex flex-col max-w-xl">
+<span class="font-label-lg text-label-lg font-semibold text-primary">Emergency SMS Hearing Alerts &amp; In-Session Paging</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  Immediate 15-minute docket reminders and real-time alerts when tenant/landlord joins the virtual arbitration room.
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-mono mt-1">+1 (555) •••-8492</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Delivery Channel 3 -->
+<div class="flex items-center justify-between py-space-md gap-space-md">
+<div class="flex flex-col max-w-xl">
+<span class="font-label-lg text-label-lg font-semibold text-primary">Weekly Docket Digest &amp; Statutory Resolution Metrics</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  Aggregate summary of disposed matters, pending escrow releases, and Ward 4 compliance statistics.
+                </span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-sm bg-surface-container-low p-space-md rounded-lg">
+<button class="bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-label-md text-label-md px-space-md py-2 rounded-lg transition-colors">
+              Reset Defaults
+            </button>
+<button class="bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md px-space-md py-2 rounded-lg transition-colors shadow-sm">
+              Save Notification Matrix
+            </button>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>

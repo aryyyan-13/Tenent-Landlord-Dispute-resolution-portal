@@ -635,3 +635,90 @@ select.input   { cursor: pointer; }
   }
 }
 
+/* ─── Stitch Left-Stripe Status Pills & Metric Accents ─── */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 12px;
+  border-radius: 4px;
+  font-size: var(--text-label-sm-size);
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  line-height: 1.2;
+}
+.status-pill::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+}
+.status-pill--in-progress {
+  background: rgba(253, 185, 111, 0.25);
+  color: #2c1600;
+}
+.status-pill--in-progress::before {
+  background: var(--color-secondary);
+}
+.status-pill--resolved {
+  background: var(--color-surface-container-high);
+  color: var(--color-primary);
+}
+.status-pill--resolved::before {
+  background: #15803d;
+}
+.status-pill--escalated {
+  background: var(--color-error-container);
+  color: var(--color-on-error-container);
+}
+.status-pill--escalated::before {
+  background: var(--color-error);
+}
+.status-pill--review {
+  background: rgba(212, 228, 247, 0.4);
+  color: #0d1d2a;
+}
+.status-pill--review::before {
+  background: #394857;
+}
+
+.metric-stripe-primary::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-primary-container);
+}
+.metric-stripe-secondary::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-secondary-container);
+}
+.metric-stripe-resolved::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-primary);
+}
+.metric-stripe-escalated::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-error);
+}
+
