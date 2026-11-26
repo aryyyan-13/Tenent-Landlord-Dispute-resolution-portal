@@ -11,21 +11,31 @@ const User = require('../models/User');
 const Dispute = require('../models/Dispute');
 const Mediation = require('../models/Mediation');
 
-function resetDatabase() {
-  db.exec(`
-    DELETE FROM messages;
-    DELETE FROM mediation_sessions;
-    DELETE FROM case_timeline;
-    DELETE FROM dispute_documents;
-    DELETE FROM disputes;
-    DELETE FROM users;
+async function resetDatabase() {
+  await db.query(`
+    TRUNCATE TABLE
+      notifications,
+      rent_authority_bundles,
+      case_status_history,
+      dispute_documents,
+      settlement_signatures,
+      settlement_agreements,
+      mediation_sessions,
+      messages,
+      negotiation_offers,
+      disputes,
+      mediator_profiles,
+      reviews,
+      rental_agreements,
+      users
+    RESTART IDENTITY CASCADE
   `);
 }
 
-function seed() {
-  resetDatabase();
+async function seed() {
+  await resetDatabase();
 
-  const admin = User.create({
+  const admin = await User.create({
     name: 'Priya Nair',
     email: 'admin@tldrp.test',
     password: 'Admin@123',
@@ -34,7 +44,7 @@ function seed() {
     address: 'TLDRP Head Office, Mumbai, Maharashtra'
   });
 
-  const mediator = User.create({
+  const mediator = await User.create({
     name: 'Rajesh Kulkarni',
     email: 'mediator@tldrp.test',
     password: 'Mediator@123',
@@ -43,7 +53,7 @@ function seed() {
     address: 'Pune, Maharashtra'
   });
 
-  const tenant = User.create({
+  const tenant = await User.create({
     name: 'Ananya Sharma',
     email: 'tenant@tldrp.test',
     password: 'Tenant@123',
@@ -52,7 +62,7 @@ function seed() {
     address: 'Flat 4B, Green Meadows Apartments, Andheri East, Mumbai'
   });
 
-  const landlord = User.create({
+  const landlord = await User.create({
     name: 'Vikram Deshpande',
     email: 'landlord@tldrp.test',
     password: 'Landlord@123',
@@ -61,7 +71,7 @@ function seed() {
     address: 'Green Meadows Apartments, Andheri East, Mumbai'
   });
 
-  const tenant2 = User.create({
+  const tenant2 = await User.create({
     name: 'Fatima Sheikh',
     email: 'tenant2@tldrp.test',
     password: 'Tenant@123',
@@ -70,7 +80,7 @@ function seed() {
     address: 'Flat 12, Sunrise Residency, Kothrud, Pune'
   });
 
-  const landlord2 = User.create({
+  const landlord2 = await User.create({
     name: 'Suresh Iyer',
     email: 'landlord2@tldrp.test',
     password: 'Landlord@123',
@@ -79,22 +89,25 @@ function seed() {
     address: 'Sunrise Residency, Kothrud, Pune'
   });
 
-  User.setKycVerified(tenant.id, true);
-  User.setKycVerified(landlord.id, true);
-  User.setKycVerified(mediator.id, true);
+  await User.setKycVerified(admin.id, true);
+  await User.setKycVerified(tenant.id, true);
+  await User.setKycVerified(landlord.id, true);
+  await User.setKycVerified(mediator.id, true);
 
   // Sample case 1: Security deposit dispute, in mediation
-  const dispute1 = Dispute.create({
+  const dispute1 = await Dispute.create({
     filedById: tenant.id,
     opposingPartyId: landlord.id,
-    category: 'Security Deposit',
+    category: 'security_deposit',
+    propertyAddress: 'Flat 4B, Green Meadows Apartments, Andheri East, Mumbai',
+    desiredOutcome: 'Full refund of INR 60,000 security deposit within 7 working days.',
     description:
       'Vacated the flat on 31 May 2026 after giving the required 30 days notice. The landlord has not refunded the ' +
       'security deposit of INR 60,000 and has not responded to messages for three weeks. The rental agreement clause 7 ' +
       'requires refund within 15 days of vacating, subject to a documented inspection report, which was never shared.'
   });
-  Dispute.assignMediator(dispute1.id, mediator.id, admin.id);
-  const session1 = Mediation.createSession({
+  await Dispute.assignMediator(dispute1.id, mediator.id, admin.id);
+  await Mediation.createSession({
     disputeId: dispute1.id,
     mediatorId: mediator.id,
     sessionDate: '2026-07-10',
@@ -103,21 +116,23 @@ function seed() {
       'Tenant provided payment receipts showing the bill was cleared. Landlord agreed to refund the balance.',
     proposedResolution: 'Landlord to refund INR 60,000 in full within 7 working days via bank transfer.'
   });
-  Dispute.updateStatus(dispute1.id, 'Mediation', 'Mediation session held on 2026-07-10.', mediator.id);
-  Dispute.addMessage(dispute1.id, tenant.id, 'I have attached the water bill payment receipt for reference.');
-  Dispute.addMessage(dispute1.id, landlord.id, 'Received, will review with the mediator.');
+  await Dispute.updateStatus(dispute1.id, 'open_mediation', 'Mediation session held on 2026-07-10.', mediator.id);
+  await Dispute.addMessage(dispute1.id, tenant.id, 'I have attached the water bill payment receipt for reference.');
+  await Dispute.addMessage(dispute1.id, landlord.id, 'Received, will review with the mediator.');
 
   // Sample case 2: Maintenance dispute, newly filed
-  const dispute2 = Dispute.create({
+  const dispute2 = await Dispute.create({
     filedById: tenant2.id,
     opposingPartyId: landlord2.id,
-    category: 'Maintenance',
+    category: 'maintenance',
+    propertyAddress: 'Flat 12, Sunrise Residency, Kothrud, Pune',
+    desiredOutcome: 'Urgent plumbing repair and remediation of water damage.',
     description:
       'The kitchen ceiling has been leaking since the monsoon started on 15 June 2026 due to a plumbing issue in the ' +
       'flat above. Multiple requests to the landlord for repair have gone unanswered for over a month, causing damage ' +
       'to kitchen cabinets and posing an electrical safety risk near the switchboard.'
   });
-  Dispute.addMessage(dispute2.id, tenant2.id, 'Photos of the water damage have been uploaded as evidence.');
+  await Dispute.addMessage(dispute2.id, tenant2.id, 'Photos of the water damage have been uploaded as evidence.');
 
   console.log('\nDatabase seeded successfully.\n');
   console.log('Sample cases created:');
@@ -132,6 +147,11 @@ function seed() {
     { role: 'tenant', email: tenant2.email, password: 'Tenant@123' },
     { role: 'landlord', email: landlord2.email, password: 'Landlord@123' }
   ]);
+  await db.pool.end();
 }
 
-seed();
+seed().catch(async (err) => {
+  console.error('Seed failed:', err);
+  await db.pool.end().catch(() => {});
+  process.exit(1);
+});

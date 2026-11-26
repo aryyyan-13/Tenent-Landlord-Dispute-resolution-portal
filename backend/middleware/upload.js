@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const uploadDir = path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
-const ALLOWED_TYPES = ['.pdf', '.png', '.jpg', '.jpeg', '.doc', '.docx'];
+const ALLOWED_TYPES = ['.pdf', '.png', '.jpg', '.jpeg', '.webp', '.doc', '.docx'];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
 const storage = multer.diskStorage({
@@ -20,7 +20,9 @@ const storage = multer.diskStorage({
 function fileFilter(req, file, cb) {
   const ext = path.extname(file.originalname).toLowerCase();
   if (!ALLOWED_TYPES.includes(ext)) {
-    return cb(new Error(`Unsupported file type "${ext}". Allowed types: ${ALLOWED_TYPES.join(', ')}`));
+    const err = new Error(`Unsupported file type "${ext}". Allowed types: ${ALLOWED_TYPES.join(', ')}`);
+    err.status = 400;
+    return cb(err);
   }
   cb(null, true);
 }

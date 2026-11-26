@@ -24,8 +24,10 @@ const VALID_ROLES = ['tenant', 'landlord', 'mediator', 'admin'];
 router.post('/register', upload.single('kyc_document'), async (req, res) => {
   try {
     const { name, email, password, role, contact, address } = req.body;
+    const trimmedName = typeof name === 'string' ? name.trim() : '';
+    const trimmedEmail = typeof email === 'string' ? email.trim() : '';
 
-    if (!name || !email || !password || !role) {
+    if (!trimmedName || !trimmedEmail || !password || !role) {
       return res.status(400).json({ error: 'Name, email, password, and role are required.' });
     }
     if (!VALID_ROLES.includes(role)) {
@@ -34,14 +36,22 @@ router.post('/register', upload.single('kyc_document'), async (req, res) => {
     if (password.length < 6) {
       return res.status(400).json({ error: 'Password must be at least 6 characters.' });
     }
-    const existing = await User.findByEmail(email);
+    const existing = await User.findByEmail(trimmedEmail);
     if (existing) {
       return res.status(409).json({ error: 'An account with this email already exists.' });
     }
 
     const kycDocumentPath = req.file ? `/uploads/${req.file.filename}` : null;
 
-    const user = await User.create({ name, email, password, role, contact, address, kycDocumentPath });
+    const user = await User.create({
+      name: trimmedName,
+      email: trimmedEmail,
+      password,
+      role,
+      contact,
+      address,
+      kycDocumentPath
+    });
     const token = signToken(user);
 
     res.status(201).json({ token, user: User.toSafeObject(user) });
@@ -55,11 +65,12 @@ router.post('/register', upload.single('kyc_document'), async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    if (!email || !password) {
+    const trimmedEmail = typeof email === 'string' ? email.trim() : '';
+    if (!trimmedEmail || !password) {
       return res.status(400).json({ error: 'Email and password are required.' });
     }
 
-    const user = await User.findByEmail(email);
+    const user = await User.findByEmail(trimmedEmail);
     if (!user || !User.verifyPassword(user, password)) {
       return res.status(401).json({ error: 'Invalid email or password.' });
     }

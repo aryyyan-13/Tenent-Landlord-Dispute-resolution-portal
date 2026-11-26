@@ -60,7 +60,8 @@ app.use('/api', (req, res) => {
 // Central error handler (e.g. multer errors)
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(err.status || 500).json({ error: err.message || 'Internal server error.' });
+  const status = err.name === 'MulterError' ? 400 : (err.status || 500);
+  res.status(status).json({ error: err.message || 'Internal server error.' });
 });
 
 const PORT = process.env.PORT || 5000;

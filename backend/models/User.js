@@ -6,17 +6,20 @@ const User = {
   async create({ name, email, password, role, contact, address, kycDocumentPath }) {
     const id = uuidv4();
     const passwordHash = bcrypt.hashSync(password, 10);
-    
+    const normalizedEmail = String(email).trim().toLowerCase();
+    const normalizedName = String(name).trim();
+
     await db.query(`
       INSERT INTO users (id, name, email, password_hash, role, contact, address, kyc_document_path)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    `, [id, name, email.toLowerCase(), passwordHash, role, contact || null, address || null, kycDocumentPath || null]);
+    `, [id, normalizedName, normalizedEmail, passwordHash, role, contact || null, address || null, kycDocumentPath || null]);
     
     return User.findById(id);
   },
 
   async findByEmail(email) {
-    const res = await db.query('SELECT * FROM users WHERE email = $1', [email.toLowerCase()]);
+    const normalizedEmail = String(email || '').trim().toLowerCase();
+    const res = await db.query('SELECT * FROM users WHERE email = $1', [normalizedEmail]);
     return res.rows[0];
   },
 

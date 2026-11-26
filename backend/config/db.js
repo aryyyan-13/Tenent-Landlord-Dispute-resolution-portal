@@ -12,6 +12,7 @@ const isRemoteDb = process.env.DATABASE_URL && (
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: isRemoteDb ? { rejectUnauthorized: false } : false,
+  connectionTimeoutMillis: 10000,
 });
 
 pool.on('error', (err, client) => {
